@@ -47,6 +47,7 @@ How To Search:
 |------------------------------------|
 |------------- OSINT ----------------|
 |------------------------------------|	
+	| Product Identifying
 	| Site Tracking
 	| OSINT Sites
 	| Public Records
@@ -213,7 +214,22 @@ Archive.is
 http://archiveiya74codqgiixo33q62qlrqtkgmcitqx5u2oeqnmn5bpcbiyd.onion/
 
 Stronghold Paste
-http://strongerw2ise74v3duebgsvug4mehyhlpa7f6kfwnas7zofs3kov7yd.onion/ 
+http://strongerw2ise74v3duebgsvug4mehyhlpa7f6kfwnas7zofs3kov7yd.onion/
+
+MONIT Leak site (Wall Of Shame)
+http://mblogci3rudehaagbryjznltdp33ojwzkq6hn2pckvjq33rycmzczpid.onion/
+
+Human Carne Sales
+http://vihnyh2wifmtfoa72xpufv4qjuf7xhlazot467jjlx657gwzazsr5byd.onion/encatalog.html
+
+superbay
+http://suprbaydvdcaynfo4dgdzgxb4zuso7rftlil5yg5kqjefnw4wq4ulcad.onion/index.php
+
+The Crypt
+http://crypts5slavncejjmyilpmxdri6phmvgdm4dwt5p3ukeqe3p6y5hj6yd.onion/
+
+TeleGru
+http://telegru2vmpccvm34n7dplk23534rhsdhw3twjemrxfavp7v42vcaxqd.onion/
 
 ========================== Dark Web Search Engines =========================================
 
@@ -232,10 +248,34 @@ http://2fd6cemt4gmccflhm6imvdfvli3nf7zn6rfrwpsy7uhxrgbypvwf5fad.onion/
 Ahmia
 http://juhanurmihxlp77nkq76byazcldy2hlmovfu2epvl5ankdibsot4csyd.onion/ 
 
+OnionLand Search
+http://3bbad7fauom4d6sgppalyqddsqbf5u5p56b5k5uk2zxsy3d6ey2jobad.onion/
+
+Venus Search Engine
+http://venusosejno7oie4c73vsvrdw5k5gyhrhmq3apovwvy3qihub2dfppad.onion/Search
+
+The Dude
+http://thedude75pphneo4auknyvspskdmcj4xicbsnkvqgwhb4sfnmubkl5qd.onion/?query=murder
+
+TorDex
+http://tordexkue7sggxtul2uqwewqiulmgra4ucnmvdfhhfhuzat4l3cofzyd.onion/
+
+Amnesia
+http://amnesia7u5odx5xbwtpnqk3edybgud5bmiagu75bnqx2crntw5kry7ad.onion/
+
 =============================== Dark Web Directories ========================================
 
 Stronghold Paste
 http://strongerw2ise74v3duebgsvug4mehyhlpa7f6kfwnas7zofs3kov7yd.onion/ 
+
+Dig Deeper
+http://us63bgjkxwpyrpvsqom6kw3jcy2yujbplkhtzt64yykt42ne2ms7p4yd.onion/
+
+TorFox
+http://torfoxuq7kh7bap7iygmmryjuq2hilcm6dw5kk7c3h5hu6ibwoth5dyd.onion/
+
+OnionDir
+http://oniodtu6xudkiblcijrwwkduu2tdle3rav7nlszrjhrxpjtkg4brmgqd.onion
 
 ===================================== Dark Web Messaging ====================================
 
@@ -426,6 +466,14 @@ https://github.com/aw-junaid/aw-junaid
 ==============================================================================================
 ==============================================================================================
 ==============================================================================================
+
+================================= Product Identifying =======================================
+
+MAC Address Search
+https://mac.lc/
+
+MAC Search
+https://www.ipchecktool.com/tool/macfinder
 
 ================================ Site Tracking ===============================================
 
