@@ -440,6 +440,24 @@ http://offliberty.com
 List of Privacy Driven Websites/Apps
 https://awesome-privacy.xyz/all
 
+Privacy Tools Collection and Software
+https://www.privacytools.io/
+
+Prism Break
+https://prism-break.org/en/all/
+
+CTemplar (Email Service)
+https://ctemplar.com/features/
+
+FV Browser Security Check
+https://fv.pro/check-privacy/general
+
+IP Leak
+https://ipleak.net/
+
+kycnot (Crypto Swaping Exchange)
+https://kycnot.me/
+
 ===================================== Way Back Searches ======================================
 
 Mozilla Wiki
@@ -458,6 +476,9 @@ https://refind.com/
 
 Aw Junaid (Cybersecurity Specialists Blog)
 https://github.com/aw-junaid/aw-junaid
+
+Intel Techniques
+https://inteltechniques.com/tools/index.html
 
 ==============================================================================================
 ==============================================================================================
