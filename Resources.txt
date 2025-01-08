@@ -255,7 +255,7 @@ Venus Search Engine
 http://venusosejno7oie4c73vsvrdw5k5gyhrhmq3apovwvy3qihub2dfppad.onion/Search
 
 The Dude
-http://thedude75pphneo4auknyvspskdmcj4xicbsnkvqgwhb4sfnmubkl5qd.onion/?query=murder
+http://thedude75pphneo4auknyvspskdmcj4xicbsnkvqgwhb4sfnmubkl5qd.onion/
 
 TorDex
 http://tordexkue7sggxtul2uqwewqiulmgra4ucnmvdfhhfhuzat4l3cofzyd.onion/
