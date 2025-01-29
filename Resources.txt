@@ -231,6 +231,9 @@ http://crypts5slavncejjmyilpmxdri6phmvgdm4dwt5p3ukeqe3p6y5hj6yd.onion/
 TeleGru
 http://telegru2vmpccvm34n7dplk23534rhsdhw3twjemrxfavp7v42vcaxqd.onion/
 
+OSINT Resources
+http://ecue64ybzvn6vjzl37kcsnwt4ycmbsyf74nbttyg7rkc3t3qwnj7mcyd.onion/r/OSINT/comments/12csg48/possibly_largest_osint_list/
+
 ========================== Dark Web Search Engines =========================================
 
 Torch
