@@ -87,6 +87,7 @@ How To Search:
 |------------------------------------|
 |------------ Hacking ---------------|
 |------------------------------------|	
+	| Bug Bounty Hunting
 	| Directories
 	| Anti-Programs / Booby Traps / Intrustion Detection
 	| Payloads / Malware / RAT / Keylogger
@@ -225,14 +226,19 @@ http://vihnyh2wifmtfoa72xpufv4qjuf7xhlazot467jjlx657gwzazsr5byd.onion/encatalog.
 superbay
 http://suprbaydvdcaynfo4dgdzgxb4zuso7rftlil5yg5kqjefnw4wq4ulcad.onion/index.php
 
-The Crypt
-http://crypts5slavncejjmyilpmxdri6phmvgdm4dwt5p3ukeqe3p6y5hj6yd.onion/
-
 TeleGru
 http://telegru2vmpccvm34n7dplk23534rhsdhw3twjemrxfavp7v42vcaxqd.onion/
 
+The Digital Den
+http://ddenupaqxuvvilo4yetjv3qbq7p45vqbrr7vd2fmorjglh5bk7uh73id.onion/
+
+HeLL Forum
+http://hell2ker5i3xsy6szrl2pulaqo3jhcz6pt7ffdxtuqjqiycvmlkcddqd.onion/
+http://hellfor6lms7ymehau66mojeg7wom2mjkua6zked7l2t6vhtjhgzinid.onion/
+
 OSINT Resources
 http://ecue64ybzvn6vjzl37kcsnwt4ycmbsyf74nbttyg7rkc3t3qwnj7mcyd.onion/r/OSINT/comments/12csg48/possibly_largest_osint_list/
+
 
 ========================== Dark Web Search Engines =========================================
 
@@ -257,14 +263,23 @@ http://3bbad7fauom4d6sgppalyqddsqbf5u5p56b5k5uk2zxsy3d6ey2jobad.onion/
 Venus Search Engine
 http://venusosejno7oie4c73vsvrdw5k5gyhrhmq3apovwvy3qihub2dfppad.onion/Search
 
-The Dude
-http://thedude75pphneo4auknyvspskdmcj4xicbsnkvqgwhb4sfnmubkl5qd.onion/
-
 TorDex
 http://tordexkue7sggxtul2uqwewqiulmgra4ucnmvdfhhfhuzat4l3cofzyd.onion/
 
 Amnesia
 http://amnesia7u5odx5xbwtpnqk3edybgud5bmiagu75bnqx2crntw5kry7ad.onion/
+
+Kickass Forum
+http://uvlt4htyvgh4tpbae7px2xfxlu5v2j5bxrisefddcbqytioncdqvz6qd.onion/
+
+Demonic Domains
+http://cqyjuao7i7gaenxfwcov6uoeodtgldngegd6jbnsad4eduu2fyxtfcyd.onion/
+
+Hack Tools Dark
+http://ky6urnzorg43zp5sw2gb46csndhpzn6ttpectmeooalwn2zc5w44rbqd.onion/index.php
+
+GhostHub Forum
+http://aniozgjggq2pzxznogrlpoioks7iu3emj6bwebz3yptl4pkoukzd6kid.onion/
 
 =============================== Dark Web Directories ========================================
 
@@ -279,6 +294,16 @@ http://torfoxuq7kh7bap7iygmmryjuq2hilcm6dw5kk7c3h5hu6ibwoth5dyd.onion/
 
 OnionDir
 http://oniodtu6xudkiblcijrwwkduu2tdle3rav7nlszrjhrxpjtkg4brmgqd.onion
+
+dark.fail
+http://darkfailenbsdla5mal2mxn2uz66od5vtzd5qozslagrfzachha3f3id.onion/
+
+TorLib
+http://torlib7fmhyvfv2k7s77xigdds3rosio6k6bxnn256xmtzlbgyizduqd.onion/
+
+The Ultimate Hidden Wiki
+http://uhwikizexyvfhbvpkdb3cu3vzikml4dnmas4ravwgua3zu3ouzfkclid.onion/index.php?title=Main_Page
+
 
 ===================================== Dark Web Messaging ====================================
 
@@ -548,7 +573,11 @@ https://securitytrails.com/
 OSINT 4 All (Start.me)
 https://start.me/p/L1rEYQ/osint4all
 
+OSINT Utopia (Start.me)
+https://start.me/p/7kzDqv/osint-utopia-category?locale%20e
+
 Ghost Society (Start.me)
+https://start.me/p/Yay1rY/osint-central
 
 OSINT Tools (Start.me)
 https://start.me/p/wMdQMQ/tools
@@ -1181,6 +1210,14 @@ https://doc.rust-lang.org/book/
 ==============================================================================================
 ==============================================================================================
 
+================================== Bug Bounty Hunting ========================================
+
+OWasp
+owasp.org
+
+HackerOne (Bug bounty for money)
+hackerone.com
+
 ================================= Directories ================================================
 
 Hacking Tools (Directory Of All And Everything)
@@ -1274,6 +1311,15 @@ PWA Phishint (Progressive Web App Phishing)
 https://github.com/mrd0x/PWA-Phishing
 
 ====================================== Stressers =============================================
+
+MetaStresser
+https://metastresser.io/
+
+MythicalStress
+https://mythicalstress.com/
+
+SilentStress
+https://silentstress.cc/
 
 ======================================== Domain ==============================================
 
