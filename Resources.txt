@@ -579,8 +579,14 @@ https://start.me/p/7kzDqv/osint-utopia-category?locale%20e
 Ghost Society (Start.me)
 https://start.me/p/Yay1rY/osint-central
 
+OSINT Framework -Resources and Training
+https://start.me/w/xY2l0w
+
 OSINT Tools (Start.me)
 https://start.me/p/wMdQMQ/tools
+
+Basic OSINT Tools
+https://start.me/w/JayJm2
 
 OSINT Framework
 https://osintframework.com/
@@ -617,6 +623,9 @@ https://www.offensiveosint.io/
 Intelligence X (Gov Database Look-up / public Search)
 https://intelx.io/
 
+Property Search
+https://map.netronline.com/nevada-clark/32003
+
 Crime Data Explorer (Compiled FBI publications of Uniform Crime Reporting Data On An Annual Basis)
 https://github.com/18F/crime-data-explorer
 
@@ -625,6 +634,12 @@ https://github.com/CarlaAstudillo/ArreStats
 
 IP Geolocation (Gather IP Geo Info)
 https://github.com/maldevel/IPGeoLocation
+
+Public Records Search
+https://www.google.com/maps/d/u/0/viewer?mid=1TGFGBPNWMA5f_Xj6J0QoRAv9gLIPg5c&femb=1&ll=43.01466543371695%2C-69.87868373789061&z=7
+
+US Data Search
+https://usa-official.com
 
 ========================================= OSINT Tools ========================================
 
@@ -1186,6 +1201,9 @@ https://github.com/RocketGod-git/meshtastic-web-chat-interface
 
 Hackthebox (Practice Hacking)
 https://www.hackthebox.com/
+
+OSINT Framework -Resources and Training
+https://start.me/w/xY2l0w
 
 Try To Hack Me
 https://tryhackme.com/
