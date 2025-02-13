@@ -588,6 +588,9 @@ https://start.me/p/wMdQMQ/tools
 Basic OSINT Tools
 https://start.me/w/JayJm2
 
+Human Trafficking OSINT - Search Hotel Recognition Database
+https://start.me/w/pX9Y87
+
 OSINT Framework
 https://osintframework.com/
 
