@@ -99,6 +99,11 @@ How To Search:
 	| Rubber Ducky
 	| WiFi
 |------------------------------------|
+|--------- Linux Shortcut -----------|
+|------------------------------------|
+	| Terminal Chat
+	| File Sharing / Chat GUI
+|------------------------------------|
 |---------- Organization ------------|
 |------------------------------------|
 	| Investigative Frameworks
@@ -1415,6 +1420,31 @@ https://github.com/D3Ext/WEF
 
 Wifi Crack (Python Code For Automate WiFi Attacks)
 https://github.com/Gurpreet06/Wifi-Crack
+
+==============================================================================================
+==============================================================================================
+==============================================================================================
+------------------------------------Linux Shortcuts-------------------------------------------
+==============================================================================================
+==============================================================================================
+==============================================================================================
+
+===================================== Terminal Chat ==========================================
+
+Wormhole-William
+	| Download - sudo apt install wormhole-william
+	| Send - wormhole-william send
+	| Receive - wormhole-william receive "receive code"
+{ wormhole william is a secret terminal messaging system where only the sender and receiver can see the messages. When sending a message, send your person the passphrase to receive the message. Only works through terminal chat }
+
+
+================================ File Sharing / Chat GUI =====================================
+
+OnionShare
+	| Download flatpak from website
+	| Terminal Command - flatpak install org.onionshare.OnionShare.flatpakref (Or whatever the file is called)
+	| Run - flatpak run org.onionshare.OnionShare
+
 
 ==============================================================================================
 ==============================================================================================
