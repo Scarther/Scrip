@@ -6,10 +6,12 @@ This is a series of tutorials and shortcuts to hacking on linux
 This is also listed in the README for better organization and referencing
 
 ====================================================================
-# Script
+# Scripts folder (This folder is in the main branch)
 --------------------------------------------------------------------
 ### OSINT
 This is a list of searchable scripts through HTML and JavaScripts for searching
+To use these scripts, download the file raw, and double click the file. This works best on Windos OS. It will open the script in your default browser
+
   - Breaches
   - Business
   - Communities
