@@ -1410,8 +1410,9 @@ samba:45:0F2B255F7B67A7A9AAD3B435B51404EE:
           [UX         ]:LCT-3BFA1E8D:
  ```
 
-## Encrypted File Transfers with Ncat
+# Encrypted File Transfers 
 
+## Ncat
 Suppose you have an SSH tunnel, and you want to copy a file to the remote machine. You could just scp it directly, but that opens up another connection. The goal is to re-use the existing connection. You can use ncat to do this:
 
 ```
@@ -1426,6 +1427,24 @@ $ ncat -v -w 2 127.0.0.1 31000 < file
 ```
 
 No extra overhead. TCP takes care of error correction. SSH has already encrypted the pipe.
+
+## OnionShare
+OnionShare - Function and Download
+	| Download flatpak from website
+	| Terminal Command - flatpak install org.onionshare.OnionShare.flatpakref (Or whatever the file is called)
+	| Run - flatpak run org.onionshare.OnionShare
+This GUI has multiple different types of encrypted functions such as AM chats, filesharing and hosting
+
+## Wormhole-William
+Wormhole - William Function and Download 
+ 	| Download - sudo apt install wormhole-william
+	| Send - wormhole-william send
+	| Receive - wormhole-william receive "receive code"
+wormhole william is a secret terminal messaging system where only the sender and receiver can see the messages. When sending a message, send your person the passphrase to receive the message. Only works through terminal chat. This is text only and does not allow for file sharing
+
+
+================================ File Sharing / Chat GUI =====================================
+
 
 ## Tsharking for Domain Users
 
