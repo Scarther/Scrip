@@ -130,7 +130,7 @@ Java
 ### Enumerating with Traceroute
 ### Changing MAC Addresses
 ================================================
-### Routers
+## Routers
 ### Metasploit Callback Automation
 ### Metasploit Resource Script Creation
 ### Metasploit Session Management
@@ -144,7 +144,10 @@ Java
 ================================================
 ## Dominating Samba with pdbedit
 ================================================
-## Encrypted File Transfers with Ncat
+## Encrypted File Transfers
+### Ncat
+### OnionShare
+### Worm-Willaim
 ================================================
 ## Tsharking for Domain Users
 ================================================
