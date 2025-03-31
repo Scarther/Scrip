@@ -56,14 +56,14 @@ Follow the instructions in the code to install properly.
 	{ Ctr + f to skip to section }
 
 ### Linux TTP
-System Enumeration / Post Exploitation
-Linux Miscellaneous Commands / Covering Tracks
-Efficient Linux CLI Navigation
-Fork Bomb
-TCPDump
-One Liner to Add Persistence on a Box via Cron
-Systemd User Level Persistence
-Udev Rules Persistence
+# System Enumeration / Post Exploitation
+# Linux Miscellaneous Commands / Covering Tracks
+# Efficient Linux CLI Navigation
+# Fork Bomb
+# TCPDump
+# One Liner to Add Persistence on a Box via Cron
+# Systemd User Level Persistence
+# Udev Rules Persistence
 Systemd Timer Persistence
 Backdooring Sudo
 ICMP Tunneling One Liner
