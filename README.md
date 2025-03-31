@@ -1,6 +1,9 @@
 # Resources.txt
 This is a series of resources on a txt for easy reference
 
+# Linux_Commands.txt
+This is a series of tutorials and shortcuts to hacking on linux
+
 ====================================================================
 # Script
 --------------------------------------------------------------------
