@@ -822,6 +822,9 @@ https://github.com/aydinnyunus/exifLooter
 GEOINT Tools For Columbia
 https://github.com/Bugs-B0unt3r/geoint-colombia
 
+Describe Picture (Searches open cameras for exact photo of picture and Google maps)
+https://describepicture.cc/
+
 ================================== Facial Recognition =======================================
 
 Face Recognition (Simple Facial Recognition API For Python/Command Line)
