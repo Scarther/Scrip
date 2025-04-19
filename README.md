@@ -1419,14 +1419,21 @@ Suppose you have an SSH tunnel, and you want to copy a file to the remote machin
 # This is port forwarding, sending everything from port 31000 on the remote machine to the same port on the local machine
 $ ssh -L 31000:127.0.0.1:31000
 
-# On the remote system:
-$ ncat -lvnp 31000 127.0.0.1 > file
+# On the remote system: (Receiving system)
+$ ncat -lvnp 31000 127.0.0.1 > file (Keep this one named file and it will replace the downloaded file to the file that is sent to your computer)
 
-# On the local system:
-$ ncat -v -w 2 127.0.0.1 31000 < file
+# On the local system: (Sending System) 
+$ ncat -v -w 2 127.0.0.1 31000 < file (This file should be the name of the file you want to send)
 ```
 
 No extra overhead. TCP takes care of error correction. SSH has already encrypted the pipe.
+Ensure that ncat is downloaded
+```
+sudo apt install ncat
+```
+
+When sending files, ensure you are in the right directory and the file is in the directory
+When receiving files, ensure you are in the directory you want the file to be in. Use the "file", this will keep it the same name the sender has it as. 
 
 ## OnionShare
 OnionShare - Function and Download
