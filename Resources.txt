@@ -36,6 +36,7 @@ How To Search:
 |------- Clear Net Section ----------|
 |------------------------------------|
 	| Breach Sites
+ | Passwords
 	| Ransomware Monitoring
 	| Hacker Forums
 	| Disposable Media
@@ -375,6 +376,11 @@ https://breachforums.st
 
 Leakbase 
 https://leakbase.io/
+
+=================================== Passwords =============================================
+
+Weak Pass (Password Lists)
+https://weakpass.com/
 
 ================================ Ransomware Monitoring =======================================
 
