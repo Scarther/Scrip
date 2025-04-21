@@ -73,6 +73,9 @@ The collected data is saved to a bot-log.txt file and sent to the bot creator vi
 
 User Deception:
 After entering the data, the bot reports that the “trickery” will be done within 24 hours and warns the user not to share their data with others to give the appearance of security concerns
+
+
+
 --------------------------------------------------------------------
 
 --------------------------------------------------------------------
