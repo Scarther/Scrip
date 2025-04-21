@@ -1,4 +1,4 @@
-# Code modified and improved by DarkG8
+# Code modified and improved by DarkG8 
 
 import telebot
 from telebot import types
