@@ -99,6 +99,7 @@ How To Search:
 	| Xploit Platforms
 	| Rubber Ducky
 	| WiFi
+	| Classes / Training
 |------------------------------------|
 |--------- Linux Shortcut -----------|
 |------------------------------------|
@@ -1435,6 +1436,11 @@ https://github.com/D3Ext/WEF
 
 Wifi Crack (Python Code For Automate WiFi Attacks)
 https://github.com/Gurpreet06/Wifi-Crack
+
+====================================== Classes / Training =====================================
+
+Cyber Security Course ( Tor / Dread Post - Complete Cybersecurity course from beginner to advanced)
+http://dreadytofatroptsdj6io7l3xptbet6onoyno2yv7jicoxknyazubrad.onion/post/6eeee124f6eb4464eaad
 
 ==============================================================================================
 ==============================================================================================
