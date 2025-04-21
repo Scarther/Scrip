@@ -47,6 +47,32 @@ To use these scripts, download the file raw, and double click the file. This wor
 This is a simple plug in script to place in the ipify.org site to send info to your telegram bot.
 
 Follow the instructions in the code to install properly.
+
+### TelePhish
+
+This code is a tool for creating phishing bots in Telegram.
+
+Main code functions:
+
+Creating a phishing bot:
+The code generates a bot script for Telegram that mimics a scoring service (increasing likes, subscribers, views) for Instagram or TikTok.
+The bot asks the user for a login, phone number and password, ostensibly to perform the trickery, but actually saves this data in a bot-log.txt file and sends it to the bot creator.
+
+Target platforms:
+The user can choose which platform (Instagram or TikTok) the phishing bot will be created for. Depending on the choice, the bot offers different “tweaking” options.
+
+Data collection:
+The bot collects:
+Login or phone number.
+Password.
+User ID in Telegram.
+Nickname (@username) and username.
+
+Sending data:
+The collected data is saved to a bot-log.txt file and sent to the bot creator via Telegram using the specified token and ID.
+
+User Deception:
+After entering the data, the bot reports that the “trickery” will be done within 24 hours and warns the user not to share their data with others to give the appearance of security concerns
 --------------------------------------------------------------------
 
 --------------------------------------------------------------------
