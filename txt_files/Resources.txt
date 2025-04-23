@@ -1,6 +1,6 @@
 			@###############################@
 			|	   Compiled By:		|
-			|	   - iRoTOnOT		|
+			|	   - John Redpath	|
 			|	   - Dongle		|
 			|===============================|
 			|        Special Thanks To:	|
