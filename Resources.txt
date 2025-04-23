@@ -98,6 +98,7 @@ How To Search:
 	| Phone
 	| Xploit Platforms
 	| Rubber Ducky
+ | RATS
 	| WiFi
 	| Classes / Training
 |------------------------------------|
@@ -1425,6 +1426,12 @@ https://github.com/CedArctic/ducky2python
 
 Ducky Scipt Payloads (Collection Of Payloads)
 https://github.com/UndedInside/DuckyScriptPayloads
+
+============================================ RATS ============================================
+
+The Ultimate Rat Collection (100's of RATS)
+
+https://github.com/Cryakl/Ultimate-RAT-Collection
 
 ============================================ WiFi ============================================
 
