@@ -387,6 +387,9 @@ https://breachforums.st
 Leakbase 
 https://leakbase.io/
 
+NoHide 
+https://nohide.space
+
 =================================== Passwords =============================================
 
 Weak Pass (Password Lists)
@@ -420,6 +423,9 @@ https://sinister.ly/Forum-Hacking
 Hack Forums
 https://hackforums.net/
 
+HellOfHackers
+https://hellofhackers.com
+
 TSRH (Forums and Tutorials For Hacking)
 https://tsrh.ws/
 
@@ -431,6 +437,9 @@ https://forum.xda-developers.com/
 
 Cracking (Data Leaks / Cracking Programs)
 https://cracking.org/
+
+Cracking X
+https://crackingx.com/
 
 Trust Community (Various Resources)
 https://community.trustwallet.com/
@@ -471,6 +480,24 @@ https://cock.li/
 
 file.io (Single Use URL For File Sharing)
 https://www.file.io/
+
+Upload (Upload images and files by sharing URL)
+https://www.upload.ee/
+
+Mediafire
+https://www.mediafire.com
+
+Pixeldrain (Paid subscription of Cloud storage)
+https://pixeldrain.com
+
+Mega (Similar to Google Drive)
+https://mega.nz
+
+SendSpace (Advertised for large files)
+https://www.sendspace.com
+
+GoFile (Cloud Storage and File Sharing. Also Has Desktop App)
+https://gofile.io
 
 ======================================== Offline Browsing ====================================
 
