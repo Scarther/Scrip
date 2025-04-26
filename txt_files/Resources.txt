@@ -88,6 +88,9 @@ How To Search:
 |----- Learn / Teach / Practice -----|
 |------------------------------------|	
 	| Reverse Engineering
+	| Malware Analysis
+	| OSINT
+	| Complete Courses
 |------------------------------------|
 |------------ Hacking ---------------|
 |------------------------------------|	
@@ -97,15 +100,15 @@ How To Search:
 	| Payloads
 	| Malware
 	| Keylogger
+	| Rubber Ducky
+ 	| RATS
+	| Ransomware
 	| Phishing
 	| Stressers
 	| Domain
 	| Phone
 	| Xploit Platforms
-	| Rubber Ducky
- 	| RATS
 	| WiFi
-	| Classes / Training
 |------------------------------------|
 |--------- Linux Shortcut -----------|
 |------------------------------------|
@@ -1226,7 +1229,7 @@ https://doc.rust-lang.org/book/
 ==============================================================================================
 ==============================================================================================
 ==============================================================================================
-------------------------------------- Learn / Teach / Practice ------------------------------------------------
+------------------------------------- Learn / Teach / Practice -------------------------------
 ==============================================================================================
 ==============================================================================================
 ==============================================================================================
@@ -1236,10 +1239,20 @@ https://doc.rust-lang.org/book/
 crack my app (Practice reverse engineering through their challenges)
 https://crackmy.app/
 
-================================== OSINT ========================================
+================================ Malware Analysis ============================================
+
+Malware Analysis (Repo Of Collection Of Malware Samples With Analysis Reports)
+https://github.com/Malwareman007/Malware_Analysis
+
+================================== OSINT =====================================================
 
 Linux For OSINT 21 Days
 https://github.com/cipher387/linux-for-OSINT-21-day
+
+==================================== Complete Courses ========================================
+
+Cyber Security Course ( Tor / Dread Post - Complete Cybersecurity course from beginner to advanced)
+http://dreadytofatroptsdj6io7l3xptbet6onoyno2yv7jicoxknyazubrad.onion/post/6eeee124f6eb4464eaad
 
 ==============================================================================================
 ==============================================================================================
@@ -1268,6 +1281,9 @@ https://github.com/aw-junaid/Hacking-Tools
 Red Teaming Tactics And Techniques
 https://github.com/blackhatethicalhacking/RedTeaming-Tactics-and-Techniques
 
+Hacking Tools (List Of Payloads, Worms, Ransomware, Malware)
+https://github.com/Malwareman007/Hacking_Tools
+
 ===================== Anti-Programs / Booby Traps / Instrustion Detection ====================
 
 Phantom (Toolkit Of Anti-Virus Evasion)
@@ -1291,7 +1307,15 @@ https://github.com/gurland/telegram-delete-all-messages
 Reverse Shell Generator
 https://github.com/0dayCTF/reverse-shell-generator
 
-====================== Payloads / Malware / RAT / Ransomware / Keylogger ======================
+========================================== Payloads ==========================================
+
+PixLoad (Image Payload Creating Tools)
+https://github.com/blackhatethicalhacking/pixload
+
+Payload All The Things (Collection Of Payloads)
+https://github.com/0dayCTF/PayloadsAllTheThings
+
+========================================= Malware ============================================
 
 THE ZOO (Look At The Animals!!!)
 https://github.com/ytisf/theZoo
@@ -1301,30 +1325,6 @@ https://github.com/Malwareman007/malwareman_backdoor
 
 Deadshot (Backdoor Generator For Windows And Linux)
 https://github.com/Malwareman007/Deadshot
-
-Lucifer (RAT Generator For Windows And Linux)
-https://github.com/Malwareman007/Lucifer
-
-Ransomware (Based Of AES256 Algorithm. Will Send Decryption Key Remotely To Get Key Run Server)
-https://github.com/Malwareman007/Ransomware
-
-Hacking Tools (List Of Payloads, Worms, Ransomware, Malware)
-https://github.com/Malwareman007/Hacking_Tools
-
-Malware Analysis (Repo Of Collection Of Malware Samples With Analysis Reports)
-https://github.com/Malwareman007/Malware_Analysis
-
-Death Note (CVE-2022-30190 Remote Code Execution)
-https://github.com/Malwareman007/Deathnote
-
-PixLoad (Image Payload Creating Tools)
-https://github.com/blackhatethicalhacking/pixload
-
-WebView2 Cookie Stealer (Windows Only - As Code Is Executed, Kelogger Is Injected Into Every Web Page Accessed)
-https://github.com/mrd0x/WebView2-Cookie-Stealer
-
-BITB (Browser In The Browser Templates)
-https://github.com/mrd0x/BITB
 
 Malware (Various Malware, Packer, Crypter, etc. Detectio And Analysis Tools)
 https://github.com/samvartaka/malware
@@ -1338,10 +1338,41 @@ https://github.com/Endermanch/MalwareDatabase
 Malware Source Code (Malware Collection)
 https://github.com/vxunderground/MalwareSourceCode
 
-Payload All The Things (Collection Of Payloads)
-https://github.com/0dayCTF/PayloadsAllTheThings
+======================================== Keylogger ===========================================
 
+WebView2 Cookie Stealer (Windows Only - As Code Is Executed, Kelogger Is Injected Into Every Web Page Accessed)
+https://github.com/mrd0x/WebView2-Cookie-Stealer
 
+======================================== Rubber Ducky ========================================
+
+Disable Windows Defender (Technician Edition) 
+https://github.com/JonnyBanana/Rubber-Ducky_Disable_Windows-Defender_Technician-Edition
+
+GrabWifiDuckyScript (Grab Saved Wifi Using Ducky)
+https://github.com/techchipnet/GrabWiFiDuckyScript
+
+Ducky2Python (Turn Dick Scripts Into Python Programs)
+https://github.com/CedArctic/ducky2python
+
+Ducky Scipt Payloads (Collection Of Payloads)
+https://github.com/UndedInside/DuckyScriptPayloads
+
+============================================ RATS ============================================
+
+The Ultimate Rat Collection (100's of RATS)
+
+https://github.com/Cryakl/Ultimate-RAT-Collection
+
+Lucifer (RAT Generator For Windows And Linux)
+https://github.com/Malwareman007/Lucifer
+
+Death Note (CVE-2022-30190 Remote Code Execution)
+https://github.com/Malwareman007/Deathnote
+
+======================================= Ransomware ==========================================
+
+Ransomware (Based Of AES256 Algorithm. Will Send Decryption Key Remotely To Get Key Run Server)
+https://github.com/Malwareman007/Ransomware
 
 ==================================== Phishing ================================================
 
@@ -1433,26 +1464,6 @@ https://github.com/0dayCTF/AutoRecon
 Rust Scan (Port Scanner In Rust language)
 https://github.com/0dayCTF/RustScan
 
-======================================= Rubby Ducky ==========================================
-
-Disable Windows Defender (Technician Edition) 
-https://github.com/JonnyBanana/Rubber-Ducky_Disable_Windows-Defender_Technician-Edition
-
-GrabWifiDuckyScript (Grab Saved Wifi Using Ducky)
-https://github.com/techchipnet/GrabWiFiDuckyScript
-
-Ducky2Python (Turn Dick Scripts Into Python Programs)
-https://github.com/CedArctic/ducky2python
-
-Ducky Scipt Payloads (Collection Of Payloads)
-https://github.com/UndedInside/DuckyScriptPayloads
-
-============================================ RATS ============================================
-
-The Ultimate Rat Collection (100's of RATS)
-
-https://github.com/Cryakl/Ultimate-RAT-Collection
-
 ============================================ WiFi ============================================
 
 Wifite2 (Ultimate Automated WiFi Cracker)
@@ -1463,11 +1474,6 @@ https://github.com/D3Ext/WEF
 
 Wifi Crack (Python Code For Automate WiFi Attacks)
 https://github.com/Gurpreet06/Wifi-Crack
-
-====================================== Classes / Training =====================================
-
-Cyber Security Course ( Tor / Dread Post - Complete Cybersecurity course from beginner to advanced)
-http://dreadytofatroptsdj6io7l3xptbet6onoyno2yv7jicoxknyazubrad.onion/post/6eeee124f6eb4464eaad
 
 ==============================================================================================
 ==============================================================================================
