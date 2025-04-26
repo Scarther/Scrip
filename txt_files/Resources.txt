@@ -36,7 +36,7 @@ How To Search:
 |------- Clear Net Section ----------|
 |------------------------------------|
 	| Breach Sites
-        | Passwords
+ | Passwords
 	| Ransomware Monitoring
 	| Hacker Forums
 	| Disposable Media
@@ -84,7 +84,10 @@ How To Search:
 	| Bots
 	| Flipper Zero
 	| Meshtastic
-	| Teaching / Learning
+|------------------------------------|
+|----- Learn / Teach / Practice -----|
+|------------------------------------|	
+	| Reverse Engineering
 |------------------------------------|
 |------------ Hacking ---------------|
 |------------------------------------|	
@@ -1211,17 +1214,30 @@ https://www.hackthebox.com/
 Try To Hack Me
 https://tryhackme.com/
 
-Linux For OSINT 21 Days
-https://github.com/cipher387/linux-for-OSINT-21-day
-
-Python For OSINT 21 Days
-https://github.com/cipher387/python-for-OSINT-21-days
 
 Rustling (Rust Exercises For Learning From Official Site)
 https://github.com/rust-lang/rustlings/tree/main
 
 The Rust Book (Programming Language Book)
 https://doc.rust-lang.org/book/
+
+==============================================================================================
+==============================================================================================
+==============================================================================================
+------------------------------------- Learn / Teach / Practice ------------------------------------------------
+==============================================================================================
+==============================================================================================
+==============================================================================================
+
+================================== Reverse Engineering ========================================
+
+crack my app (Practice reverse engineering through their challenges)
+https://crackmy.app/
+
+================================== OSINT ========================================
+
+Linux For OSINT 21 Days
+https://github.com/cipher387/linux-for-OSINT-21-day
 
 ==============================================================================================
 ==============================================================================================
