@@ -36,7 +36,7 @@ How To Search:
 |------- Clear Net Section ----------|
 |------------------------------------|
 	| Breach Sites
- | Passwords
+	| Passwords
 	| Ransomware Monitoring
 	| Hacker Forums
 	| Disposable Media
@@ -94,14 +94,16 @@ How To Search:
 	| Bug Bounty Hunting
 	| Directories
 	| Anti-Programs / Booby Traps / Intrustion Detection
-	| Payloads / Malware / RAT / Keylogger
+	| Payloads
+	| Malware
+	| Keylogger
 	| Phishing
 	| Stressers
 	| Domain
 	| Phone
 	| Xploit Platforms
 	| Rubber Ducky
- | RATS
+ 	| RATS
 	| WiFi
 	| Classes / Training
 |------------------------------------|
@@ -1338,6 +1340,8 @@ https://github.com/vxunderground/MalwareSourceCode
 
 Payload All The Things (Collection Of Payloads)
 https://github.com/0dayCTF/PayloadsAllTheThings
+
+
 
 ==================================== Phishing ================================================
 
