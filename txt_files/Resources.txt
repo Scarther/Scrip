@@ -39,6 +39,8 @@ How To Search:
 	| Passwords
 	| Ransomware Monitoring
 	| Hacker Forums
+	| Carding
+	| Cracking
 	| Disposable Media
 	| File Sharing
 	| Offline Browsing
@@ -126,6 +128,7 @@ How To Search:
 |------------------------------------|
 |----------- Odd Pages --------------|
 |------------------------------------|
+	| Scavenger Hunts?
 
 ==============================================================================================
 ==============================================================================================
@@ -379,16 +382,23 @@ https://github.com/Jpinsoft/DeepSound
 ==============================================================================================
 ==============================================================================================
 
-=================================== Breach Sites =============================================
+================================== Breach / Leaks ============================================
 
 Breach Forums
 https://breachforums.st
+Onion Site - http://breached26tezcofqla4adzyn22notfqwcac7gpbrleg4usehljwkgqd.onion
 
 Leakbase 
 https://leakbase.io/
 
 NoHide 
 https://nohide.space
+
+Dark Time
+https://srv2.dark-time.life
+
+Squad Leaks & Learn
+https://www.fssquad.com/
 
 =================================== Passwords =============================================
 
@@ -426,6 +436,9 @@ https://hackforums.net/
 HellOfHackers
 https://hellofhackers.com
 
+0x00
+https://0x00sec.org/
+
 TSRH (Forums and Tutorials For Hacking)
 https://tsrh.ws/
 
@@ -434,12 +447,6 @@ https://forum.gsmhosting.com/vbb/index.php
 
 QXDA (SCripts / Codes for Specific Phone Models)
 https://forum.xda-developers.com/
-
-Cracking (Data Leaks / Cracking Programs)
-https://cracking.org/
-
-Cracking X
-https://crackingx.com/
 
 Trust Community (Various Resources)
 https://community.trustwallet.com/
@@ -464,6 +471,65 @@ https://forum.wearedevs.net/
 
 Nulled
 https://www.nulled.to/
+
+Bolt
+https://alligator.cash
+
+Black Hat Pro Tools
+https://www.blackhatprotools.info
+
+Exploit (Russian Based)
+https://exploit.in
+
+BHF
+https://bhf.pro
+
+XSS (Russian Based)
+https://xss.is
+
+CyberNulled 
+https://cybernulled.com
+
+======================================= Carding ==============================================
+
+ASCarding
+https://ascarding.com
+
+CardVilla
+https://cardvilla.cc
+
+Cracking (Data Leaks / Cracking Programs)
+https://cracking.org/
+
+CrdCrew
+https://crdcrew.cc
+
+CrdPro
+https://crdpro.cc
+
+Dark Pro
+https://darkpro.net
+
+Dark Stash
+https://darkstash.com
+
+Enclave
+https://www.enclave.cc
+
+EZ Carder
+https://ezcarder.cc
+
+===================================== Cracking ===============================================
+
+Crackia
+https://crackia.com
+
+Cracking
+https://cracking.org
+
+Cracking X
+https://crackingx.com/
+
 
 =================================== Disposable Media =========================================
 
@@ -1281,6 +1347,17 @@ https://github.com/cipher387/linux-for-OSINT-21-day
 Cyber Security Course ( Tor / Dread Post - Complete Cybersecurity course from beginner to advanced)
 http://dreadytofatroptsdj6io7l3xptbet6onoyno2yv7jicoxknyazubrad.onion/post/6eeee124f6eb4464eaad
 
+====================================== Forums ================================================
+
+CyberForums (Russian Based)
+https://www.cyberforum.ru
+
+Go 4 Expert
+https://www.go4expert.com/
+
+Hacks (Greek based / Full Tutorial learning)
+https://greekhacking.gr
+
 ==============================================================================================
 ==============================================================================================
 ==============================================================================================
@@ -1298,6 +1375,9 @@ HackerOne (Bug bounty for money)
 hackerone.com
 
 ================================= Directories ================================================
+
+Exe Tools (Forum of compiled scripts and more)
+https://forum.exetools.com
 
 Index Of (Index of various different categories)
 https://web.archive.org/web/20220205035542/http://index-of.es/
