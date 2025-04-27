@@ -87,63 +87,65 @@ After entering the data, the bot reports that the “trickery” will be done wi
 	{ Ctr + f to skip to section }
 
 # Linux TTP
-### System Enumeration / Post Exploitation
-### Linux Miscellaneous Commands / Covering Tracks
-### Efficient Linux CLI Navigation
-### Fork Bomb
-### TCPDump
-### One Liner to Add Persistence on a Box via Cron
-### Systemd User Level Persistence
-### Udev Rules Persistence
-### Systemd Timer Persistence
-### Backdooring Sudo
-### ICMP Tunneling One Liner
-### One Liner to Add Persistence on a Box via Sudoers File
-### Find Server Strings from HTTP Responses
-### Enumerating File Capabilities with Getcap
-### Enumerating User Files for Interesting Information
-### Finding World-Writable Files
-### Search GitHub for Personal Access Tokens
-### Search for OpenAI API Keys
-### Search for Hardcoded Passwords
-### Search for Passwords in Memory and Core Dumps
-### Searching Man Pages
-### Username Enumeration with Getent
-### Utilize Crt.sh and EyeWitness to Enumerate Web Pages
-### Nmap TTPs
-### Nmap Scan Every Interface that is Assigned an IP
-### Nmap IPv6 Nodes
-### Nmap to Evaluate HTTPS Support
-### Encrypt Files with Vim
-### Testssl.sh
-### Apache Flink Directory Traversal
-### LD_PRELOAD Hijacking
-### Bash Keylogger
-### Strace Keylogger
-### Netcat UDP Scanner
-### Recon for Specific Device Before Enumerating
-### TTL Fingerprinting
-### Cisco IOS 11.2 - 12.2 Vulnerability
-### FTP Through Non-Interactive Shell
-### NetCat Listeners
-### Python Reverse Shell
-### Bash Reverse Shell
-### Turn Nmap into a Vulnerability Scanner
-### Nmap Privilege Escalation
-### Nmap Using Multiple Scripts on One Target
-### IDS/IPS Nmap Evasion
-### Scanning Large Networks and Avoiding Sensitive IP Ranges
-### Finding Open FTP Servers
-### Scalable Heartbleed Hunting with Shodan
-### Extract Passwords from HTTP POST Requests
-### BPF'ing DNS Records
-### Important Files
-### Backdooring Systemd Services
-### Old-Fashioned Log Cleaning
-### ASLR Enumeration
+System Enumeration / Post Exploitation
+Linux Miscellaneous Commands / Covering Tracks
+Efficient Linux CLI Navigation
+Fork Bomb
+TCPDump
+One Liner to Add Persistence on a Box via Cron
+Systemd User Level Persistence
+Udev Rules Persistence
+Systemd Timer Persistence
+Backdooring Sudo
+ICMP Tunneling One Liner
+One Liner to Add Persistence on a Box via Sudoers File
+Find Server Strings from HTTP Responses
+Enumerating File Capabilities with Getcap
+Enumerating User Files for Interesting Information
+Finding World-Writable Files
+Search GitHub for Personal Access Tokens
+Search for OpenAI API Keys
+Search for Hardcoded Passwords
+Search for Passwords in Memory and Core Dumps
+Searching Man Pages
+Username Enumeration with Getent
+Utilize Crt.sh and EyeWitness to Enumerate Web Pages
+Nmap TTPs
+Nmap Scan Every Interface that is Assigned an IP
+Nmap IPv6 Nodes
+Nmap to Evaluate HTTPS Support
+Encrypt Files with Vim
+Testssl.sh
+Apache Flink Directory Traversal
+LD_PRELOAD Hijacking
+Bash Keylogger
+Strace Keylogger
+Netcat UDP Scanner
+Recon for Specific Device Before Enumerating
+TTL Fingerprinting
+Cisco IOS 11.2 - 12.2 Vulnerability
+FTP Through Non-Interactive Shell
+NetCat Listeners
+Python Reverse Shell
+Bash Reverse Shell
+Turn Nmap into a Vulnerability Scanner
+Nmap Privilege Escalation
+Nmap Using Multiple Scripts on One Target
+IDS/IPS Nmap Evasion
+Scanning Large Networks and Avoiding Sensitive IP Ranges
+Finding Open FTP Servers
+Scalable Heartbleed Hunting with Shodan
+Extract Passwords from HTTP POST Requests
+BPF'ing DNS Records
+Important Files
+Backdooring Systemd Services
+Old-Fashioned Log Cleaning
+ASLR Enumeration
+
 ================================================
+
 # Reverse Shells
-### Encrypted Reverse Shells with OpenSSL
+Encrypted Reverse Shells with OpenSSL
 Bash
 PERL
 Python
@@ -152,69 +154,122 @@ Ruby
 Netcat
 Socat
 Java
+
 ================================================
+
 # Password Harvesting
-### Unusual Accounts
-### Enumerating with Finger
-### Enumerating with Traceroute
-### Changing MAC Addresses
+Unusual Accounts
+Enumerating with Finger
+Enumerating with Traceroute
+Changing MAC Addresses
+
 ================================================
-## Routers
-### Metasploit Callback Automation
-### Metasploit Resource Script Creation
-### Metasploit Session Management
+
+# Routers
+Metasploit Callback Automation
+Metasploit Resource Script Creation
+Metasploit Session Management
+
 ================================================
+
 # Metasploit Tips I Discovered Too Late
+
 ================================================
+
 # Confluence CVE-2022-26134
-### POP Syntax
+POP Syntax
+
 ================================================
-## SSH Dynamic Port Forwarding
+
+# SSH Dynamic Port Forwarding
+
 ================================================
-## Dominating Samba with pdbedit
+
+# Dominating Samba with pdbedit
+
 ================================================
-## Encrypted File Transfers
-### Ncat
-### OnionShare
-### Worm-Willaim
+
+# Encrypted File Transfers
+Ncat
+OnionShare
+Worm-Willaim
+
 ================================================
-## Tsharking for Domain Users
+
+# Tsharking for Domain Users
+
 ================================================
-## IP Information
+
+# IP Information
+
 ================================================
-## Cloning Websites for Social Engineering with Wget
+
+# Cloning Websites for Social Engineering with Wget
+
 ================================================
-## Spidering the Web with Wget
+
+# Spidering the Web with Wget
+
 ================================================
-## Hiding PID Listings From Non-Root Users
+
+# Hiding PID Listings From Non-Root Users
+
 ================================================
-## Exporting Objects with Tshark
+
+# Exporting Objects with Tshark
+
 ================================================
-## Rogue APs with Karmetasploit
+
+# Rogue APs with Karmetasploit
+
 ================================================
-## Passive Fingerprinting with P0f
+
+# Passive Fingerprinting with P0f
+
 ================================================
-## Advanced Mitm Attacks with Bettercap Filters
+
+# Advanced Mitm Attacks with Bettercap Filters
+
 ================================================
-## Fake Sudo Program to Harvest Credentials
+
+# Fake Sudo Program to Harvest Credentials
+
 ================================================
-## TruffleHog GitHub Organizations
+
+# TruffleHog GitHub Organizations
+
 ================================================
-## Bypass File System Protections (Read-Only and No-Exec) for Containers
+
+# Bypass File System Protections (Read-Only and No-Exec) for Containers
+
 ================================================
-## Dumping Printer NVRAM
+
+# Dumping Printer NVRAM
+
 ================================================
-## Slash Proc Magic
+
+# Slash Proc Magic
+
 ================================================
-## Linux Timestomping
+
+# Linux Timestomping
+
 ================================================
-## Linux Bash History Stomping
+
+# Linux Bash History Stomping
+
 ================================================
-## Taking Apart URL Shorteners with cURL
+
+# Taking Apart URL Shorteners with cURL
+
 ================================================
-## Email Spoofing PHP
+
+# Email Spoofing PHP
+
 ================================================
-## Linux SIEM Bypass
+
+# Linux SIEM Bypass
+
 ================================================
 
 # Linux TTPs
