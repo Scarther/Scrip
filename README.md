@@ -88,60 +88,60 @@ After entering the data, the bot reports that the “trickery” will be done wi
 
 # Linux TTP
 
-System Enumeration / Post Exploitation
-Linux Miscellaneous Commands / Covering Tracks
-Efficient Linux CLI Navigation
-Fork Bomb
-TCPDump
-One Liner to Add Persistence on a Box via Cron
-Systemd User Level Persistence
-Udev Rules Persistence
-Systemd Timer Persistence
-Backdooring Sudo
-ICMP Tunneling One Liner
-One Liner to Add Persistence on a Box via Sudoers File
-Find Server Strings from HTTP Responses
-Enumerating File Capabilities with Getcap
-Enumerating User Files for Interesting Information
-Finding World-Writable Files
-Search GitHub for Personal Access Tokens
-Search for OpenAI API Keys
-Search for Hardcoded Passwords
-Search for Passwords in Memory and Core Dumps
-Searching Man Pages
-Username Enumeration with Getent
-Utilize Crt.sh and EyeWitness to Enumerate Web Pages
-Nmap TTPs
-Nmap Scan Every Interface that is Assigned an IP
-Nmap IPv6 Nodes
-Nmap to Evaluate HTTPS Support
-Encrypt Files with Vim
-Testssl.sh
-Apache Flink Directory Traversal
-LD_PRELOAD Hijacking
-Bash Keylogger
-Strace Keylogger
-Netcat UDP Scanner
-Recon for Specific Device Before Enumerating
-TTL Fingerprinting
-Cisco IOS 11.2 - 12.2 Vulnerability
-FTP Through Non-Interactive Shell
-NetCat Listeners
-Python Reverse Shell
-Bash Reverse Shell
-Turn Nmap into a Vulnerability Scanner
-Nmap Privilege Escalation
-Nmap Using Multiple Scripts on One Target
-IDS/IPS Nmap Evasion
-Scanning Large Networks and Avoiding Sensitive IP Ranges
-Finding Open FTP Servers
-Scalable Heartbleed Hunting with Shodan
-Extract Passwords from HTTP POST Requests
-BPF'ing DNS Records
-Important Files
-Backdooring Systemd Services
-Old-Fashioned Log Cleaning
-ASLR Enumeration
+- System Enumeration / Post Exploitation
+- Linux Miscellaneous Commands / Covering Tracks
+- Efficient Linux CLI Navigation
+- Fork Bomb
+- TCPDump
+- One Liner to Add Persistence on a Box via Cron
+- Systemd User Level Persistence
+- Udev Rules Persistence
+- Systemd Timer Persistence
+- Backdooring Sudo
+- ICMP Tunneling One Liner
+- One Liner to Add Persistence on a Box via Sudoers File
+- Find Server Strings from HTTP Responses
+- Enumerating File Capabilities with Getcap
+- Enumerating User Files for Interesting Information
+- Finding World-Writable Files
+- Search GitHub for Personal Access Tokens
+- Search for OpenAI API Keys
+- Search for Hardcoded Passwords
+- Search for Passwords in Memory and Core Dumps
+- Searching Man Pages
+- Username Enumeration with Getent
+- Utilize Crt.sh and EyeWitness to Enumerate Web Pages
+- Nmap TTPs
+- Nmap Scan Every Interface that is Assigned an IP
+- Nmap IPv6 Nodes
+- Nmap to Evaluate HTTPS Support
+- Encrypt Files with Vim
+- Testssl.sh
+- Apache Flink Directory Traversal
+- LD_PRELOAD Hijacking
+- Bash Keylogger
+- Strace Keylogger
+- Netcat UDP Scanner
+- Recon for Specific Device Before Enumerating
+- TTL Fingerprinting
+- Cisco IOS 11.2 - 12.2 Vulnerability
+- FTP Through Non-Interactive Shell
+- NetCat Listeners
+- Python Reverse Shell
+- Bash Reverse Shell
+- Turn Nmap into a Vulnerability Scanner
+- Nmap Privilege Escalation
+- Nmap Using Multiple Scripts on One Target
+- IDS/IPS Nmap Evasion
+- Scanning Large Networks and Avoiding Sensitive IP Ranges
+- Finding Open FTP Servers
+- Scalable Heartbleed Hunting with Shodan
+- Extract Passwords from HTTP POST Requests
+- BPF'ing DNS Records
+- Important Files
+- Backdooring Systemd Services
+- Old-Fashioned Log Cleaning
+- ASLR Enumeration
 
 # Reverse Shells
 Encrypted Reverse Shells with OpenSSL
