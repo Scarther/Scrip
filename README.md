@@ -86,7 +86,7 @@ After entering the data, the bot reports that the “trickery” will be done wi
 	|=== Table Of Context ===|
 	{ Ctr + f to skip to section }
 
-# Linux TTP
+### Linux TTP
 
 - System Enumeration / Post Exploitation
 - Linux Miscellaneous Commands / Covering Tracks
@@ -143,131 +143,79 @@ After entering the data, the bot reports that the “trickery” will be done wi
 - Old-Fashioned Log Cleaning
 - ASLR Enumeration
 
-# Reverse Shells
-Encrypted Reverse Shells with OpenSSL
-Bash
-PERL
-Python
-PHP
-Ruby
-Netcat
-Socat
-Java
+### Reverse Shells
+- Encrypted Reverse Shells with OpenSSL
+- Bash
+- PERL
+- Python
+- PHP
+- Ruby
+- Netcat
+- Socat
+- Java
 
-================================================
+### Password Harvesting
+- Unusual Accounts
+- Enumerating with Finger
+- Enumerating with Traceroute
+- Changing MAC Addresses
 
-# Password Harvesting
-Unusual Accounts
-Enumerating with Finger
-Enumerating with Traceroute
-Changing MAC Addresses
+### Routers
+- Metasploit Callback Automation
+- Metasploit Resource Script Creation
+- Metasploit Session Management
 
-================================================
+### Metasploit Tips I Discovered Too Late
 
-# Routers
-Metasploit Callback Automation
-Metasploit Resource Script Creation
-Metasploit Session Management
+### Confluence CVE-2022-26134
+- POP Syntax
 
-================================================
+### SSH Dynamic Port Forwarding
 
-# Metasploit Tips I Discovered Too Late
+### Dominating Samba with pdbedit
 
-================================================
+### Encrypted File Transfers
+- Ncat
+- OnionShare
+- Worm-Willaim
 
-# Confluence CVE-2022-26134
-POP Syntax
+### Tsharking for Domain Users
 
-================================================
+### IP Information
 
-# SSH Dynamic Port Forwarding
+### Cloning Websites for Social Engineering with Wget
 
-================================================
+### Spidering the Web with Wget
 
-# Dominating Samba with pdbedit
+### Hiding PID Listings From Non-Root Users
 
-================================================
+### Exporting Objects with Tshark
 
-# Encrypted File Transfers
-Ncat
-OnionShare
-Worm-Willaim
+### Rogue APs with Karmetasploit
 
-================================================
+### Passive Fingerprinting with P0f
 
-# Tsharking for Domain Users
+### Advanced Mitm Attacks with Bettercap Filters
 
-================================================
+### Fake Sudo Program to Harvest Credentials
 
-# IP Information
+### TruffleHog GitHub Organizations
 
-================================================
+### Bypass File System Protections (Read-Only and No-Exec) for Containers
 
-# Cloning Websites for Social Engineering with Wget
+### Dumping Printer NVRAM
 
-================================================
+### Slash Proc Magic
 
-# Spidering the Web with Wget
+### Linux Timestomping
 
-================================================
+### Linux Bash History Stomping
 
-# Hiding PID Listings From Non-Root Users
+### Taking Apart URL Shorteners with cURL
 
-================================================
+### Email Spoofing PHP
 
-# Exporting Objects with Tshark
-
-================================================
-
-# Rogue APs with Karmetasploit
-
-================================================
-
-# Passive Fingerprinting with P0f
-
-================================================
-
-# Advanced Mitm Attacks with Bettercap Filters
-
-================================================
-
-# Fake Sudo Program to Harvest Credentials
-
-================================================
-
-# TruffleHog GitHub Organizations
-
-================================================
-
-# Bypass File System Protections (Read-Only and No-Exec) for Containers
-
-================================================
-
-# Dumping Printer NVRAM
-
-================================================
-
-# Slash Proc Magic
-
-================================================
-
-# Linux Timestomping
-
-================================================
-
-# Linux Bash History Stomping
-
-================================================
-
-# Taking Apart URL Shorteners with cURL
-
-================================================
-
-# Email Spoofing PHP
-
-================================================
-
-# Linux SIEM Bypass
+### Linux SIEM Bypass
 
 ================================================
 
