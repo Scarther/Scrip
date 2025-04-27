@@ -87,6 +87,7 @@ After entering the data, the bot reports that the “trickery” will be done wi
 	{ Ctr + f to skip to section }
 
 # Linux TTP
+
 System Enumeration / Post Exploitation
 Linux Miscellaneous Commands / Covering Tracks
 Efficient Linux CLI Navigation
@@ -141,8 +142,6 @@ Important Files
 Backdooring Systemd Services
 Old-Fashioned Log Cleaning
 ASLR Enumeration
-
-================================================
 
 # Reverse Shells
 Encrypted Reverse Shells with OpenSSL
