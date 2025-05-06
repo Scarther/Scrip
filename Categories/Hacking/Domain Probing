@@ -1,0 +1,28 @@
+======================================== Domain ==============================================
+
+TechViper (URL Security Scanner / Find Hidden Content In Website)
+https://github.com/Malwareman007/TechViper
+
+Host Spider (AKA FindMyAss / Domain Scanning and Info Gathering)
+https://github.com/h3x0crypt/HostSpider
+
+Kupa3 (Tracking The Trackers / Draw Connections Between Scripts and Domains On Websites)
+https://github.com/woj-ciech/kupa3
+
+Abuse Insights (Extract Usernames Attempted by Compromised Host / Obtained From Abuse IP DB, Reports' Comments)
+https://github.com/west-wind/abuse-insights
+
+Chrome Extractor (Extracts All Saved Passwords From Google Chrome Database On Windows Only)
+https://github.com/D4Vinci/Chrome-Extractor
+
+Firefox Decrypt (Extract Passowrds From Mozilla)
+https://github.com/unode/firefox_decrypt
+
+OSINT Spy (Domain, IP, Organization Scanner For Attack Surface Data)
+https://github.com/SharadKumar97/OSINT-SPY
+
+Scanner And Patcher (Scans Website With Malicious Inputs Automated And Generates Solutions To Exposure)
+https://github.com/Malwareman007/Scanner-and-Patcher
+
+dnsTwist (Automated DNS Fuzzing / Can Detect Typosquatters, Phishing, Fraud, Brand Impersonation)
+https://github.com/elceef/dnstwist
