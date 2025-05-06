@@ -1,0 +1,22 @@
+======================================== Bug Hunting / Threat Hunting =========================
+
+Judge Jury and Executable (Forensic Analysis Scanner and Threat Hunting Tool)
+https://github.com/AdamWhiteHat/Judge-Jury-and-Executable
+
+Mihari (Query Aggregator For OSINT Based Threat Hunting)
+https://github.com/ninoseki/mihari
+
+Tracee (Tracee is a runtime security and observability tool that helps you understand how your system and applications behave)
+https://github.com/aquasecurity/tracee
+
+Hayabusa (Sigma Based Threat Hunting / Rust Script)
+https://github.com/Yamato-Security/hayabusa
+
+Kamerka GUI (Ultimate Internet Of Things / Industrial Control Systems Recon Tool)
+https://github.com/woj-ciech/Kamerka-GUI
+
+Sabonis (Incident Response Pivoting Tool)
+https://github.com/thedfirofficer/saboni
+
+SpyHunt (Recon Bug Bounty Hunter)
+https://github.com/AnonCatalyst/spyhunt
