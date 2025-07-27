@@ -82,11 +82,15 @@ LeakTest Link: https://www.dnsleaktest.com/
 
 ## For anyone not using a VPN with DNS Leak Protection, try using one of these DNS servers:
 
-OpenDNS: 208.67.222.222 and 208.67.220.220
-ComodoDNS: 156.154.70.22 and 156.154.71.22
-UltraDNS: 156.154.70.1 and 156.154.71.1
-NortonDNS: 198.153.192.1 and 198.153.194.1
-NordDNS: 103.86.96.100 and 103.86.99.100
+ - OpenDNS: 208.67.222.222 and 208.67.220.220
+
+ - ComodoDNS: 156.154.70.22 and 156.154.71.22
+
+ - UltraDNS: 156.154.70.1 and 156.154.71.1
+
+ - NortonDNS: 198.153.192.1 and 198.153.194.1
+
+ - NordDNS: 103.86.96.100 and 103.86.99.100
 
 ## SOCKS4/SOCKS5 Servers
 
