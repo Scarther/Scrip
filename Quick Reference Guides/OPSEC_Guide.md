@@ -16,29 +16,36 @@ I take no responsibility if this information or these methods do not prevent you
 ----------------------------------------------------------------------
 
 # Secure Operating Systems
+
 Aside from the normal, everyday Windows, Macintosh, or Linux distros, these are operating systems that are renowned for the security pre-built within them. Many people are weary of switching from windows and I understand that I was a skid once but it's like dating a black girl once you try it theres no going back. The only real thing that I couldn't do on linux is game certain games, but espically in Qubes OS (More below) its super easy to set up a windows virtual machine inside your linux machine, dual booting is an option as well. But the fact is windows is hard to harden and espically if you're one to download random shit off forums or telegram (you're here) youre device is at risk and these linux operating systems are built to be secure. Windows mac are built to collect as much data from you as possible.
 
 ## Tails OS
+
 Tails, also known as The Amnesic Incognito Live System, is an open-source OS designed to predominantly be ran via live disc like a CD/DVD, USB, or SD card. The main operation of Tails is aimed at keeping your privacy and anonymity safe while leaving as little trace of use as possible. Since it is an amnesiac OS, nothing is left behind every time you reboot such as save files, new software, and realistically leaves a clean slate when you need to power down. Tails default networking application is TOR (TheOnionRouter) which allows the user to stay encrypted through whatever network they are currently connected to. Many of Tails pre-installed software come pre-configured with security in mind such as the Pidgin IM client which is setup up with OTR for Off-the-Record Messaging or the TOR Browser with all the necessary plugins already added into it. There are many more features to this amazing OS found on their website. If you want to stay on windows this is a good choice for a secure virtual machine or to use off a live boot usb. But really wouldn't work as a daily drver.
 Tails Link: https://tails.boum.org/
 
 ## Whonix OS
+
 Whonix is another operating system which is aimed on your privacy, security, and anonymity. It is based on three things: The TOR network, Debian Linux, and security by isolation. The creator's of Whonix stand by the fact that DNS leaks are not possible and malware with root privileges can not find out the user's real IP according to their website. There are two different parts to Whonix itself: Whonix-Gateway & Whonix-Workstation which is on a completely isolated network with TOR as its only connection possibilities. The Whonix-Gateway is exactly as it sounds, the gateway to the internet and all TOR connections. The Whonix-Workstation is the actual desktop environment you as a user will interact with during daily usage. The two parts of Whonix sync with each other to make sure the connection is secure as possible while also making sure the two are coinciding correctly. This OS is mainly used within Virtual Machines but can be applied in many different ways. I use this in a virtual machine daily.
 Whonix Link: https://www.whonix.org/
 
 ## Qubes OS (Used daily by Edward Snowden and myself)
+
 Qubes, is a third operating system which is mostly aimed on system security. Qubes OS is best described as a Xen distribution running multiple virtual Linux domains. Xen is a extremely stable and mature "bare-metal" type 1 hypervisor. This type of virtualization is analogous to what you may be picturing when using a product like VirtualBox with one important difference. A type 1 hypervisor has no operating system running "below" it which can be compromised. Xen is installed on the "bare metal" and this architecture therefore allows Qubes to create separate multiple virtual machines ("domains", in Xen parlance) in which you run your applications. This ensures that risky applications can not affect trusted applications, or even write to the underlying file system. This degree of separation doesn’t provide much anonymity in itself, but it does provide a significant degree of protection from malware spread. If you for example end up being infected with malware from a bad website, or by falling prey to an email phishing scam, it would be very hard for that malware to spread outside of the domain it is in, meaning only that virtual machine or ""domain" would be affected and not the entire operating system. I use this daily and it has whonix built in which I love. It runs off debian 11 and fedora 36 vms by default, but you can use anything you want. Its a little rough with nvidia drivers, but does require an above average machine I have 32gb of ram and an i7-7700 and it runs like a breeze.
 
 ## ParrotOS (Good for laptops)
+
 Parrot Security (Parrot OS, Parrot) is a Free and Open source GNU/Linux distribution based on Debian Stable designed for security experts, developers and privacy aware people. It includes a full portable arsenal for IT security and digital forensics operations. It also includes everything you need to develop your own programs or protect your privacy while surfing the net. From information gathering to the final report, the Parrot system gets you covered with the most flexible environment.
 Parrot Link: https://parrotlinux.org/
 Telegram: https://t.me/parrotsecgroup
 
 ## Virtual Machine Software
+
 VMware Link: https://my.vmware.co...mware/downloads
 VirtualBox Link: https://www.virtualb.../wiki/Downloads
 
 ## USB Live Disc Software
+
 Etcher: https://www.balena.io/etcher/
 Sardu 330: https://www.sarducd.it/downloads
 Rufus: https://rufus.ie/
@@ -74,6 +81,7 @@ IPLeak Link: https://ipleak.net/
 LeakTest Link: https://www.dnsleaktest.com/
 
 ## For anyone not using a VPN with DNS Leak Protection, try using one of these DNS servers:
+
 OpenDNS: 208.67.222.222 and 208.67.220.220
 ComodoDNS: 156.154.70.22 and 156.154.71.22
 UltraDNS: 156.154.70.1 and 156.154.71.1
@@ -81,6 +89,7 @@ NortonDNS: 198.153.192.1 and 198.153.194.1
 NordDNS: 103.86.96.100 and 103.86.99.100
 
 ## SOCKS4/SOCKS5 Servers
+
 SOCKS, which stands for Socket Secure, is an Internet Protocol that routes network packets between a client and server through a proxy server and allows you for sessions to traverse securely across firewall security. SOCKS4 & 5 are different types that do slightly different things. The main difference between the two is SOCKS4 only supports TCP application while SOCKS5 supports both TCP and UDP. With added supports, authentication methods, and domain name resolution, the main outgoing SOCKS proxy are SOCKS4 proxy. You won't be able to use UDP applications but it will be to your benefit overall. So if you are in need of a proxy instead of a VPN for a specific application, try to keep this in mind.
 
 ----------------------------------------------------------------------
@@ -88,12 +97,15 @@ SOCKS, which stands for Socket Secure, is an Internet Protocol that routes netwo
 # Tor
 
 ## What is Tor?
+
 Tor, which stands for 'The Onion Router', is a non-profit group of volunteer-operated servers that allows people to improve their privacy, privacy tools, and security on the Internet. The Tor network works by moving your traffic across various nodes through a series of virtual tunnels rather than making a direct connection, allowing anyone to share vital information without compromising one's identity. Anyone trying to trace you would see the traffic going through various Tor nodes on the network rather than directly from your computer. All that is needed to access the Tor network and .onion links (hidden service sites only accessible on Tor network) is the Tor Browser. The Tor Browser comes ready to use and routes everything you do through the Tor network without any configuration needed although I'd recommend a few steps to take which you will see later in this thread.
 
 ## Tor Benefits
+
 Tor has many benefits for all kinds of privacy issues people face in the world we live in. Many journalists, hackers, or people living in a dictatorship with a lot of censorship can use the Tor network to anonymize your traffic and access sites you may not have been able to before all while being absolutely FREE. Tor is also very useful for anyone looking to keep their online activity hidden from other people or your ISP. Tor can also be used to host sites which contain hidden services only accessible by other Tor users and sometimes needing an invitation to access for added security.
 
 ## Browser Configuration
+
 Although the Tor Browser comes pre-configured and can be used right away, there are a few more steps that people should take to secure it even more. Here is a list of addons which should be used within the Tor browser:
 
 # HTTPS Everywhere - HTTPS Everywhere is an open-source extension created in collaboration by the Tor Project and the Electronic Frontier Foundation. It allows you to automatically make any website which supports HTTPS, use the secure HTTPS connection instead of the normal HTTP.
