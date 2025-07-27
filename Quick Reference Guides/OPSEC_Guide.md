@@ -22,12 +22,16 @@ Aside from the normal, everyday Windows, Macintosh, or Linux distros, these are 
 ## Tails OS
 
 Tails, also known as The Amnesic Incognito Live System, is an open-source OS designed to predominantly be ran via live disc like a CD/DVD, USB, or SD card. The main operation of Tails is aimed at keeping your privacy and anonymity safe while leaving as little trace of use as possible. Since it is an amnesiac OS, nothing is left behind every time you reboot such as save files, new software, and realistically leaves a clean slate when you need to power down. Tails default networking application is TOR (TheOnionRouter) which allows the user to stay encrypted through whatever network they are currently connected to. Many of Tails pre-installed software come pre-configured with security in mind such as the Pidgin IM client which is setup up with OTR for Off-the-Record Messaging or the TOR Browser with all the necessary plugins already added into it. There are many more features to this amazing OS found on their website. If you want to stay on windows this is a good choice for a secure virtual machine or to use off a live boot usb. But really wouldn't work as a daily drver.
-Tails Link: https://tails.boum.org/
+Tails Link: 
+
+    https://tails.boum.org/
 
 ## Whonix OS
 
 Whonix is another operating system which is aimed on your privacy, security, and anonymity. It is based on three things: The TOR network, Debian Linux, and security by isolation. The creator's of Whonix stand by the fact that DNS leaks are not possible and malware with root privileges can not find out the user's real IP according to their website. There are two different parts to Whonix itself: Whonix-Gateway & Whonix-Workstation which is on a completely isolated network with TOR as its only connection possibilities. The Whonix-Gateway is exactly as it sounds, the gateway to the internet and all TOR connections. The Whonix-Workstation is the actual desktop environment you as a user will interact with during daily usage. The two parts of Whonix sync with each other to make sure the connection is secure as possible while also making sure the two are coinciding correctly. This OS is mainly used within Virtual Machines but can be applied in many different ways. I use this in a virtual machine daily.
-Whonix Link: https://www.whonix.org/
+Whonix Link: 
+
+    https://www.whonix.org/
 
 ## Qubes OS (Used daily by Edward Snowden and myself)
 
