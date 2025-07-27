@@ -36,24 +36,25 @@ Qubes, is a third operating system which is mostly aimed on system security. Qub
 ## ParrotOS (Good for laptops)
 
 Parrot Security (Parrot OS, Parrot) is a Free and Open source GNU/Linux distribution based on Debian Stable designed for security experts, developers and privacy aware people. It includes a full portable arsenal for IT security and digital forensics operations. It also includes everything you need to develop your own programs or protect your privacy while surfing the net. From information gathering to the final report, the Parrot system gets you covered with the most flexible environment.
-Parrot Link: https://parrotlinux.org/
-Telegram: https://t.me/parrotsecgroup
+
+    Parrot Link: https://parrotlinux.org/
+    Telegram: https://t.me/parrotsecgroup
 
 ## Virtual Machine Software
 
-VMware Link: https://my.vmware.co...mware/downloads
-VirtualBox Link: https://www.virtualb.../wiki/Downloads
+    VMware Link: https://my.vmware.co...mware/downloads
+    VirtualBox Link: https://www.virtualb.../wiki/Downloads
 
 ## USB Live Disc Software
 
-Etcher: https://www.balena.io/etcher/
-Sardu 330: https://www.sarducd.it/downloads
-Rufus: https://rufus.ie/
+    Etcher: https://www.balena.io/etcher/
+    Sardu 330: https://www.sarducd.it/downloads
+    Rufus: https://rufus.ie/
 
 # Every company you entrust with a piece of data that comes back to you, you are trusting that company with your life. Every day the alphabet boys (FBI, CIA, SÄPO, ??? ??) issue supbpeonas to these companies to take that data that people trusted them with and use it for their own advantage (put people in prison). You can read about it if you like here
 
-Telegram: https://newsrnd.com/...le...Qrwd5.html
-Proton mail: https://www.wired.co...-a...ists-data/
+    Telegram: https://newsrnd.com/...le...Qrwd5.html
+    Proton mail: https://www.wired.co...-a...ists-data/
 
 ## It's usually best to try to avoid propietary software (non open source) as these usually are spying on you in some way or another. Some of them can be "hardened" to ensure that they are secure and will keep you safe.
 
@@ -62,7 +63,9 @@ Proton mail: https://www.wired.co...-a...ists-data/
 ## iproyal
 
 Residential proxy network consists of real IP addresses from real users, making sure you never get detected or blocked. There’s no sharing of any kind, so your proxy is available only to you. Pick between sticky (up to 24 hours) or rotating proxies and enjoy 99.9% uptime and a continuously growing global IP pool. Residential proxies are ideal for reliable data scraping because they’re indistinguishable from organic visitors. We created our own network of residential proxies with genuine users all over the world. Every participant can enter or leave the pool as they wish, and they’re all compensated for their resources.
-iproyal link: https://iproyal.com/
+iproyal link: 
+
+    https://iproyal.com/
 
 ## ProtonVPN
 
@@ -82,15 +85,11 @@ LeakTest Link: https://www.dnsleaktest.com/
 
 ## For anyone not using a VPN with DNS Leak Protection, try using one of these DNS servers:
 
- - OpenDNS: 208.67.222.222 and 208.67.220.220
-
- - ComodoDNS: 156.154.70.22 and 156.154.71.22
-
- - UltraDNS: 156.154.70.1 and 156.154.71.1
-
- - NortonDNS: 198.153.192.1 and 198.153.194.1
-
- - NordDNS: 103.86.96.100 and 103.86.99.100
+    OpenDNS: 208.67.222.222 and 208.67.220.220
+    ComodoDNS: 156.154.70.22 and 156.154.71.22
+    UltraDNS: 156.154.70.1 and 156.154.71.1
+    NortonDNS: 198.153.192.1 and 198.153.194.1
+    NordDNS: 103.86.96.100 and 103.86.99.100
 
 ## SOCKS4/SOCKS5 Servers
 
@@ -112,20 +111,28 @@ Tor has many benefits for all kinds of privacy issues people face in the world w
 
 Although the Tor Browser comes pre-configured and can be used right away, there are a few more steps that people should take to secure it even more. Here is a list of addons which should be used within the Tor browser:
 
-# HTTPS Everywhere - HTTPS Everywhere is an open-source extension created in collaboration by the Tor Project and the Electronic Frontier Foundation. It allows you to automatically make any website which supports HTTPS, use the secure HTTPS connection instead of the normal HTTP.
+# HTTPS Everywhere 
 
-# NoScript - NoScript is a web browser extension which provides extra protection for Firefox, Seamonkey and other mozilla-based web browsers. This free and open source add-on allows JavaScript, Java, Flash and other plugins to be executed ONLY by trusted web sites of YOUR choice in order to protect your privacy and security. NoScript also provides the most powerful anti-XSS and anti-Clickjacking protection ever available in a web browser. (This will break most websites)
+HTTPS Everywhere is an open-source extension created in collaboration by the Tor Project and the Electronic Frontier Foundation. It allows you to automatically make any website which supports HTTPS, use the secure HTTPS connection instead of the normal HTTP.
 
-# Search Engine - Although many people use Google as their main search engine for normal web browsing, Google shows a lack of care for users privacy in general. Also, Google is notorious for tracking clicks on result pages that you search with alongside sometimes having you log into GMail to access certain things. To prevent that here are a few search engines you can set to default instead.
+# NoScript 
+
+NoScript is a web browser extension which provides extra protection for Firefox, Seamonkey and other mozilla-based web browsers. This free and open source add-on allows JavaScript, Java, Flash and other plugins to be executed ONLY by trusted web sites of YOUR choice in order to protect your privacy and security. NoScript also provides the most powerful anti-XSS and anti-Clickjacking protection ever available in a web browser. (This will break most websites)
+
+# Search Engine 
+
+Although many people use Google as their main search engine for normal web browsing, Google shows a lack of care for users privacy in general. Also, Google is notorious for tracking clicks on result pages that you search with alongside sometimes having you log into GMail to access certain things. To prevent that here are a few search engines you can set to default instead.
 
     DuckDuckGo.com
     swisscows.com
     StartPage.com
 
 # Exit Node Security Warning!!
+
 One thing I need to talk about is how other entities may be able to see your traffic over the Tor network. On Tor, instead of taking a direct route from your computer to the destination, the Tor network routes a random path through many Tor relays to encrypt and hide your data. Once your at the last relay of the path, this is called the exit node. The exit node is the one that actually makes the connection to the destination server. Tor, by design, cannot encrypt data between the exit node and destination server so whoever may be in control of the exit node has the ability to capture the traffic passing through it. The best way to combat this is to use End-to-End encryption which I will explain more about in the Encryption section later on in this thread.
 
 ## Invisible Internet Project (I2P)
+
 I wasn't sure about adding this in but I think it needs to be explained and talked about a little bit. I2P is a decentralized anonymizing network built on similar principles to Tor except was designed to be a self-contained darknet. Users still connect using P2P encrypted tunnels but there are still many differences.
 
     Distributed peer-to-peer model.
@@ -140,58 +147,76 @@ I2P Link: https://geti2p.net/en/
 ----------------------------------------------------------------------
 
 # Encryption
+
 Encryption is a vital part of computer security when it comes to important documents, personal data, or internet traffic. It allows you to securely protect data that you don't want anyone else to see or have access to. When it comes to privacy and anonymity, encryption plays one of the most important roles possible for securing data being transferred over the internet. Here are just a few types of encryption which everyone should be using.
 
-PGP Encryption
+## PGP Encryption
+
 PGP, Pretty Good Privacy, is a program used for the encryption/decryption of email over the Internet but also serves as a way to authenticate messages with digital signatures and encrypted stored files. PGP uses a variant on the public key system. It starts with each user having an encryption key that is publicly known and a private key only that user has. Each person sends a message, encrypting it with their public key. Then when the message is received, the message is decrypted using the user's private key. To make this the encryption process much faster, PGP uses an algorithm which encrypts the message, then uses the public key to encrypt the shorter key. There are two versions of PGP available: RSA & Diffie-Hellman. Both of these have different algorithms for encryption but as just as secure as the other. Sending digital signatures is a similar process but creates a hash using the user's name and other signature information. The hash is encrypted with the user's private key. They recipient uses the sender's public key to decrypt the hash code. If it matches, the recipient knows that this is an authentic file.
 
-Here are some links to PGP software and guides.
-Guide on PGP: http://www.bitcoinno...s-guide-to-pgp/
-GNU Privacy Guard (alternative): https://www.gnupg.org/
-GPG for Windows: http://www.gpg4win.org/
-GPG for USB: http://www.gpg4usb.org/
+ - Here are some links to PGP software and guides.
+ - Guide on PGP: http://www.bitcoinno...s-guide-to-pgp/
+ - GNU Privacy Guard (alternative): https://www.gnupg.org/
+ - GPG for Windows: http://www.gpg4win.org/
+ - GPG for USB: http://www.gpg4usb.org/
 
-Another good site but is currently invite only is Keybase.io which allows you to confirm someone else's PGP key, fingerprint, BTC address, social media accounts, etc.
+### Another good site but is currently invite only is Keybase.io which allows you to confirm someone else's PGP key, fingerprint, BTC address, social media accounts, etc.
 Keybase: https://keybase.io/
 
-Whole Disk Encryption
+## Whole Disk Encryption
+
 Disk encryption is software which protects your information by turning it into unreadable code which can't be cracked easily by unwanted users. Disk encryption uses specific software or hardware to encrypt all data that goes on a disk or a disk volume. Whole disk encryption is when everything on the disk is encrypted as well as all the programs that can encrypt bootable OS partitions. One thing to note is computers using Master Boot Record (MBR) will NOT have that part of the disk encrypted. Whole disk encryption has many benefits to it. Number one is ALL parts of the disk are encrypted, even the swap space and temporary files which may contain sensitive information. By using full disk encryption, you don't have the chance of accidentally not encrypting a file since everything is indeed encrypted regardless. Lastly, by destroying the cryptography keys, it will render the data completely useless. It's not needed on everybody's computers since everyone has different need, but definitely recommended. Most people have used software called TrueCrypt in the past but that software is no longer being developed. This is always changing but heres a pretty up to date list of options:
 https://www.lifewire...k-...ms-2619180
 
 *Warning* Please make sure to backup your entire system before attempting to do whole disk encryption in the case of a failure during the process.
 
-File Encryption
+## File Encryption
+
 File encryption follows the same procedure as whole disk encryption but instead of the whole disk, you are specifically encrypted an individual file or a whole folder. File encryption is a much simpler process that whole disk encryption and can be done with the same software, VeraCrypt. One thing to note is that with VeraCrypt, you can make a much larger encrypted volume (basically extra storage) to put files in and encrypt it as a whole. For instance, I have an external hard-drive which I made a 200GB encrypted volume for so once I type the password for that volume, I can drop anything in and close it. It will now be encrypted until I unlock that volume at another point in time.
 https://privacy.net/...on...are-tools/
 
-Encrypted Backups
+## Encrypted Backups
+
 I won't be saying much about backups but I suggest everyone to keep backs and then encrypt them with this software for added security and to have that safety of being able to restore your system if something were to go wrong.
 File/Download Security
+
 File and download security is not something the average user thinks about which is why I wanted to write this section to explain a little bit about it. Hopefully after reading this section you'll understand more about why file and download security should be a higher priority than most since it's something the average user will use most.
 https://alternativet...ku...ed-backup/
 
-Metadata
+----------------------------------------------------------------------
+
+# Metadata
 Metadata is data that describes other data. Now that may sound confusing but think about it from a files perspective. Author, date created, date modified, and file size are simple examples of metadata that almost all documents carry. On top of that, images, videos, Excel sheets, and web pages all carry their own personalized metadata. Metadata is something which could easily give away personal information that you wouldn't even realize is there. The biggest one that people don't realize is simple pictures taken on your cellphone camera.Depending on if you have location on or not, metadata can even give GPS coordinates of where the picture was taken. All files contains this sensitive information within them and most people don't even realize it exists. Thankfully, there are tools out there which can be used to find and delete that information from files. This software is called MAT: Metadata Anonymization Toolkit and will help aid in the removal of metadata from the files that you want to clean.
 MAT Link: https://mat.boum.org/
 
-Deleting Files/Information Correctly
+----------------------------------------------------------------------
+
+# Deleting Files/Information Correctly
+
 I feel like there are many users currently out there who think that by simply deleting a file, it's magically gone from your computer. This is NOT true! When you delete something from your computer, the only thing you are doing is deleting where it was located on the drive. It's still within the drive but the location data is no longer there. This is the reason why file recovery software exists, to grab those files you "deleted" and get them back. The correct way to delete something (file shredding) is by overwriting the data. One thing you must understand is that by overwriting previous data/files, this doesn't remove a files location but instead makes it unrecoverable. For the average user, overwriting a file once should be enough although the NSA recommends 3 times, while the DoD recommends 7 times. It all comes down to preference but some people believe that when you only go over a file once, you miss some of the data so by going over it many times, you get rid of the data that is left over. Here are some of the tools many people use for correct file cleaning and deletion.
 
-Blancco Data Erasure: https://www.blancco.com
-KillDisk Data Erasure: https://www.killdisk.com/eraser.html
-Glary Utilities: https://www.glarysoft.com/
+    Blancco Data Erasure: https://www.blancco.com
+    KillDisk Data Erasure: https://www.killdisk.com/eraser.html
+    Glary Utilities: https://www.glarysoft.com/
 
 For people who want an extra step to stay safe, every time you empty your recycling bin, you should shred all files within it.
 
-MD5/SHA-1 Checksums
+----------------------------------------------------------------------
+
+# MD5/SHA-1 Checksums
+
 Before learning what a checksum is, you first need to know what MD5 & SHA-1 are first. MD5 & SHA-1 are common cryptographic hash functions with MD5 being a 128-bit (16-byte) hash value while SHA-1 is a 160-bit (20-byte) hash value. With these two hash type, we can use them to verify data integrity of a file/download. After downloading a file or software is when you are able to check the checksum of the file. The checksum is where the contents of the file get thrown into a mathematical algorithm and output a specific MD5/SHA-1 string. This method of verifying downloads/files is not as good as PGP + signature file but if you cannot use that method, this is a good second. Almost all Linux distros have the commands sha1sum and md5sum built into it. All you do is run these commands against the file in question and it will output the checksum string for you. Once you do this, all you do is compare that to what the download should of been and you should be able to verify if the download was authentic or not.
 https://support.ques...oo...y-checksum
 
 One thing to note is that MD5 has known collisions. With enough force, this allows MD5 to be broken into.
 Social Related
+
 Within this section I will be talking about everything related to interacting with people socially via messaging of some sorts. This section is my opinion on what should be used and may differ from person to person. This will give you a general idea of what you want to be doing while using social related messaging services.
 
-XMPP
+----------------------------------------------------------------------
+
+# XMPP
+
 XMPP stands for Extensible Messaging and Presence Protocol and is used for communications for message-oriented middleware based on the Extensible Markup Language (XML). Many more people are starting to use this as a main way of communication using programs such as Pidgin to accomplish this. Pidgin is an open-source multi-platform IM client which most people will recommend for XMPP. The main reason is because Pidgin has a simple plugin which you can download that allows you to incorporate Off-the-Record (OTR) messaging into it. OTR allows you to have private conversations over XMPP by using encryption, authentication, and the fact that messages you send do not have digital signatures that a third party can check for. This is a must use plugin/step you need when using any type of XMPP client.
 Pidgin Link: https://pidgin.im/
 Pidgin Secure Messaging Guide: https://www.howtogee...th...ng-client/
@@ -204,7 +229,9 @@ Good XMPP Servers
     captio.ch
     thedark.army
 
-IRC
+----------------------------------------------------------------------
+
+# IRC
 IRC, which stands for Internet Relay Chat, is an application layer protocol that facilitates the transfer of messages in the form of text. IRC has been around for a very long time but is still widely used by people all over. Most IRCs consist of a community or group of people with a specific goal/topic in mind. To connect to a specific IRC, you need two main things: the IP to the server and the channel (which has a # infront of it like #channel). There are plenty of public IRCs but most will be private depending on the topic of conversation. When it comes to security and IRC, there are more steps that need to be taken that with XMPP, so I will link a good guide to follow when setting up IRC and explain some good IRC clients to use.
 
 IRC Clients
@@ -216,27 +243,34 @@ IRC Clients
 
 How good is your opsec? https://www.saymine.com/ checks your email and sees just how many companies have your data, then offers you to be able to request deletion of your data. Very helpful tool.
 
-Email Providers
+----------------------------------------------------------------------
 
-https://lavabit.com/
-https://protonmail.com/
-https://www.hushmail.com/
-https://runbox.com/
-https://onionmail.org/ (my choice)
+# Email Providers
 
-General Computer Security
+    https://lavabit.com/
+    https://protonmail.com/
+    https://www.hushmail.com/
+    https://runbox.com/
+    https://onionmail.org/ (my choice)
+
+## General Computer Security
+
 This is a section I just wanted to throw in to have my opinion on security related applications for both Windows and Linux. This doesn't have to do with anonymity but will help users who aren't sure what type of applications they should use when browsing the web and making sure they don't get infected as much as they may have using crappy software.
 
-Firewall
+----------------------------------------------------------------------
+
+### Firewall
 
     Sophos XG Next-Gen Firewall (Recommended)
     FortiGate Next-Gen Firewall
     PfSense Next-Gen Firewall
 
-Anti-Virus
+----------------------------------------------------------------------
 
-https://www.privatei...s.com/antivirus
-https://cisomag.com/...nted-antivirus/
+### Anti-Virus
+
+    https://www.privatei...s.com/antivirus
+    https://cisomag.com/...nted-antivirus/
 
 DON'T GET VIRUSES ITS NOT THAT HARD USE A VIRTUAL MACHINE OR PAY PENNES FOR AN RDP THERE IS 0 REASON TO USE UNTRUSTED SOFTWARE ON YOUR MAIN SYSTEM VIRUS SCAN EVERYTHING DONT TRUST ANYONE
 
@@ -244,15 +278,22 @@ https://odysee.com/ is a great youtube alternative and I seriously hope more of 
 
 STEAL PUBLIC WIFI your ip will be a lot less valuble if youre connecting to a public ip. What you can do is buy a long range wifi antenna and steal a local business (or neighbor) for their free unprotected wifi, whever your ip is traced, it goes back tho that.
 
-Signal
+----------------------------------------------------------------------
+
+### Signal
 All communications on Signal—including one-to-one messages, group messages, file transfers, photos, voice calls, and video calls—are end-to-end encrypted. Only the people involved in the communication can see them. The encryption happens between the individual devices using Signal. The company that operates Signal could not see these messages even if it wanted to. Signal actually created its own encryption protocol for this. Even if Signal is subject to a subpoena on you and forced to disclose what it knows about you, the company knows almost nothing about you and your Signal activity. Signal could reveal only your account’s phone number, last connection date, and account creation time.
 Check it out! https://www.signal.org/ I wish more people used this over telegram because i truly believe it is superior.
 
-Darknet Diaries
+----------------------------------------------------------------------
+
+### Darknet Diaries
 "This is a podcast about hackers, breaches, shadow government activity, hacktivism, cybercrime, and all the things that dwell on the hidden parts of the network" It is a pretty cool podcast and you can learn a whole lot about it. I love hearing about others opsec and often inspires you on how to improve or not get caught.
 https://darknetdiaries.com/
 
-TRUE SCHIZOID CHECKLIST
+----------------------------------------------------------------------
+
+## TRUE SCHIZOID CHECKLIST
+
     ? DO NOT TALK TO THE POLICE YOU KNOW NOTHING
     ? Only communicate to others with pgp encryption over the tor network
     ? Only use open source software audited by yourself
