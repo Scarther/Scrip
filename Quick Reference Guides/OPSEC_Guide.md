@@ -158,26 +158,31 @@ Encryption is a vital part of computer security when it comes to important docum
 
 PGP, Pretty Good Privacy, is a program used for the encryption/decryption of email over the Internet but also serves as a way to authenticate messages with digital signatures and encrypted stored files. PGP uses a variant on the public key system. It starts with each user having an encryption key that is publicly known and a private key only that user has. Each person sends a message, encrypting it with their public key. Then when the message is received, the message is decrypted using the user's private key. To make this the encryption process much faster, PGP uses an algorithm which encrypts the message, then uses the public key to encrypt the shorter key. There are two versions of PGP available: RSA & Diffie-Hellman. Both of these have different algorithms for encryption but as just as secure as the other. Sending digital signatures is a similar process but creates a hash using the user's name and other signature information. The hash is encrypted with the user's private key. They recipient uses the sender's public key to decrypt the hash code. If it matches, the recipient knows that this is an authentic file.
 
- - Here are some links to PGP software and guides.
- - Guide on PGP: http://www.bitcoinno...s-guide-to-pgp/
- - GNU Privacy Guard (alternative): https://www.gnupg.org/
- - GPG for Windows: http://www.gpg4win.org/
- - GPG for USB: http://www.gpg4usb.org/
+### Here are some links to PGP software and guides.
+     
+    Guide on PGP: http://www.bitcoinno...s-guide-to-pgp/
+    GNU Privacy Guard (alternative): https://www.gnupg.org/
+    GPG for Windows: http://www.gpg4win.org/
+    GPG for USB: http://www.gpg4usb.org/
 
 ### Another good site but is currently invite only is Keybase.io which allows you to confirm someone else's PGP key, fingerprint, BTC address, social media accounts, etc.
-Keybase: https://keybase.io/
+Keybase: 
+
+    https://keybase.io/
 
 ## Whole Disk Encryption
 
 Disk encryption is software which protects your information by turning it into unreadable code which can't be cracked easily by unwanted users. Disk encryption uses specific software or hardware to encrypt all data that goes on a disk or a disk volume. Whole disk encryption is when everything on the disk is encrypted as well as all the programs that can encrypt bootable OS partitions. One thing to note is computers using Master Boot Record (MBR) will NOT have that part of the disk encrypted. Whole disk encryption has many benefits to it. Number one is ALL parts of the disk are encrypted, even the swap space and temporary files which may contain sensitive information. By using full disk encryption, you don't have the chance of accidentally not encrypting a file since everything is indeed encrypted regardless. Lastly, by destroying the cryptography keys, it will render the data completely useless. It's not needed on everybody's computers since everyone has different need, but definitely recommended. Most people have used software called TrueCrypt in the past but that software is no longer being developed. This is always changing but heres a pretty up to date list of options:
-https://www.lifewire...k-...ms-2619180
+
+    https://www.lifewire...k-...ms-2619180
 
 *Warning* Please make sure to backup your entire system before attempting to do whole disk encryption in the case of a failure during the process.
 
 ## File Encryption
 
 File encryption follows the same procedure as whole disk encryption but instead of the whole disk, you are specifically encrypted an individual file or a whole folder. File encryption is a much simpler process that whole disk encryption and can be done with the same software, VeraCrypt. One thing to note is that with VeraCrypt, you can make a much larger encrypted volume (basically extra storage) to put files in and encrypt it as a whole. For instance, I have an external hard-drive which I made a 200GB encrypted volume for so once I type the password for that volume, I can drop anything in and close it. It will now be encrypted until I unlock that volume at another point in time.
-https://privacy.net/...on...are-tools/
+
+    https://privacy.net/...on...are-tools/
 
 ## Encrypted Backups
 
@@ -185,13 +190,16 @@ I won't be saying much about backups but I suggest everyone to keep backs and th
 File/Download Security
 
 File and download security is not something the average user thinks about which is why I wanted to write this section to explain a little bit about it. Hopefully after reading this section you'll understand more about why file and download security should be a higher priority than most since it's something the average user will use most.
-https://alternativet...ku...ed-backup/
+
+    https://alternativet...ku...ed-backup/
 
 ----------------------------------------------------------------------
 
 # Metadata
 Metadata is data that describes other data. Now that may sound confusing but think about it from a files perspective. Author, date created, date modified, and file size are simple examples of metadata that almost all documents carry. On top of that, images, videos, Excel sheets, and web pages all carry their own personalized metadata. Metadata is something which could easily give away personal information that you wouldn't even realize is there. The biggest one that people don't realize is simple pictures taken on your cellphone camera.Depending on if you have location on or not, metadata can even give GPS coordinates of where the picture was taken. All files contains this sensitive information within them and most people don't even realize it exists. Thankfully, there are tools out there which can be used to find and delete that information from files. This software is called MAT: Metadata Anonymization Toolkit and will help aid in the removal of metadata from the files that you want to clean.
-MAT Link: https://mat.boum.org/
+MAT Link: 
+
+    https://mat.boum.org/
 
 ----------------------------------------------------------------------
 
@@ -210,7 +218,9 @@ For people who want an extra step to stay safe, every time you empty your recycl
 # MD5/SHA-1 Checksums
 
 Before learning what a checksum is, you first need to know what MD5 & SHA-1 are first. MD5 & SHA-1 are common cryptographic hash functions with MD5 being a 128-bit (16-byte) hash value while SHA-1 is a 160-bit (20-byte) hash value. With these two hash type, we can use them to verify data integrity of a file/download. After downloading a file or software is when you are able to check the checksum of the file. The checksum is where the contents of the file get thrown into a mathematical algorithm and output a specific MD5/SHA-1 string. This method of verifying downloads/files is not as good as PGP + signature file but if you cannot use that method, this is a good second. Almost all Linux distros have the commands sha1sum and md5sum built into it. All you do is run these commands against the file in question and it will output the checksum string for you. Once you do this, all you do is compare that to what the download should of been and you should be able to verify if the download was authentic or not.
-https://support.ques...oo...y-checksum
+
+
+    https://support.ques...oo...y-checksum
 
 One thing to note is that MD5 has known collisions. With enough force, this allows MD5 to be broken into.
 Social Related
@@ -223,7 +233,9 @@ Within this section I will be talking about everything related to interacting wi
 
 XMPP stands for Extensible Messaging and Presence Protocol and is used for communications for message-oriented middleware based on the Extensible Markup Language (XML). Many more people are starting to use this as a main way of communication using programs such as Pidgin to accomplish this. Pidgin is an open-source multi-platform IM client which most people will recommend for XMPP. The main reason is because Pidgin has a simple plugin which you can download that allows you to incorporate Off-the-Record (OTR) messaging into it. OTR allows you to have private conversations over XMPP by using encryption, authentication, and the fact that messages you send do not have digital signatures that a third party can check for. This is a must use plugin/step you need when using any type of XMPP client.
 Pidgin Link: https://pidgin.im/
-Pidgin Secure Messaging Guide: https://www.howtogee...th...ng-client/
+Pidgin Secure Messaging Guide: 
+
+    https://www.howtogee...th...ng-client/
 
 Good XMPP Servers
 
