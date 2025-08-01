@@ -1,1 +1,1 @@
-List of resources to help pont you in the direction you need.
+List of resources to help point you in the direction you need.
