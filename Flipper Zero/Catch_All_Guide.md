@@ -5,5 +5,5 @@
 * **When plugging *Marauder* into computer, hold the *Reset* button when plugging in.**
 * **This places the *Marauder* to be discoverable to the flasher**
 * **Choose your firmware update**
-### **Wait until complete**
+* **Wait until complete**
 
