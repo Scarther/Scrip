@@ -1,3 +1,7 @@
+Current Work In Progress
+
+
+
 # This tutorial is based off a DEFCON 33 lab from the Packet Hacking Village (2025)
 ### ***https://github.com/malwaredllc/byob***
 **This lab consisted of familization of bot nets and building your own bot.**
@@ -23,7 +27,23 @@ sudo apt install python
 ```
 sudo apt install git
 ```
+* **Install *pipenv*
+```
+sudo apt install pipenv
+```
+-------------------------------------
+**Because Linux has messed up the python library so bad in its system. It is encouraged to use a pipenv shell when running the byob. The reason is for easier to download needed library that will be required.**
+* You will need the following from a fresh install from the pipenv shell
+```
+pip install flask
+pip install flask_bcrypt
+pip install flask_login
+pip install colorama
+pip install requests
+pip install flask_sqlalchemy
 
+```
+-------------------------------------
 **Now that we have all the needed resources installed, we can move to the next section
 
 ### Download the GitHub
@@ -37,7 +57,7 @@ git clone https://github.com/malwaredllc/byob
 
 **Make sure you open a terminal and are in the home by using this command**
 ```
-cd -
+cd ~
 ```
 
 **Now that the new directory is created, we will have to change to it.**
