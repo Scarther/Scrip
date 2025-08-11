@@ -79,8 +79,8 @@ sudo service docker status
 ```
 ● docker.service - Docker Application Container Engine
      Loaded: loaded (/usr/lib/systemd/system/docker.service; enabled; preset: enabled)
-     Active: active (running) since Mon 2025-08-11 13:53:35 EDT; 1min 7s ago
- Invocation: 9f3d260a91c34d40bb81d4fa2e1aee47
+     Active: active (running) since *date and time ran*; 1min 7s ago
+ Invocation: ****************************************
 TriggeredBy: ● docker.socket
 ```
 *This shows that the docker is active and running*
