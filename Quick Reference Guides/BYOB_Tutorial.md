@@ -33,16 +33,7 @@ sudo apt install pipenv
 ```
 -------------------------------------
 **Because Linux has messed up the python library so bad in its system. It is encouraged to use a pipenv shell when running the byob. The reason is for easier to download needed library that will be required.**
-* You will need the following from a fresh install from the pipenv shell
-```
-pip install flask
-pip install flask_bcrypt
-pip install flask_login
-pip install colorama
-pip install requests
-pip install flask_sqlalchemy
 
-```
 -------------------------------------
 **Now that we have all the needed resources installed, we can move to the next section
 
@@ -116,5 +107,26 @@ git+https://github.com/jtgrassie/pyrex.git#egg-pyrex
 ```
 ***Note this is not in newer versions of byob but if you are running an older version here is the documented fix by the creator***
 ***If you run into this problem and fix the *requirements.txt* rerun the startup bash again***
+
+### Create A *pipenv shell*
+
+**We will need some additional python library dependencies and will have to install the following if you are using a fresh install of Kali Linux**
+
+**While in the directory folder of the *web-gui* use the following command in the terminal
+
+```
+pipenvshell
+```
+
+* You will need the following from a fresh install from the *pipenv shell*
+```
+pip install flask
+pip install flask_bcrypt
+pip install flask_login
+pip install colorama
+pip install requests
+pip install flask_sqlalchemy
+
+```
 
 
