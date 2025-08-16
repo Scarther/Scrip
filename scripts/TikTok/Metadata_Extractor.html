@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TikTok Metadata Extractor</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1, h2, h3 {
+      color: #333;
+    }
+    .container {
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    textarea {
+      width: 100%;
+      height: 250px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: monospace;
+      margin-bottom: 15px;
+    }
+    button {
+      background-color: #ff0050;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.2s;
+    }
+    button:hover {
+      background-color: #e0004c;
+    }
+    #status {
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 4px;
+    }
+    .success {
+      background-color: #e7f7ee;
+      color: #1e7c4f;
+    }
+    .error {
+      background-color: #ffeaea;
+      color: #d63031;
+    }
+    .warning {
+      background-color: #fff9e6;
+      color: #b68d00;
+    }
+    .instructions {
+      background-color: #f0f8ff;
+      padding: 15px;
+      border-left: 4px solid #4a90e2;
+      margin-bottom: 20px;
+    }
+    code {
+      background: #f4f4f4;
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+    .json-type {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 14px;
+      margin-left: 10px;
+    }
+    .search-type {
+      background-color: #e1f5fe;
+      color: #0288d1;
+    }
+    .hashtag-type {
+      background-color: #f3e5f5;
+      color: #7b1fa2;
+    }
+    .separator-info {
+      margin-top: 15px;
+      padding: 10px;
+      background-color: #f8f9fa;
+      border-radius: 4px;
+      border-left: 4px solid #6c757d;
+    }
+    .examples {
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-radius: 6px;
+      margin-top: 10px;
+      font-family: monospace;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>TikTok Metadata Extractor</h1>
+
+  <div class="instructions">
+    <h2>Instructions</h2>
+    <div id="multi-instructions" style="display: block;">
+        <ol>
+            <li>Open a new incognito window in Chrome (CTRL + Shift + N)</li>
+            <li>Either visit a TikTok hashtag page (<code>https://www.tiktok.com/tag/yourtag</code>) or visit <code>https://www.tiktok.com/</code> and search for a term</li>
+            <li>Open DevTools (F12) and go to the Network tab</li>
+            <li>In the DevTools search filter, type in <code>item_list</code> (if on a tag page) or <code>full/?WebIdLastTime</code> (if on a search page)</li>
+            <li>Hit F5 to refresh the page, and an <code>item_list</code> or <code>full/?WebIdLastTime</code> should appear</li>
+            <li>Scroll down to the bottom of the page, until it won't continue - you should see more items appearing on the right</li>
+            <li>Double-click on each <code>item_list</code> or <code>full/?WebIdLastTime</code> that appeared, to open it in a new tab</li>
+            <li>One at a time, copy the text in each of the new tabs (CTRL + A and CTRL + C) and paste it in to the box below (CTRL + V), hitting Enter to go to a new line after each one</li>
+            <li>Click on "Extract Metadata"!</li>
+          </ol>
+          <p><strong>Disclaimer:</strong> While we believe this tool is accurate and effective as of May 2025, it may cease to work or change in unexpected ways if TikTok update their platform. Also, we cannot guarantee that there are no unknown issues that will result in inaccurate data extraction, so if you use the tool, you are using it at your own risk.</p>
+          <p>This tool was made by David Balfour in the Behavioural GEMs lab at Flinders University. Please contact <code>david.balfour@flinders.edu.au</code> for feedback, help, and more information. If you use the tool, please reference it using the appropriate DOI.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <textarea id="jsonInput" placeholder="Paste one or more TikTok JSON responses here, each on a new line..."></textarea>
+    <button id="extractBtn">Extract Metadata</button>
+    <div id="status" style="display: none;"></div>
+  </div>
+
+  <script>
+    // Function to extract hashtags from challenges array
+    function extractHashtags(challenges) {
+      if (!challenges || !Array.isArray(challenges)) return "";
+      return challenges.map(challenge => challenge.title).join(", ");
+    }
+
+    // Main function to convert TikTok JSON to CSV
+    function convertTikTokJsonToCsv(jsonData) {
+      const data = typeof jsonData === 'string' ? JSON.parse(jsonData) : jsonData;
+      const isSearchFormat = data.hasOwnProperty('data') && Array.isArray(data.data);
+      const isHashtagFormat = data.hasOwnProperty('itemList') && Array.isArray(data.itemList);
+      let videoItems = [];
+      let formatType = "";
+
+      if (isSearchFormat) {
+        videoItems = data.data.filter(item => item.type === 1 && item.item).map(item => item.item);
+        formatType = "search";
+      } else if (isHashtagFormat) {
+        videoItems = data.itemList;
+        formatType = "hashtag";
+      } else {
+        throw new Error("Unsupported JSON format: missing 'data' or 'itemList' array");
+      }
+
+      if (videoItems.length === 0) {
+        if (isSearchFormat && data.data.length === 0) {
+             throw new Error("JSON contains an empty 'data' array (no video items found).");
+        } else if (isHashtagFormat && data.itemList.length === 0){
+             throw new Error("JSON contains an empty 'itemList' array (no video items found).");
+        } else {
+             throw new Error("No video items found in the provided JSON");
+        }
+      }
+
+      return {
+        videoItems: videoItems.map(item => {
+          const createTimeDate = new Date(item.createTime * 1000);
+          const formattedDate = createTimeDate.toISOString();
+          const cleanDesc = item.desc ? `"${item.desc.replace(/"/g, '""')}"` : "";
+          const cleanUsername = item.author?.uniqueId ? `"${item.author.uniqueId.replace(/"/g, '""')}"` : "";
+          const cleanDisplayName = item.author?.nickname ? `"${item.author.nickname.replace(/"/g, '""')}"` : "";
+          const cleanMusicTitle = item.music?.title ? `"${item.music.title.replace(/"/g, '""')}"` : "";
+          const cleanMusicAuthor = item.music?.authorName ? `"${item.music.authorName.replace(/"/g, '""')}"` : "";
+          const hashtags = `"${extractHashtags(item.challenges)}"`;
+          const videoUrl = item.author?.uniqueId && item.id ? `https://www.tiktok.com/@${item.author.uniqueId}/video/${item.id}` : "";
+          const videoDuration = item.video?.duration || item.music?.duration || "";
+          const videoWidth = item.video?.width || "";
+          const videoHeight = item.video?.height || "";
+          const videoRatio = item.video?.ratio || "";
+          const playCount = item.stats?.playCount ?? item.statsV2?.playCount ?? "";
+          const likeCount = item.stats?.diggCount ?? item.statsV2?.diggCount ?? "";
+          const commentCount = item.stats?.commentCount ?? item.statsV2?.commentCount ?? "";
+          const shareCount = item.stats?.shareCount ?? item.statsV2?.shareCount ?? "";
+          const collectCount = item.stats?.collectCount ?? item.statsV2?.collectCount ?? "";
+
+          return {
+            id: item.id || "", video_url: videoUrl, author_id: item.author?.id || "",
+            username: cleanUsername, display_name: cleanDisplayName, verified: item.author?.verified || false,
+            description: cleanDesc, create_time: item.createTime || "", create_time_formatted: formattedDate,
+            play_count: playCount, like_count: likeCount, comment_count: commentCount,
+            share_count: shareCount, save_count: collectCount, follower_count: item.authorStats?.followerCount || "",
+            hashtags: hashtags, music_id: item.music?.id || "", music_title: cleanMusicTitle,
+            music_author: cleanMusicAuthor, video_duration: videoDuration, video_width: videoWidth,
+            video_height: videoHeight, video_ratio: videoRatio
+          };
+        }),
+        formatType,
+        count: videoItems.length
+      };
+    }
+
+    // Process multiple JSON inputs (using newline separator)
+    function processMultipleJsons(input) {
+      const separator = /\r?\n/g;
+      const jsonStrings = input.split(separator)
+        .map(str => str.trim())
+        .filter(str => str.length > 0 && str !== '');
+
+      if (jsonStrings.length === 0) {
+        throw new Error("No valid JSON data found after splitting by newline. Ensure each JSON is on its own line and the input is not empty.");
+      }
+
+      const results = {
+        allItems: [],
+        formatStats: { hashtag: 0, search: 0, unknown: 0 },
+        errors: []
+      };
+
+      jsonStrings.forEach((jsonStr, index) => {
+        try {
+          const result = convertTikTokJsonToCsv(jsonStr);
+          results.allItems.push(...result.videoItems);
+          results.formatStats[result.formatType]++;
+        } catch (error) {
+           if (error.message.includes("empty 'data' array") || error.message.includes("empty 'itemList' array")) {
+                console.warn(`JSON on line ${index + 1} contained no video items: ${error.message}`);
+           } else {
+                results.errors.push({
+                  index: index + 1,
+                  message: error.message,
+                  snippet: jsonStr.substring(0, 100) + (jsonStr.length > 100 ? '...' : '')
+                });
+                results.formatStats.unknown++;
+           }
+        }
+      });
+
+      // Return the count of processed strings along with other results
+      return { ...results, processedCount: jsonStrings.length };
+    }
+
+    // Generate CSV from processed items
+    function generateCsv(items) {
+      if (!items || items.length === 0) return "";
+      const headers = Object.keys(items[0]);
+      let csvContent = headers.map(header => `"${header.replace(/"/g, '""')}"`).join(",") + "\n";
+      items.forEach(item => {
+          const rowData = headers.map(header => {
+              const value = item[header];
+              if (value === null || typeof value === 'undefined') return '""';
+              const stringValue = String(value);
+              return `"${stringValue.replace(/"/g, '""')}"`;
+          });
+          csvContent += rowData.join(",") + "\n";
+      });
+      return csvContent;
+    }
+
+    // Function to download CSV
+    function downloadCsv(csvContent, filename = 'tiktok_metadata.csv') {
+        if (!csvContent) {
+            console.warn("CSV content is empty. No file will be downloaded.");
+            return;
+        }
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+       if (navigator.msSaveBlob) {
+            navigator.msSaveBlob(blob, filename);
+       } else {
+            const link = document.createElement('a');
+            if (link.download !== undefined) {
+                const url = URL.createObjectURL(blob);
+                link.setAttribute('href', url);
+                link.setAttribute('download', filename);
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+            } else {
+                window.open(encodeURI('data:text/csv;charset=utf-8,' + csvContent));
+            }
+       }
+    }
+
+    // Event handling for Extract button
+    document.getElementById('extractBtn').addEventListener('click', function() {
+      const statusEl = document.getElementById('status');
+      statusEl.style.display = 'block';
+      statusEl.className = '';
+      statusEl.innerHTML = 'Processing...';
+
+      setTimeout(() => {
+          try {
+            const jsonInput = document.getElementById('jsonInput').value.trim();
+            if (!jsonInput) {
+              throw new Error("Input area is empty. Please paste TikTok JSON data first.");
+            }
+
+            let result;
+            let summary;
+            let isSingleJsonAttempt = false;
+
+            try {
+              JSON.parse(jsonInput);
+              isSingleJsonAttempt = true;
+              const singleJsonResult = convertTikTokJsonToCsv(jsonInput);
+              result = {
+                allItems: singleJsonResult.videoItems,
+                formatStats: { hashtag: 0, search: 0, unknown: 0, [singleJsonResult.formatType]: 1 },
+                errors: [],
+                processedCount: 1 // For single JSON, count is 1
+              };
+               if (result.allItems.length > 0) {
+                 summary = `Successfully extracted ${result.allItems.length} video(s) from a single ${singleJsonResult.formatType} format JSON.`;
+              } else {
+                 summary = `The provided JSON (${singleJsonResult.formatType} format) contained 0 video items.`;
+              }
+            } catch (singleJsonError) {
+              if (singleJsonError instanceof SyntaxError || singleJsonError.message.includes("Unsupported JSON format")) {
+                    isSingleJsonAttempt = false;
+                    console.log("Parsing as single JSON failed, attempting multi-JSON processing.");
+               } else if (singleJsonError.message.includes("empty 'data' array") || singleJsonError.message.includes("empty 'itemList' array")){
+                   result = { allItems: [], formatStats: { hashtag: 0, search: 0, unknown: 0 }, errors: [], processedCount: 1 };
+                   if (singleJsonError.message.includes("empty 'data' array")) result.formatStats.search = 1;
+                   if (singleJsonError.message.includes("empty 'itemList' array")) result.formatStats.hashtag = 1;
+                   console.warn("Single JSON processed but contained no video items.");
+               } else {
+                   console.error("Unexpected error during single JSON processing:", singleJsonError);
+                   throw singleJsonError;
+               }
+            }
+
+            if (!isSingleJsonAttempt || (isSingleJsonAttempt && result.allItems.length === 0 && result.errors.length === 0)) {
+                 if (!isSingleJsonAttempt) {
+                     console.log("Attempting multi-JSON processing (using newline separator).");
+                 }
+                 result = processMultipleJsons(jsonInput); // This now returns processedCount
+
+                 // **FIX:** Use result.processedCount instead of accessing jsonStrings directly
+                 const totalProcessed = result.processedCount;
+                 summary = `Processed ${totalProcessed} line(s). Extracted ${result.allItems.length} total video(s) ` +
+                    `(${result.formatStats.hashtag} hashtag format, ${result.formatStats.search} search format detected).`;
+
+                 if (result.errors.length > 0) {
+                    summary += ` <strong style="color: #d63031;">Warning:</strong> ${result.errors.length} line(s) could not be processed or contained errors.`;
+                    console.warn("Errors during multi-JSON processing:", result.errors);
+                 }
+                  if (result.allItems.length === 0 && result.errors.length === 0 && totalProcessed > 0) {
+                    summary += " No video items found in the processed lines."
+                 } else if (totalProcessed === 0) {
+                    summary = "No JSON data found in the input (after removing empty lines)."
+                 }
+            }
+
+            const csvContent = generateCsv(result.allItems);
+            if (csvContent) {
+              const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+              const filename = `tiktok_metadata_${result.allItems.length}_videos_${timestamp}.csv`;
+              downloadCsv(csvContent, filename);
+              summary += ` CSV file '${filename}' initiated for download.`;
+            } else if (result.allItems.length === 0 && result.errors.length === 0) {
+              summary += " No data to download.";
+            }
+
+            statusEl.className = result.errors.length > 0 ? 'warning' : (result.allItems.length > 0 ? 'success' : 'warning');
+            statusEl.innerHTML = summary;
+            if (result.errors.length > 0) {
+                 let errorDetails = "<br><br><strong>Error Details:</strong><ul>";
+                 result.errors.forEach(err => {
+                    errorDetails += `<li>Line ${err.index}: ${err.message.substring(0, 150)}... (See console for full details)</li>`;
+                 });
+                 errorDetails += "</ul>";
+                 statusEl.innerHTML += errorDetails;
+            }
+
+          } catch (error) {
+            statusEl.className = 'error';
+            statusEl.innerHTML = `<strong>Error:</strong> ${error.message}`;
+            console.error("Extraction failed:", error);
+          }
+      }, 10);
+    });
+
+    // Initial setup
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('multi-instructions').style.display = 'block';
+        document.getElementById('hashtag-instructions').style.display = 'none';
+        document.getElementById('search-instructions').style.display = 'none';
+    });
+
+  </script>
+</body>
+</html>
