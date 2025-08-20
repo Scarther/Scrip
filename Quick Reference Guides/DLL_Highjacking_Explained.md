@@ -86,7 +86,7 @@ In this technique, adversaries look for a vulnerable executable that attempts to
 
 A familiar example of this technique is the abuse of the [Windows Search (WSearch) Service](https://learn.microsoft.com/en-us/windows/win32/search/-search-3x-wds-overview#windows-search-service). This service is responsible for search operations and it launches with SYSTEM privileges upon system startup.
 
-When this service starts, it executes '''SearchIndexer.exe''' and '''SearchProtocolHost.exe''', which both attempt to load '''msfte.dll''' from '''System32'''. In default Windows installations, the file does not exist in this location.
+When this service starts, it executes *SearchIndexer.exe* and *SearchProtocolHost.exe*, which both attempt to load *msfte.dll* from *System32*. In default Windows installations, the file does not exist in this location.
 
 An adversary can plant their malicious DLL if they can write to the System32 folder or an alternate DLL search order location, or insert another attacker-controlled location into the PATH environment variable. This allows them to gain a stealthy pathway for execution with SYSTEM privileges, and a means to maintain persistence on the machine.
 ---
