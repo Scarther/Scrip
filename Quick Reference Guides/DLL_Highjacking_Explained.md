@@ -8,23 +8,23 @@
 * Help Windows systems modularization of code, code reuse, efficient memory usage and reduced disk space. This allows the system to run faster and take less disk space on the computer.
 * **SOME DLL FILES CAN BE USED BY MUTLIPLE PROGRAMS AND APPLICATIONS. FOR EXAMPLE THE *Comdlg32* DLL performs common dialog box related functions. Each program can use the functionality that is contained in this DLL to implement an Open Dialog Box. It  helps promote code reuse and efficient memory usage.
 
-# Article by (unit42)[https://unit42.paloaltonetworks.com/dll-hijacking-techniques/]
+# Article by [unit42](https://unit42.paloaltonetworks.com/dll-hijacking-techniques/)
 
 
-Executive Summary
+### Executive Summary
 Dynamic-link library (DLL) hijacking is one of the oldest techniques that both threat actors and offensive security professionals continue to use today. DLL hijacking is popular because it grants threat actors a stealthy way to run malware that can be very effective at evading detection. At its core, DLL hijacking tricks an operating system into running a malicious binary instead of a legitimate DLL.
 
 This article explains how threat actors use DLL hijacking in malware attacks, and it should help readers by providing:
 
-Theoretical background necessary to understand DLL hijacking
-Explanations that demystify some of the concepts around this technique
-Common variations seen in the wild
-Real-world examples from both advanced persistent threat (APT) and cybercrime threat actors
-This article also provides ideas for how to better detect DLL hijacking, and we share best practices on how to reduce the risk of attack.
+* Theoretical background necessary to understand DLL hijacking
+* Explanations that demystify some of the concepts around this technique
+* Common variations seen in the wild
+* Real-world examples from both advanced persistent threat (APT) and cybercrime threat actors
+* This article also provides ideas for how to better detect DLL hijacking, and we share best practices on how to reduce the risk of attack.
 
 Palo Alto Networks customers are better protected from the threats discussed in this article through our Next-Generation Firewall, as well as Advanced WildFire, DNS Security, and Advanced URL Filtering. Cortex XDR and XSIAM detect known and novel DLL hijacking attacks. The Prisma Cloud Defender agent can assist in identifying malware that uses DLL hijacking techniques. If you think you might have been compromised or have an urgent matter, contact the Unit 42 Incident Response team.
 
-What Is DLL Hijacking?
+### What Is DLL Hijacking?
 DLL files are programs that are meant to be run by other programs in Microsoft Windows. DLL hijacking allows attackers to trick a legitimate Windows program into loading and running a malicious DLL. Adversaries leverage DLL hijacking for multiple purposes, including defense evasion, privilege escalation and persistence.
 
 DLL hijacking has evolved, with many variations over the past several years. To understand DLL hijacking, we must first understand the DLL search order mechanism, which is a crucial function in Microsoft Windows.
