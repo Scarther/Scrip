@@ -21,38 +21,41 @@ This article explains how threat actors use DLL hijacking in malware attacks, an
 * Common variations seen in the wild
 * Real-world examples from both advanced persistent threat (APT) and cybercrime threat actors
 * This article also provides ideas for how to better detect DLL hijacking, and we share best practices on how to reduce the risk of attack.
-
-Palo Alto Networks customers are better protected from the threats discussed in this article through our Next-Generation Firewall, as well as Advanced WildFire, DNS Security, and Advanced URL Filtering. Cortex XDR and XSIAM detect known and novel DLL hijacking attacks. The Prisma Cloud Defender agent can assist in identifying malware that uses DLL hijacking techniques. If you think you might have been compromised or have an urgent matter, contact the Unit 42 Incident Response team.
 ---
 ### What Is DLL Hijacking?
-DLL files are programs that are meant to be run by other programs in Microsoft Windows. DLL hijacking allows attackers to trick a legitimate Windows program into loading and running a malicious DLL. Adversaries leverage DLL hijacking for multiple purposes, including defense evasion, privilege escalation and persistence.
+[DLL files](https://learn.microsoft.com/en-us/troubleshoot/windows-client/deployment/dynamic-link-library#more-information) are programs that are meant to be run by other programs in Microsoft Windows. DLL hijacking allows attackers to trick a legitimate Windows program into loading and running a malicious DLL. Adversaries leverage DLL hijacking for multiple purposes, including [defense evasion](https://attack.mitre.org/tactics/TA0005/), [privilege escalation](https://attack.mitre.org/tactics/TA0004/) and [persistence](https://attack.mitre.org/tactics/TA0003/).
 
 DLL hijacking has evolved, with many variations over the past several years. To understand DLL hijacking, we must first understand the DLL search order mechanism, which is a crucial function in Microsoft Windows.
-
+---
 ### Windows DLL Search Order
-DLL hijacking relies on the DLL search order that Windows uses when loading DLL files. This search order is a sequence of locations a program checks when loading a DLL. The sequence can be divided into two parts: special search locations and standard search locations. You can find the search order comprising both parts in Figure 1.<img width="1856" height="2048" alt="image" src="https://github.com/user-attachments/assets/9fc5a3ef-ad24-4134-b2dd-ccc52ddd80a7" />
+DLL hijacking relies on the [DLL search order](https://learn.microsoft.com/en-us/windows/win32/dlls/dynamic-link-library-search-order) that Windows uses when loading DLL files. This search order is a sequence of locations a program checks when loading a DLL. The sequence can be divided into two parts: special search locations and standard search locations. You can find the search order comprising both parts in Figure 1.<img width="1856" height="2048" alt="image" src="https://github.com/user-attachments/assets/9fc5a3ef-ad24-4134-b2dd-ccc52ddd80a7" />
+**Figure 1. Flow chart of the Windows DLL search order.**
 
-
-Image 1 is a diagram of the Windows dynamic link library search order. The special search locations are DLL redirection, API sets, SxS manifest redirection, loaded-module list, known DLLs, package dependency graph of process. Standard search locations are application directory, System32, System, Windows, current directory and directories listed in PATH variable. 
-Figure 1. Flow chart of the Windows DLL search order.
-Special Search Locations
+---
+### Special Search Locations
 Special search locations are taken into account before the standard search locations, and they contain different factors that can control the locations to be searched and used to load a DLL. These locations are based on the application and the system configurations.
 
-DLL redirection allows specifying which DLL should be loaded by the DLL loader
-API sets allows dynamically routing function calls to the appropriate DLL based on the version of Windows and the availability of different features
-SxS manifest redirection redirects DLL loading by using application manifests
-Loaded-module list verifies whether the DLL is already loaded into memory
-Known DLLs checks whether the DLL name and path match the Windows list of known DLLs. This list resides in HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\KnownDLLs
-The package dependency graph of the process, in case it was executed as part of a packaged app
-Standard Search Locations
+1) [DLL redirection](https://learn.microsoft.com/en-us/windows/win32/dlls/dynamic-link-library-redirection) allows specifying which DLL should be loaded by the DLL loader
+2)  [API sets](https://learn.microsoft.com/en-us/windows/win32/apiindex/windows-apisets) allows dynamically routing function calls to the appropriate DLL based on the version of Windows and the availability of different features
+3)  SxS [manifest](https://learn.microsoft.com/en-us/windows/win32/sbscs/manifests) redirection redirects DLL loading by using application manifests
+4)  Loaded-module list verifies whether the DLL is already loaded into memory
+5)  Known DLLs checks whether the DLL name and path match the Windows list of known DLLs. This list resides in
+'''
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\KnownDLLs
+'''
+6) The [package](https://learn.microsoft.com/en-us/windows/apps/package-and-deploy/#advantages-and-disadvantages-of-packaging-your-app) dependency graph of the process, in case it was executed as part of a packaged app
+---
+### Standard Search Locations
+
 The standard search locations are the ones most associated with the DLL hijacking technique, and they will usually be used by adversaries. Windows will use the following order to search for the desired DLL.
 
-The application’s directory (the directory containing the executable)
-C:\Windows\System32
-C:\Windows\System
-C:\Windows
-The current directory (the directory from which we execute the executable)
-Directories listed in the PATH environment variable
+1) The application’s directory (the directory containing the executable)
+2) C:\Windows\System32
+3) C:\Windows\System
+4) C:\Windows
+5) The current directory (the directory from which we execute the executable)
+6) Directories listed in the PATH environment variable
+
 Hijacking this whole DLL search order will grant an adversary the option to load their malicious DLL within the context of a legitimate application and achieve stealthy execution. They can do this by triggering a malicious DLL to load before the valid one, replacing the DLL or by altering the order (specifically the PATH environment variable).
 
 The prevalence of DLL hijacking has been on the rise in recent years, and DLL hijacking continues to gain popularity. This is because discovering and exploiting the vulnerability in legitimate executables isn't considered to be particularly difficult. However, detecting an attacker loading malicious, camouflaged DLLs within legitimate executables remains a complex undertaking.
@@ -65,27 +68,25 @@ In this most commonly used DLL-hijacking technique, an attacker obtains a legiti
 
 In DLL side-loading, the attackers rely on the fact that the executable’s directory is one of the first locations Windows searches for.
 
-We have studied examples of attackers employing this technique in recent Unit 42 posts, including an instance by the APT Cloaked Ursa (aka APT29), and as part of our Threat Hunting series.
+We have studied examples of attackers employing this technique in recent Unit 42 posts, including an instance by the APT [Cloaked Ursa](https://unit42.paloaltonetworks.com/cloaked-ursa-phishing/) (aka APT29), and as part of our [Threat Hunting series](https://unit42.paloaltonetworks.com/unsigned-dlls/#:~:text=DLL%20order%20hijacking%20%E2%80%93%20This%20refers,name%20of%20a%20known%20DLL.).
 ---
-###DLL Search Order Hijacking
+### DLL Search Order Hijacking
 This implementation exemplifies the core abuse of the entire Windows DLL search order. It is used by adversaries, red teamers and security validation solutions.
 
 This technique simply leverages the Windows DLL search order to drop a malicious DLL in any of its searched locations that would cause a vulnerable, legitimate program to execute a malicious DLL. An attacker can place a malicious DLL in a location prioritized by the DLL search order before the location of a valid DLL. This can happen at any point in the DLL search order, including the PATH environment variable, which attackers can modify by adding a path directory with a malicious DLL.
 
-An example of this type of attack is to drop a malicious DLL in a Python installation directory to hijack the DLL search order. This is an implementation that different security practitioners have already demonstrated.
+An example of this type of attack is to drop a malicious DLL in a Python installation directory to hijack the DLL search order. This is an implementation that [different security practitioners have already demonstrated](https://www.safebreach.com/blog/trend-micro-security-16-dll-search-order-hijacking-and-potential-abuses-cve-2019-15628/).
 
 When Python is installed on a Windows machine, it often adds its installation directory to the PATH environment variable, usually in one of the first searched locations, as shown in Figure 2.
+<img width="614" height="265" alt="image" src="https://github.com/user-attachments/assets/060dab90-1bd6-409a-ac43-e25fa6beb293" />
 
-Image 2 is a screenshot of Python folders listed in the Edit environment variable window. There are options for New, Edit and Browse. 
-Figure 2. Python folders in the PATH environment variable.
-Installing Python on a Windows host creates a directory with relaxed permissions, allowing any authenticated user (including unprivileged ones) to write to this location. This gives attackers the best conditions to execute their DLL search order hijack attack and infect the targeted machine.
 ---
 ### Phantom DLL Loading
 In this technique, adversaries look for a vulnerable executable that attempts to load a DLL that simply doesn't exist (or is missing) due to an implementation bug. Then, attackers will plant a malicious DLL with the non-existent DLL’s filename in its expected location.
 
-A familiar example of this technique is the abuse of the Windows Search (WSearch) Service. This service is responsible for search operations and it launches with SYSTEM privileges upon system startup.
+A familiar example of this technique is the abuse of the [Windows Search (WSearch) Service](https://learn.microsoft.com/en-us/windows/win32/search/-search-3x-wds-overview#windows-search-service). This service is responsible for search operations and it launches with SYSTEM privileges upon system startup.
 
-When this service starts, it executes SearchIndexer.exe and SearchProtocolHost.exe, which both attempt to load msfte.dll from System32. In default Windows installations, the file does not exist in this location.
+When this service starts, it executes '''SearchIndexer.exe''' and '''SearchProtocolHost.exe''', which both attempt to load '''msfte.dll''' from '''System32'''. In default Windows installations, the file does not exist in this location.
 
 An adversary can plant their malicious DLL if they can write to the System32 folder or an alternate DLL search order location, or insert another attacker-controlled location into the PATH environment variable. This allows them to gain a stealthy pathway for execution with SYSTEM privileges, and a means to maintain persistence on the machine.
 ---
