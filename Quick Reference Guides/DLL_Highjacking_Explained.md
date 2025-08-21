@@ -108,116 +108,160 @@ An adversary can plant their malicious DLL if they can write to the System32 fol
 ### Uncovering Threat Actors and Campaigns
 Using our telemetry, we set out to hunt for DLL hijacking attacks, which revealed a large volume of attempted DLL hijacking attacks – including their variations. The following section provides real-world examples of how various threat actors, both cybercrime and nation-state APT groups, use DLL hijacking.
 
-Examples of DLL Hijacking by Nation-State APT Threat Actors
-ToneShell’s Triple DLL Side-Loading
-In September 2023, Unit 42 researchers discovered attackers using DLL side-loading to install the ToneShell backdoor. Attacks using a ToneShell variant were linked to Stately Taurus, in a campaign that built upon three DLL components working in tandem as shown in Figure 3. In the image, each component has been paired with its associated Image Load event in Cortex. The action type shows that the malicious DLLs were loaded to each legitimate process.
+---
 
-Image 3 is a screenshot of a process tree in Cortex XDR. Each alert is paired with its action type. From right to left is the Persistence Component, Networking Component and Functionality Component. 
+## Examples of DLL Hijacking by Nation-State APT Threat Actors
+
+### ToneShell’s Triple DLL Side-Loading
+In September 2023, [Unit 42 researchers discovered](https://unit42.paloaltonetworks.com/stately-taurus-attacks-se-asian-government/) attackers using DLL side-loading to install the ToneShell backdoor. Attacks using a ToneShell variant were linked to Stately Taurus, in a campaign that built upon three DLL components working in tandem as shown in Figure 3. In the image, each component has been paired with its associated Image Load event in Cortex. The action type shows that the malicious DLLs were loaded to each legitimate process.
+
+<img width="1237" height="496" alt="image" src="https://github.com/user-attachments/assets/da28a2a2-d517-4144-a566-7692e6e09b51" />
 Figure 3. ToneShell process tree in Cortex XDR.
+
 Each DLL component holds a different purpose:
 
-Persistence components (nw.dll, nw_elf.dll): These DLLs are in charge of persistence for the backdoor, as well as dropping the other components to disk.
-Networking component (rw32core.dll): This DLL is in charge of command and control (C2) communication.
-Functionality component (secur32.dll): This DLL is in charge of executing the different commands of the backdoor.
+* **Persistence components (nw.dll, nw_elf.dll):** These DLLs are in charge of persistence for the backdoor, as well as dropping the other components to disk.
+* **Networking component (rw32core.dll):** This DLL is in charge of command and control (C2) communication.
+* **Functionality component (secur32.dll):** This DLL is in charge of executing the different commands of the backdoor.
+
 The persistence components (nw.dll, nw_elf.dll) are side-loaded by PwmTower.exe, a component of a password manager, which is a legitimate security tool.
 
 The networking component (rw32core.dll) is side-loaded by Brcc32.exe, the resource compiler of Embarcadero, an app development tool.
 
 The functionality component (secur32.dll) is side-loaded by Consent.exe, which is a Windows binary described as “Consent UI for administrative applications.”
 
-PlugX RAT Leverages DLL Side-Loading to Remain Undetected
+---
+
+### PlugX RAT Leverages DLL Side-Loading to Remain Undetected
 Another recent example of a DLL side-loading alert that caught our attention was an attack using the infamous PlugX backdoor.
 
-PlugX is a modular backdoor that is predominantly used by various Chinese APT groups like PKPLUG. PlugX developers circulate in underground hacking communities, and the malware binaries can be found online, so non-Chinese threat actors can also use PlugX.
+[PlugX](https://attack.mitre.org/software/S0013/) is a modular backdoor that is predominantly used by various Chinese APT groups like [PKPLUG](https://unit42.paloaltonetworks.com/pkplug_chinese_cyber_espionage_group_attacking_asia/). PlugX developers circulate in underground hacking communities, and the malware binaries can be found online, so non-Chinese threat actors can also use PlugX.
 
-In the following example, PlugX infected a machine via a compromised USB device. Figure 4 shows the contents of the USB device. This device contained a directory named History and a Windows Shortcut (LNK) file. The History folder’s name and icon were disguised as the Windows History folder, and the LNK file uses an icon to appear as a removable disk.
+In the following example, PlugX infected a machine via [a compromised USB device](https://unit42.paloaltonetworks.com/plugx-variants-in-usbs/). Figure 4 shows the contents of the USB device. This device contained a directory named History and a Windows Shortcut (LNK) file. The History folder’s name and icon were disguised as the Windows History folder, and the LNK file uses an icon to appear as a removable disk.
 
-Image 4 is a screenshot of a fake history folder with a malicious LNK file. Name, star icon, History, Removable Disk(28GB). 
+<img width="394" height="178" alt="image" src="https://github.com/user-attachments/assets/bd081ef5-5a1a-4f71-a05f-600e5f90e298" />
+ 
 Figure 4. Fake History folder and malicious link file.
+
 The fake History folder contains three files:
 
-3.exe
-A renamed Acrobat.exe file (a legitimate component of Adobe Acrobat)
-Acrobat.dll
-The PlugX loader, renamed to appear to be a legitimate Adobe Acrobat file
-AcrobatDC.dat
-A malicious payload that the PlugX loader decrypts in memory
-Once the victim clicks the removable disk LNK, it launches the 3.exe process. Then 3.exe loads the PlugX component named Acrobat.dll via DLL side-loading.
+**3.exe**
+* A renamed Acrobat.exe file (a legitimate component of Adobe Acrobat)
+  
+**Acrobat.dll**
+* The PlugX loader, renamed to appear to be a legitimate Adobe Acrobat file
 
-Next, the malware creates a directory at C:\ProgramData\AcroBat\AcrobatAey and copies the three files to this location as Acrobat.exe, Acrobat.dll and AcrobatDC.dat, respectively.
+**AcrobatDC.dat**
+* A malicious payload that the PlugX loader decrypts in memory
 
-To achieve persistence, this PlugX sample creates a scheduled task named InternetUpdateTask, which it sets to run every 30 minutes.
+Once the victim clicks the removable disk LNK, it launches the *3.exe* process. Then *3.exe* loads the PlugX component named *Acrobat.dll* via DLL side-loading.
+
+Next, the malware creates a directory at *C:\ProgramData\AcroBat\AcrobatAey* and copies the three files to this location as *Acrobat.exe*, *Acrobat.dll* and *AcrobatDC.dat*, respectively.
+
+To achieve persistence, this PlugX sample creates a scheduled task named *InternetUpdateTask*, which it sets to run every 30 minutes.
 
 Figure 5 shows the initial process tree of the infection in Cortex XDR.
 
-Image 5 is a screenshot of the process tree for PlugX in Cortex XDR. There are two flexers and three different .exe files. 
+<img width="2048" height="606" alt="image" src="https://github.com/user-attachments/assets/c2aa99e7-24d6-4887-aa00-2ca22710dd79" />
 Figure 5. Process tree of initial execution of PlugX.
-Examples of DLL Hijacking by Cybercrime Threat Actors
+
+--- 
+
+### Examples of DLL Hijacking by Cybercrime Threat Actors
+
 Uncovering AsyncRAT Phishing Campaign Targeting South American Organizations
-By hunting for DLL side-loading alerts in Cortex XDR Analysis, we discovered a phishing campaign targeting victims mainly in Colombia and Argentina, aiming to deliver AsyncRAT.
+By hunting for DLL side-loading alerts in Cortex XDR Analysis, we discovered a phishing campaign targeting victims mainly in Colombia and Argentina, aiming to deliver [AsyncRAT](https://attack.mitre.org/software/S1087/).
 
 AsyncRAT is open-source malware that is very popular among cybercriminals. It gives attackers a range of capabilities such as executing commands, screen capturing and key logging.
 
 The infection starts with phishing emails written in Spanish that contain descriptions of required legal actions, as shown in Figure 6.
 
-Image 6 is a screenshot of a phishing email delivering AsyncRAT. The language of the email is Spanish. 
+<img width="716" height="342" alt="image" src="https://github.com/user-attachments/assets/576c8079-f927-4ede-8266-ee0737a0b179" />
 Figure 6. Text of a phishing mail to deliver AsyncRAT.
+
 The emails also contain links to a Google Drive URL hosting a malicious ZIP archive.
 
-These archive files contain an executable with the same name as the ZIP filename and a malicious DLL file named http_dll.dll.
+These archive files contain an executable with the same name as the ZIP filename and a malicious DLL file named *http_dll.dll*.
 
-The executable is actually a renamed legitimate component of the ESET HTTP Server service process, originally named EHttpSrv.exe. When the victim executes the renamed EHttpSrv.exe, it loads the malicious http_dll.dll file from the same directory via DLL side-loading. After the executable loads http_dll.dll, the DLL unpacks in memory and loads the AsyncRAT malware.
+The executable is actually a renamed legitimate component of the ESET HTTP Server service process, originally named *EHttpSrv.exe*. When the victim executes the renamed *EHttpSrv.exe*, it loads the malicious *http_dll.dll* file from the same directory via DLL side-loading. After the executable loads *http_dll.dll*, the DLL unpacks in memory and loads the AsyncRAT malware.
 
 Figure 7 shows the infection chain as seen in Cortex XDR. The malicious ZIP archive is downloaded, extracted with 7-Zip (7zG.exe) and the renamed EHttpSrv.exe is executed.
 
-Image 7 is a screenshot of a tree diagram of alerts in Cortex XDR. Following the process tree, the steps are: 1. The user downloads the zip file. 2. The user extracts the zip file. 3. The user clicks on the renamed EHttpSrv.exe. 
+<img width="1654" height="996" alt="image" src="https://github.com/user-attachments/assets/99095539-f43b-4515-a918-b35501d747a3" /> 
 Figure 7. AsyncRAT infection in Cortex XDR.
+
 Figure 8 shows the “Possible DLL Side-Loading” alert Cortex XDR raised for this chain of events.
 
-Image 8 is a screenshot of an alert in Cortex XDR of possible DLL side loading. The alert level is medium. The source is XDR Analytics. Investigate button. The signed actor process #13, notification demanda en su Contra.EXE loaded the module http_dll.dll. This module hash was seen on zero hosts in the organization in the last 30 days.
+<img width="477" height="181" alt="image" src="https://github.com/user-attachments/assets/d9660686-7621-4275-99f0-03ca2432080c" />
 Figure 8. Possible DLL Side Loading alert in Cortex XDR.
-Phantom DLL Loading for CatB Ransomware
-CatB ransomware was first seen in December 2022. In at least one campaign since then, threat actors have abused the Distributed Transaction Coordinator (MSDTC) service to achieve phantom DLL loading for CatB ransomware.
+
+---
+
+### Phantom DLL Loading for CatB Ransomware
+[CatB ransomware](https://malpedia.caad.fkie.fraunhofer.de/details/win.catb) was first seen in December 2022. In at least one campaign since then, threat actors have [abused the Distributed Transaction Coordinator (MSDTC) service](https://www.sentinelone.com/blog/decrypting-catb-ransomware-analyzing-their-latest-attack-methods/) to achieve phantom DLL loading for CatB ransomware.
 
 The core of this CatB ransomware campaign consists of two components: a dropper DLL and a ransomware DLL. The dropper DLL performs different anti-sandbox and anti-virtual machine (VM) checks to ensure the environment is safe to drop its ransomware payload.
 
-After the dropper DLL is satisfied the environment is clear, it writes a second DLL named oci.dll under the C:\Windows\System32 directory. Then, the dropper kills the MSDTC process by msdtc.exe as shown below in Figure 9.
+After the dropper DLL is satisfied the environment is clear, it writes a second DLL named *oci.dll* under the *C:\Windows\System32* directory. Then, the dropper kills the MSDTC process by *msdtc.exe* as shown below in Figure 9.
 
-Image 9 is a screenshot of Cortex XDR. Three alert icons show three different .exe files.
+<img width="1990" height="498" alt="image" src="https://github.com/user-attachments/assets/6aea90c3-a025-4035-bf20-fc7af21b6db5" />
+
 Figure 9. Execution of the dropper DLL in Cortex XDR.
-This is done to implement phantom DLL loading. When msdtc.exe launches, it attempts to load a DLL named oci.dll, which does not usually exist in the System32 folder. When msdtc.exe relaunches, it loads the malicious oci.dll, which is the ransomware payload, as shown in Figure 10. In the image, the process msdtc.exe is paired with the Image Load event in Cortex for the malicious oci.dll.
 
-Image 10 is a screenshot of a process diagram in Cortex XDR. When the .exe launches it loads a malicious DLL module. 
+This is done to implement phantom DLL loading. When msdtc.exe launches, it attempts to load a DLL named *oci.dll*, which does not usually exist in the *System32* folder. When *msdtc.exe* relaunches, it loads the malicious *oci.dll*, which is the ransomware payload, as shown in Figure 10. In the image, the process msdtc.exe is paired with the Image Load event in Cortex for the malicious oci.dll.
+
+<img width="1622" height="658" alt="image" src="https://github.com/user-attachments/assets/ffa4c208-8e57-42da-a8f2-7af80d28716f" />
+
 Figure 10. Msdtc.exe loads the malicious oci.dll module shown in Cortex XDR.
+
 Cortex XDR alerts on phantom DLL loading attempts, as shown in Figure 11.
 
-Image 11 is a screenshot of an alert in Cortex XDR of possible DLL loading. The alert level is medium. The source is XDR Analytics. Investigate button. OCI.DLL was loaded into msdtc.exe, which might be an attacker loading malicious code into a trusted process. This behavior was seen on zero hosts and zero unique days in the last 30 days.
+<img width="950" height="354" alt="image" src="https://github.com/user-attachments/assets/d83ca8f4-f507-4c7e-9172-6ce033df6e08" />
+
 Figure 11. Phantom DLL Loading alert in Cortex XDR.
-Abuse of Microsoft DLLs Leads to Dridex
-Threat actors have implemented DLL side-loading for another well-known malware, the Dridex banking Trojan. The initial infection vector for Dridex has most often been malicious emails or web traffic.
 
-When executed, the Dridex loader has used AtomBombing to inject code into the process space used by explorer.exe. Next, the injected explorer.exe process writes Dridex DLLs as .tmp files and shell scripts with random names to the user’s TEMP directory. An example of these files being written to disk is shown in Figure 12.
+---
 
-Image 12 is a screenshot of an alert table in Cortex XDR. The two columns are action type and file path. All of the actions are File Write.
+### Abuse of Microsoft DLLs Leads to Dridex
+
+Threat actors have implemented DLL side-loading for another well-known malware, the [Dridex](https://unit42.paloaltonetworks.com/tag/dridex/) banking Trojan. The initial infection vector for Dridex has most often been malicious emails or web traffic.
+
+When executed, the Dridex loader has used [AtomBombing](https://unit42.paloaltonetworks.com/banking-trojan-techniques/#post-125550-_qlvkbjr0alhu) to inject code into the process space used by *explorer.exe*. Next, the injected *explorer.exe* process writes Dridex DLLs as *.tmp* files and shell scripts with random names to the user’s TEMP directory. An example of these files being written to disk is shown in Figure 12.
+
+<img width="1268" height="516" alt="image" src="https://github.com/user-attachments/assets/d0cdedde-8b35-4f40-8286-e9e55f8c2420" />
+
 Figure 12. Malicious files written to disk by explorer.exe shown in Cortex XDR.
+
 Up to three of the shell scripts can appear, and they create the persistent Dridex infection in three different locations under random directory paths on the victim's host. The persistent infection uses DLL side-loading.
 
 The shell scripts create these randomly-named directories under random directory paths, copy legitimate Microsoft executables and rename the Dridex DLL .tmp files for the DLL side-loading. An example of two shell scripts are shown below in Figure 13.
 
-Image 13 is a screenshot of a shell script that copies Dridex. There are eight lines of code in total.
+<img width="2048" height="482" alt="image" src="https://github.com/user-attachments/assets/5cc99deb-3a94-437e-864b-2aaddc7bdcb7" />
+
 Figure 13. The shell scripts that copy Dridex.
+
 Afterward, the injected explorer.exe process creates persistence for the copied binaries using up to three methods:
 
-A registry update under HKCU\SOFWARE\Microsoft\Windows\CurrentVersion\Run (example in Figure 14)
-A Windows shortcut under the user's AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup folder
-A scheduled task
-Image 14 is an alert in Cortex XDR. Some of the information is redacted. Two file paths are included.
+1) A registry update under *HKCU\SOFWARE\Microsoft\Windows\CurrentVersion\Run* (example in Figure 14)
+2) A Windows shortcut under the user's *AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup* folder
+3) A scheduled task
+
+<img width="1538" height="326" alt="image" src="https://github.com/user-attachments/assets/048d655b-5c45-4a34-8370-4f0c3629965a" />
+
 Figure 14. Cortex XDR alert on Dridex creating a scheduled task for persistence.
+
 Figure 15 shows Cortex XDR alerting on the legitimate file DeviceEnroller.exe side-loading a malicious Dridex DLL.
 
-15 is a screenshot of a process diagram in Cortex XDR. The alert name is highlighted by a red rectangle. Some of the information has been redacted. 
-Figure 15. Alert for the legitimate DeviceEnroller.exe side-loads the malicious Dridex DLL.
-Principles for Efficient DLL Hijacking Detection
+<img width="1620" height="726" alt="image" src="https://github.com/user-attachments/assets/09ad8cf5-9b50-42c3-9ced-1876ee73fc3a" />
+
+Figure 15. Alert for the legitimate DeviceEnroller.exe side-loads the malicious Dridex **DLL**.
+
+<img width="1620" height="726" alt="image" src="https://github.com/user-attachments/assets/d278b691-c2f4-48c9-9434-b037b26fd403" />
+
+---
+
+### Principles for Efficient DLL Hijacking Detection
+
 Pinpointing instances where an executable unexpectedly loads a malicious DLL with an identical name, but that is otherwise different in its content, is a rather challenging task. This challenge significantly increases when attempting to detect these behavioral anomalies at scale.
 
 In this section we provide several principles for effective detection of DLL hijacking, including its variations. The principles will focus on the malicious DLL, the vulnerable application and the loading event, where a vulnerable application loads the malicious DLL.
@@ -227,37 +271,48 @@ In this section we provide several principles for effective detection of DLL hij
 ### Malicious DLL
 Since the malicious DLL has the same name as a legitimate DLL, we look for abnormalities. For example:
 
-No digital signature or a stolen signature
-An unusual file size
-Unusually high or low entropy
-A rare file hash (compared to baseline) in the organization
-DLL compilation time significantly newer than the loading application
-A DLL placed in a path it doesn’t usually reside in
-Vulnerable Application
-The vulnerable application is usually a legitimate one to allow better disguise for the malicious DLL execution. Given that, we proceed to seek out distinct traits:
+* No digital signature or a stolen signature
+* An unusual file size
+* Unusually high or low entropy
+* A rare file hash (compared to baseline) in the organization
+* DLL compilation time significantly newer than the loading application
+* A DLL placed in a path it doesn’t usually reside in
 
 ---
 
-### Usually a valid digital signature
-Trusted vendors (antivirus, browsers, VPNs, Microsoft applications) are a common target
-Commonly abused application (by hash or version)
-In DLL side-loading
-It will usually be an uncommon application in the organization
-It will usually use an uncommon directory (e.g., C:\Users\<Username>\AppData, C:\ProgramData)
-Loading Event
+Vulnerable Application
+* The vulnerable application is usually a legitimate one to allow better disguise for the malicious DLL execution. Given that, we proceed to seek out distinct traits:
+* Usually a valid digital signature
+* Trusted vendors (antivirus, browsers, VPNs, Microsoft applications) are a common target
+* Commonly abused application (by hash or version)
+* In DLL side-loading
+  * It will usually be an uncommon application in the organization
+  * It will usually use an uncommon directory (e.g.,* C:\Users\<Username>\AppData*, *C:\ProgramData*)
+
+---
+
+### Loading Event
 We can find different abnormalities also within the loading event. For example:
 
-The first time the application loads a suspected DLL name and/or its hash
-The application usually loads several DLLs, but now it loads only one
-Mitigating the DLL Hijacking Attack Surface
+* The first time the application loads a suspected DLL name and/or its hash
+* The application usually loads several DLLs, but now it loads only one
+
+---
+
+### Mitigating the DLL Hijacking Attack Surface
+
 To secure applications from possible DLL hijacking attacks, developers need to be cognizant of this attack technique and integrate diverse protective measures.
 
-Microsoft has published a DLL security article covering several best practices to support developers in this effort, including the following:
+Microsoft has published a [DLL security article](https://learn.microsoft.com/en-us/windows/win32/dlls/dynamic-link-library-security) covering several best practices to support developers in this effort, including the following:
 
-Wherever possible, specify a fully qualified path when loading DLLs or triggering new process executions.
-Gain more control of your application behavior by utilizing DLL redirection and manifests.
-Do not assume the operating system version when users execute an application. Develop your application to be handled as intended in all OSes.
-Conclusion
+* Wherever possible, specify a fully qualified path when loading DLLs or triggering new process executions.
+* Gain more control of your application behavior by utilizing [DLL redirection](https://learn.microsoft.com/en-us/windows/win32/dlls/dynamic-link-library-redirection) and [manifests](https://learn.microsoft.com/en-us/windows/desktop/SbsCs/manifests).
+* Do not assume the operating system version when users execute an application. Develop your application to be handled as intended in all OSes.
+
+---
+
+### Conclusion
+
 This article covers DLL hijacking, providing the technical background needed to understand how threat actors weaponize it, along with an explanation of popular variations in its implementation.
 
 In addition, we provide examples that demonstrate how various threat actors – both APT nation-state and cybercrime groups – rely on this technique to achieve stealth, persistence and privilege escalation in their operations.
@@ -267,21 +322,25 @@ Lastly, we discuss possible approaches for detecting and mitigating DLL hijackin
 ---
 
 ### Protections and Mitigations
+
 For Palo Alto Networks customers, our products and services provide the following coverage associated with the threats described above:
 
-Next-Generation Firewall and Advanced WildFire accurately identifies known samples as malicious.
-Advanced URL Filtering and DNS Security identify domains associated with this group as malicious.
-Prisma Cloud
-When paired with the WildFire integration, the Prisma Cloud Defender agent will identify malicious binaries and make verdict determinations when analyzing executing processes.
-When paired with XSIAM, the Prisma Cloud Defender is enabled to block malicious processes from operating within the cloud environment.
-Prevents the execution of known malicious malware, and also prevents the execution of unknown malware using Behavioral Threat Protection and machine learning based on the Local Analysis module.
-Cortex XDR and XSIAM
-Detects known and novel DLL hijacking attacks, using the new generic Analytics DLL Hijacking tag.
-Prevents the execution of known malicious malware, and also prevents the execution of unknown malware using Behavioral Threat Protection and machine learning based on the Local Analysis module.
-Protects against credential gathering tools and techniques using the new Credential Gathering Protection available from Cortex XDR 3.4.
-Protects from threat actors dropping and executing commands from web shells using Anti-Webshell Protection, newly released in Cortex XDR 3.4.
-Protects against exploitation of different vulnerabilities including ProxyShell and ProxyLogon using the Anti-Exploitation modules as well as Behavioral Threat Protection.
-Cortex XDR Pro detects post exploit activity, including credential-based attacks, with behavioral analytics.
+* [Next-Generation Firewall](https://www.paloaltonetworks.com/network-security/next-generation-firewall) and [Advanced WildFire](https://www.paloaltonetworks.com/products/secure-the-network/wildfire?_gl=1*nq7ug8*_ga*NzQyNjM2NzkuMTY2NjY3OTczNw..*_ga_KS2MELEEFC*MTY2OTcyNDAwMC4zMC4xLjE2Njk3MjQwNjEuNjAuMC4w) accurately identifies known samples as malicious.
+* [Advanced URL Filtering](https://www.paloaltonetworks.com/network-security/advanced-url-filtering?_gl=1*13pmp8e*_ga*NzQyNjM2NzkuMTY2NjY3OTczNw..*_ga_KS2MELEEFC*MTY2OTczNjA2MS4zMS4wLjE2Njk3MzYwNjEuNjAuMC4w) and [DNS Security](https://www.paloaltonetworks.com/network-security/dns-security?_gl=1*13pmp8e*_ga*NzQyNjM2NzkuMTY2NjY3OTczNw..*_ga_KS2MELEEFC*MTY2OTczNjA2MS4zMS4wLjE2Njk3MzYwNjEuNjAuMC4w) identify domains associated with this group as malicious.
+* Prisma Cloud
+  * When paired with the WildFire integration, the [Prisma Cloud Defender](https://docs.prismacloud.io/en/classic/compute-admin-guide/technology-overviews/defender-architecture) agent will identify malicious binaries and make verdict determinations when analyzing executing processes.
+  * When paired with XSIAM, the Prisma Cloud Defender is enabled to block malicious processes from operating within the cloud environment.
+  * Prevents the execution of known malicious malware, and also prevents the execution of unknown malware using Behavioral Threat Protection and machine learning based on the Local Analysis module.
+* [Cortex XDR](https://www.paloaltonetworks.com/cortex/cortex-xdr?_gl=1*13pmp8e*_ga*NzQyNjM2NzkuMTY2NjY3OTczNw..*_ga_KS2MELEEFC*MTY2OTczNjA2MS4zMS4wLjE2Njk3MzYwNjEuNjAuMC4w) and [XSIAM](https://www.paloaltonetworks.com/cortex/cortex-xsiam)
+  * Detects known and novel DLL hijacking attacks, using the new generic Analytics DLL Hijacking tag.
+  * Prevents the execution of known malicious malware, and also prevents the execution of unknown malware using [Behavioral Threat Protection](https://www.paloaltonetworks.com/products/secure-the-network/subscriptions/threat-prevention?_gl=1*13pmp8e*_ga*NzQyNjM2NzkuMTY2NjY3OTczNw..*_ga_KS2MELEEFC*MTY2OTczNjA2MS4zMS4wLjE2Njk3MzYwNjEuNjAuMC4w) and machine learning based on the Local Analysis module.
+  * Protects against credential gathering tools and techniques using the new Credential Gathering Protection available from Cortex XDR 3.4.
+  * Protects from threat actors dropping and executing commands from web shells using Anti-Webshell Protection, newly released in Cortex XDR 3.4.
+  * Protects against exploitation of different vulnerabilities including ProxyShell and ProxyLogon using the Anti-Exploitation modules as well as Behavioral Threat Protection.
+  * Cortex XDR Pro [detects post exploit activity](https://docs.paloaltonetworks.com/cortex/cortex-xdr/cortex-xdr-analytics-alert-reference/cortex-xdr-analytics-alert-reference/analytics-alerts-by-required-data-source), including credential-based attacks, with behavioral analytics.
+
+---
+
 If you think you might have been impacted or have an urgent matter, get in touch with the Unit 42 Incident Response team or call:
 
 North America Toll-Free: 866.486.4842 (866.4.UNIT42)
@@ -293,6 +352,7 @@ Palo Alto Networks has shared these findings with our fellow Cyber Threat Allian
 ---
 
 ## Indicators of Compromise
+
 The following are SHA256 hashes of files from the examples used in this article.
 
 ---
