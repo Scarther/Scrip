@@ -1,7 +1,23 @@
 #!/bin/bash
 #############################################################################
+#############################################################################
+#############################################################################
+# WHAT IT IS USED FOR - HARDEN VMWARE - RENAME HARDEN.SH
+
+
 # Kali Linux VM Internal Hardening Script
 # Run this INSIDE your Kali Linux VM for additional security
+
+#############################################################################
+#############################################################################
+#############################################################################
+# HOW TO RUN BASH SCRIPT
+
+# Start your Kali VM
+# Open terminal in Kali
+# Create the script: sudo nano /root/harden.sh
+# Paste the Kali hardening script
+# Run it: sudo bash /root/harden.sh
 #############################################################################
 
 # Colors
