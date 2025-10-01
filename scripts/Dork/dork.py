@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
 """
 OSINT Google Dork Suite - Complete Investigation Toolkit
-All-in-one tool for law enforcement OSINT investigations
+All-in-one tool
 
 For: Missing persons, stolen property, gang tracking, criminal investigations,
      domestic terrorism monitoring, digital footprint analysis
-
-For authorized law enforcement use only
 """
 
 import sys
@@ -959,3 +957,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
