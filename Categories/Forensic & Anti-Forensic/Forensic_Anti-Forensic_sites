@@ -1,4 +1,5 @@
-Xifer - Change metadata
+Xifer - Change metadata - (Be aware that modifying the exfil metadata, it will show that it was Exiftool modified and shows it was edited with Adobe Photoshop in the string extraction)
+
 https://www.thexifer.net/
 
 Forensically - Review photos for AI content
