@@ -975,6 +975,10 @@
                         <label for="social-skype">Skype</label>
                     </div>
                     <div>
+                        <input type="checkbox" id="social-4chan" class="social-platforms-checkbox">
+                        <label for="social-4chan">4chan</label>
+                    </div>
+                    <div>
                         <input type="checkbox" id="social-viber" class="social-platforms-checkbox">
                         <label for="social-viber">Viber</label>
                     </div>
@@ -1660,6 +1664,7 @@
                         <div><input type="checkbox" id="platform-snapchat" class="major-social-checkbox"><label for="platform-snapchat">Snapchat</label></div>
                         <div><input type="checkbox" id="platform-youtube" class="major-social-checkbox"><label for="platform-youtube">YouTube</label></div>
                         <div><input type="checkbox" id="platform-reddit" class="major-social-checkbox"><label for="platform-reddit">Reddit</label></div>
+                        <div><input type="checkbox" id="platform-4chan" class="major-social-checkbox"><label for="platform-4chan">4chan</label></div>
                         <div><input type="checkbox" id="platform-pinterest" class="major-social-checkbox"><label for="platform-pinterest">Pinterest</label></div>
                         <div><input type="checkbox" id="platform-tumblr" class="major-social-checkbox"><label for="platform-tumblr">Tumblr</label></div>
                     </div>
@@ -2013,6 +2018,99 @@
                             <input type="text" id="youtube-url-videos" placeholder="e.g., /videos" value="/videos">
                             <small>Search channel videos page</small>
                         </div>
+                    </div>
+                </div>
+
+                <!-- 4chan URL Filtering -->
+                <div style="margin-left: 15px; margin-bottom: 15px;">
+                    <strong>4chan URL Filtering:</strong>
+                    <p style="color: #ccc; font-size: 0.9em; margin-bottom: 10px;">Configure 4chan search patterns and control live vs. all post filtering</p>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fourchan-url-board">Board Pattern:</label>
+                            <input type="text" id="fourchan-url-board" placeholder="e.g., /pol/, /b/, /g/" value="/pol/">
+                            <small>Search specific 4chan boards (4chan.org/pol/)</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="fourchan-url-thread">Thread Pattern:</label>
+                            <input type="text" id="fourchan-url-thread" placeholder="e.g., thread, res" value="thread">
+                            <small>Search specific thread discussions</small>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fourchan-url-catalog">Catalog Pattern:</label>
+                            <input type="text" id="fourchan-url-catalog" placeholder="e.g., catalog" value="catalog">
+                            <small>Search board catalogs (4chan.org/board/catalog)</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="fourchan-url-archive">Archive Pattern:</label>
+                            <input type="text" id="fourchan-url-archive" placeholder="e.g., archive" value="archive">
+                            <small>Search archived threads</small>
+                        </div>
+                    </div>
+
+                    <!-- Derefer Toggle for Live Posts -->
+                    <div style="border: 2px solid #ffff00; padding: 10px; border-radius: 5px; margin: 15px 0; background: rgba(255, 255, 0, 0.1);">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="exclude-derefer-4chan" checked>
+                            <label for="exclude-derefer-4chan" style="color: #ffff00; font-weight: bold;">🔴 Derefer? Look for Live posts now</label>
+                            <small style="display: block; color: #ccc; margin-top: 5px;">When checked: Excludes dereferenced/dead posts (-inurl:derefer) to focus on active 4chan content. Uncheck to search ALL posts including archived/dead content.</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4chan Archive Sites -->
+                <div style="margin-left: 15px; margin-bottom: 15px; border: 2px solid #ff9900; padding: 10px; border-radius: 5px;">
+                    <strong style="color: #ff9900;">🗃️ 4chan Archive Sites:</strong>
+                    <p style="color: #ccc; font-size: 0.9em; margin-bottom: 10px;">Search major 4chan archive sites for historical content</p>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="archive-4plebs">4plebs Archive:</label>
+                            <input type="text" id="archive-4plebs" placeholder="archive.4plebs.org" value="archive.4plebs.org" readonly>
+                            <small>Archives: /adv/, /f/, /hr/, /o/, /pol/, /sp/, /tg/, /trv/, /tv/, /x/</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="archive-desu">Desuarchive:</label>
+                            <input type="text" id="archive-desu" placeholder="desuarchive.org" value="desuarchive.org" readonly>
+                            <small>Archives: /a/, /aco/, /c/, /co/, /g/, /his/, /k/, /m/, /mlp/, /r9k/, /tg/</small>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="archive-fireden">Fireden:</label>
+                            <input type="text" id="archive-fireden" placeholder="boards.fireden.net" value="boards.fireden.net" readonly>
+                            <small>Archives: /cm/, /co/, /ic/, /sci/, /vip/, /y/</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="archive-4archive">4Archive:</label>
+                            <input type="text" id="archive-4archive" placeholder="4archive.org" value="4archive.org" readonly>
+                            <small>General 4chan archive search</small>
+                        </div>
+                    </div>
+
+                    <!-- 4search - Most Robust Archive Search -->
+                    <div style="border: 2px solid #00ff00; padding: 10px; border-radius: 5px; margin: 15px 0; background: rgba(0, 255, 0, 0.1);">
+                        <div class="form-row">
+                            <div class="form-group" style="width: 100%;">
+                                <label for="archive-4search" style="color: #00ff00; font-weight: bold;">🚀 4search (Most Robust):</label>
+                                <input type="text" id="archive-4search" placeholder="4search.neocities.org" value="4search.neocities.org" readonly>
+                                <small style="color: #00ff00;">Meta-search across ALL 4chan archives with advanced filtering. Updated May 2023.</small>
+                            </div>
+                        </div>
+                        <div class="checkbox-item" style="margin-top: 10px;">
+                            <input type="checkbox" id="include-4search-priority" checked>
+                            <label for="include-4search-priority" style="color: #00ff00; font-weight: bold;">⭐ Prioritize 4search in archive searches</label>
+                            <small style="display: block; color: #ccc; margin-top: 5px;">Include 4search.neocities.org as the primary archive search (most comprehensive)</small>
+                        </div>
+                    </div>
+
+                    <div class="checkbox-item" style="margin-top: 10px;">
+                        <input type="checkbox" id="include-4chan-archives" checked>
+                        <label for="include-4chan-archives" style="color: #ff9900; font-weight: bold;">🔍 Include all other 4chan archive sites</label>
+                        <small style="display: block; color: #ccc; margin-top: 5px;">Automatically searches across 4plebs, Desuarchive, Fireden, and 4Archive</small>
                     </div>
                 </div>
 
@@ -4780,6 +4878,7 @@
             'tiktok': 'tiktok.com',
             'youtube': 'youtube.com',
             'reddit': 'reddit.com',
+            '4chan': '4chan.org',
             'discord': 'discord.com',
             'telegram': 't.me OR site:telegram.org',
             'snapchat': 'snapchat.com',
@@ -5775,6 +5874,7 @@
                         'snapchat': 'snapchat.com',
                         'youtube': 'youtube.com',
                         'reddit': 'reddit.com',
+                        '4chan': '4chan.org',
                         'pinterest': 'pinterest.com',
                         'tumblr': 'tumblr.com',
                         'discord': 'discord.com OR discord.gg',
@@ -6300,6 +6400,7 @@
                     'tiktok': 'tiktok.com',
                     'youtube': 'youtube.com',
                     'reddit': 'reddit.com',
+                    '4chan': '4chan.org',
                     'snapchat': 'snapchat.com',
                     'pinterest': 'pinterest.com',
                     'tumblr': 'tumblr.com',
@@ -6373,6 +6474,12 @@
                     youtube: {
                         channel: document.getElementById('youtube-url-channel')?.value?.trim() || '',
                         videos: document.getElementById('youtube-url-videos')?.value?.trim() || ''
+                    },
+                    fourchan: {
+                        board: document.getElementById('fourchan-url-board')?.value?.trim() || '',
+                        thread: document.getElementById('fourchan-url-thread')?.value?.trim() || '',
+                        catalog: document.getElementById('fourchan-url-catalog')?.value?.trim() || '',
+                        archive: document.getElementById('fourchan-url-archive')?.value?.trim() || ''
                     },
                     followers: {
                         twitter: document.getElementById('followers-twitter')?.value?.trim() || '',
@@ -6663,6 +6770,110 @@
                             description: 'Direct Facebook friends page'
                         });
                     }
+                }
+
+                // 4chan URL filtering with derefer toggle
+                const excludeDerefer = document.getElementById('exclude-derefer-4chan')?.checked || false;
+                const dereferSuffix = excludeDerefer ? ' -inurl:derefer' : '';
+                const postTypeDesc = excludeDerefer ? ' (live posts)' : ' (all posts)';
+
+                if (platform === '4chan' && urlFilters.fourchan.board) {
+                    if (username) {
+                        queries.push({
+                            query: `site:4chan.org "${username}" inurl:${urlFilters.fourchan.board}${dereferSuffix}`,
+                            description: `4chan board-specific search${postTypeDesc}`
+                        });
+                    }
+                    if (realName) {
+                        queries.push({
+                            query: `site:4chan.org "${realName}" inurl:${urlFilters.fourchan.board}${dereferSuffix}`,
+                            description: `4chan board real name search${postTypeDesc}`
+                        });
+                    }
+                    if (keywords) {
+                        queries.push({
+                            query: `site:4chan.org "${keywords}" inurl:${urlFilters.fourchan.board}${dereferSuffix}`,
+                            description: `4chan board keyword search${postTypeDesc}`
+                        });
+                    }
+                }
+
+                if (platform === '4chan' && urlFilters.fourchan.thread) {
+                    if (username) {
+                        queries.push({
+                            query: `site:4chan.org "${username}" inurl:${urlFilters.fourchan.thread}${dereferSuffix}`,
+                            description: `4chan thread search${postTypeDesc}`
+                        });
+                    }
+                }
+
+                if (platform === '4chan' && urlFilters.fourchan.catalog) {
+                    if (username) {
+                        queries.push({
+                            query: `site:4chan.org "${username}" inurl:${urlFilters.fourchan.catalog}${dereferSuffix}`,
+                            description: `4chan catalog search${postTypeDesc}`
+                        });
+                    }
+                }
+
+                // 4search Priority Archive (Most Robust)
+                const include4searchPriority = document.getElementById('include-4search-priority')?.checked || false;
+                if (include4searchPriority && platform === '4chan') {
+                    if (username) {
+                        queries.push({
+                            query: `"${username}" site:4search.neocities.org`,
+                            description: '4search meta-archive username search (most comprehensive)'
+                        });
+                    }
+                    if (realName) {
+                        queries.push({
+                            query: `"${realName}" site:4search.neocities.org`,
+                            description: '4search meta-archive real name search (most comprehensive)'
+                        });
+                    }
+                    if (keywords) {
+                        keywords.split(',').forEach(keyword => {
+                            const kw = keyword.trim();
+                            if (kw) {
+                                queries.push({
+                                    query: `"${kw}" site:4search.neocities.org`,
+                                    description: `4search meta-archive keyword: ${kw} (most comprehensive)`
+                                });
+                            }
+                        });
+                    }
+                }
+
+                // 4chan Archive searches (if enabled)
+                const include4chanArchives = document.getElementById('include-4chan-archives')?.checked || false;
+                if (include4chanArchives && platform === '4chan') {
+                    const archiveSites = ['archive.4plebs.org', 'desuarchive.org', 'boards.fireden.net', '4archive.org'];
+
+                    archiveSites.forEach(archiveSite => {
+                        if (username) {
+                            queries.push({
+                                query: `"${username}" site:${archiveSite}`,
+                                description: `${archiveSite} username search (archived)`
+                            });
+                        }
+                        if (realName) {
+                            queries.push({
+                                query: `"${realName}" site:${archiveSite}`,
+                                description: `${archiveSite} real name search (archived)`
+                            });
+                        }
+                        if (keywords) {
+                            keywords.split(',').forEach(keyword => {
+                                const kw = keyword.trim();
+                                if (kw) {
+                                    queries.push({
+                                        query: `"${kw}" site:${archiveSite}`,
+                                        description: `${archiveSite} keyword: ${kw} (archived)`
+                                    });
+                                }
+                            });
+                        }
+                    });
                 }
 
                 // Archive.org searches for all platforms (if enabled)
@@ -7697,9 +7908,17 @@
             }
 
             if (platforms.forums) {
+                const excludeDereferGang = document.getElementById('exclude-derefer-4chan')?.checked || false;
+                const dereferSuffixGang = excludeDereferGang ? ' -inurl:derefer' : '';
+                const postTypeDescGang = excludeDereferGang ? ' (live posts)' : ' (all posts)';
+
                 queries.push({
-                    query: `"${gangName}" site:4chan.org`,
-                    description: '4chan forum references'
+                    query: `"${gangName}" site:4chan.org${dereferSuffixGang}`,
+                    description: `4chan forum references${postTypeDescGang}`
+                });
+                queries.push({
+                    query: `"${gangName}" site:4search.neocities.org`,
+                    description: '4chan archive search via 4search (comprehensive)'
                 });
                 queries.push({
                     query: `"${gangName}" site:reddit.com ${location}`,
@@ -7807,9 +8026,17 @@
                 });
 
                 // Dark web and alternative platform searches (always included for terrorism monitoring)
+                const excludeDereferTerror = document.getElementById('exclude-derefer-4chan')?.checked || false;
+                const dereferSuffixTerror = excludeDereferTerror ? ' -inurl:derefer' : '';
+                const postTypeDescTerror = excludeDereferTerror ? ' (live posts)' : ' (all posts)';
+
                 queries.push({
-                    query: `"${subject}" site:4chan.org ${location}`,
-                    description: '4chan forum monitoring'
+                    query: `"${subject}" site:4chan.org ${location}${dereferSuffixTerror}`,
+                    description: `4chan forum monitoring${postTypeDescTerror}`
+                });
+                queries.push({
+                    query: `"${subject}" site:4search.neocities.org ${location}`,
+                    description: '4chan archive monitoring via 4search (comprehensive)'
                 });
                 queries.push({
                     query: `"${subject}" site:8kun.top ${location}`,
