@@ -2112,6 +2112,11 @@
                         <label for="include-4chan-archives" style="color: #ff9900; font-weight: bold;">🔍 Include all other 4chan archive sites</label>
                         <small style="display: block; color: #ccc; margin-top: 5px;">Automatically searches across 4plebs, Desuarchive, Fireden, and 4Archive</small>
                     </div>
+                    <div class="checkbox-item" style="margin-top: 10px;">
+                        <input type="checkbox" id="include-4chan-board-archives" checked>
+                        <label for="include-4chan-board-archives" style="color: #00ffff; font-weight: bold;">📋 Include individual 4chan board archives</label>
+                        <small style="display: block; color: #ccc; margin-top: 5px;">Searches each individual board on 4chan.neocities.org (comprehensive board-by-board search)</small>
+                    </div>
                 </div>
 
                 <!-- Followers URL Patterns for All Platforms -->
@@ -6844,6 +6849,37 @@
                     }
                 }
 
+                // Individual 4chan Board Archive searches using 4chan.neocities.org
+                const include4chanBoardArchives = document.getElementById('include-4chan-board-archives')?.checked || false;
+                if (include4chanBoardArchives && platform === '4chan') {
+                    const boards = ['3', 'a', 'aco', 'adv', 'an', 'asp', 'b', 'bant', 'biz', 'c', 'cgl', 'ck', 'cm', 'co', 'con', 'd', 'diy', 'e', 'f', 'fa', 'fit', 'g', 'gd', 'gif', 'h', 'hc', 'his', 'hm', 'hr', 'i', 'ic', 'int', 'jp', 'k', 'lgbt', 'lit', 'm', 'mlp', 'mu', 'n', 'news', 'o', 'out', 'p', 'po', 'pol', 'pw', 'qa', 'qb', 'qst', 'r', 'r9k', 's', 's4s', 'sci', 'soc', 'sp', 't', 'tg', 'toy', 'trash', 'trv', 'tv', 'u', 'v', 'vg', 'vip', 'vm', 'vmg', 'vp', 'vr', 'vrpg', 'vst', 'vt', 'w', 'wg', 'wsg', 'wsr', 'x', 'xs', 'y'];
+                    boards.forEach(board => {
+                        if (username) {
+                            queries.push({
+                                query: `"${username}" site:4chan.neocities.org/${board}`,
+                                description: `4chan.neocities.org /${board}/ board archive username search`
+                            });
+                        }
+                        if (realName) {
+                            queries.push({
+                                query: `"${realName}" site:4chan.neocities.org/${board}`,
+                                description: `4chan.neocities.org /${board}/ board archive real name search`
+                            });
+                        }
+                        if (keywords) {
+                            keywords.split(',').forEach(keyword => {
+                                const kw = keyword.trim();
+                                if (kw) {
+                                    queries.push({
+                                        query: `"${kw}" site:4chan.neocities.org/${board}`,
+                                        description: `4chan.neocities.org /${board}/ board archive keyword: ${kw}`
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
+
                 // 4chan Archive searches (if enabled)
                 const include4chanArchives = document.getElementById('include-4chan-archives')?.checked || false;
                 if (include4chanArchives && platform === '4chan') {
@@ -7920,6 +7956,17 @@
                     query: `"${gangName}" site:4search.neocities.org`,
                     description: '4chan archive search via 4search (comprehensive)'
                 });
+                // Individual 4chan Board Archive searches for gang activity
+                const include4chanBoardArchivesGang = document.getElementById('include-4chan-board-archives')?.checked || false;
+                if (include4chanBoardArchivesGang) {
+                    const boards = ['3', 'a', 'aco', 'adv', 'an', 'asp', 'b', 'bant', 'biz', 'c', 'cgl', 'ck', 'cm', 'co', 'con', 'd', 'diy', 'e', 'f', 'fa', 'fit', 'g', 'gd', 'gif', 'h', 'hc', 'his', 'hm', 'hr', 'i', 'ic', 'int', 'jp', 'k', 'lgbt', 'lit', 'm', 'mlp', 'mu', 'n', 'news', 'o', 'out', 'p', 'po', 'pol', 'pw', 'qa', 'qb', 'qst', 'r', 'r9k', 's', 's4s', 'sci', 'soc', 'sp', 't', 'tg', 'toy', 'trash', 'trv', 'tv', 'u', 'v', 'vg', 'vip', 'vm', 'vmg', 'vp', 'vr', 'vrpg', 'vst', 'vt', 'w', 'wg', 'wsg', 'wsr', 'x', 'xs', 'y'];
+                    boards.forEach(board => {
+                        queries.push({
+                            query: `"${gangName}" site:4chan.neocities.org/${board} ${location}`,
+                            description: `Gang activity on 4chan.neocities.org /${board}/ board archive`
+                        });
+                    });
+                }
                 queries.push({
                     query: `"${gangName}" site:reddit.com ${location}`,
                     description: 'Reddit discussions'
@@ -8038,6 +8085,17 @@
                     query: `"${subject}" site:4search.neocities.org ${location}`,
                     description: '4chan archive monitoring via 4search (comprehensive)'
                 });
+                // Individual 4chan Board Archive searches for terrorism monitoring
+                const include4chanBoardArchivesTerror = document.getElementById('include-4chan-board-archives')?.checked || false;
+                if (include4chanBoardArchivesTerror) {
+                    const boards = ['3', 'a', 'aco', 'adv', 'an', 'asp', 'b', 'bant', 'biz', 'c', 'cgl', 'ck', 'cm', 'co', 'con', 'd', 'diy', 'e', 'f', 'fa', 'fit', 'g', 'gd', 'gif', 'h', 'hc', 'his', 'hm', 'hr', 'i', 'ic', 'int', 'jp', 'k', 'lgbt', 'lit', 'm', 'mlp', 'mu', 'n', 'news', 'o', 'out', 'p', 'po', 'pol', 'pw', 'qa', 'qb', 'qst', 'r', 'r9k', 's', 's4s', 'sci', 'soc', 'sp', 't', 'tg', 'toy', 'trash', 'trv', 'tv', 'u', 'v', 'vg', 'vip', 'vm', 'vmg', 'vp', 'vr', 'vrpg', 'vst', 'vt', 'w', 'wg', 'wsg', 'wsr', 'x', 'xs', 'y'];
+                    boards.forEach(board => {
+                        queries.push({
+                            query: `"${subject}" site:4chan.neocities.org/${board} ${location}`,
+                            description: `Terrorism monitoring on 4chan.neocities.org /${board}/ board archive`
+                        });
+                    });
+                }
                 queries.push({
                     query: `"${subject}" site:8kun.top ${location}`,
                     description: '8kun board monitoring'
