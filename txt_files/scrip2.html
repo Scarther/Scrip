@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE ARCHIVE - Demonic Cyberpunk Database</title>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Roboto+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a url('https://cdn.displate.com/artwork/270x380/2024-12-30/94e2bf1b-6065-4f01-802f-5dfd9d60cdf9.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #ff0040;
+            font-family: 'Roboto Mono', monospace;
+            overflow-x: hidden;
+            cursor: crosshair;
+            position: relative;
+        }
+
+        /* Dark overlay for text readability */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.7);
+            z-index: -2;
+        }
+
+        /* Matrix Rain Background - Reduced opacity */
+        #matrix-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.05; /* Reduced for better background visibility */
+        }
+
+        /* Glitch Effect */
+        .glitch {
+            animation: glitch 2s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 100% { text-shadow: 0.05em 0 0 #ff0040, -0.05em -0.025em 0 #00ffcc, 0.025em 0.05em 0 #6600ff; }
+            14% { text-shadow: 0.05em 0 0 #ff0040, -0.05em -0.025em 0 #00ffcc, 0.025em 0.05em 0 #6600ff; }
+            15% { text-shadow: -0.05em -0.025em 0 #ff0040, 0.025em 0.025em 0 #00ffcc, -0.05em -0.05em 0 #6600ff; }
+            49% { text-shadow: -0.05em -0.025em 0 #ff0040, 0.025em 0.025em 0 #00ffcc, -0.05em -0.05em 0 #6600ff; }
+            50% { text-shadow: 0.025em 0.05em 0 #ff0040, 0.05em 0 0 #00ffcc, 0 -0.05em 0 #6600ff; }
+            99% { text-shadow: 0.025em 0.05em 0 #ff0040, 0.05em 0 0 #00ffcc, 0 -0.05em 0 #6600ff; }
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 2rem;
+            border-bottom: 2px solid #6600ff;
+            box-shadow: 0 0 30px #6600ff;
+            background: rgba(10, 10, 10, 0.5); /* Semi-transparent header */
+        }
+
+        .header h1 {
+            font-family: 'Creepster', cursive;
+            font-size: 4rem;
+            letter-spacing: 0.3rem;
+            color: #ff0040;
+            text-shadow: 0 0 20px #ff0040, 0 0 40px #ff0040;
+        }
+
+        .header p {
+            color: #00ffcc;
+            text-shadow: 0 0 10px #00ffcc;
+            margin-top: 1rem;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Category Cards */
+        .category {
+            background: rgba(26, 0, 26, 0.8); /* Semi-transparent */
+            border: 2px solid #6600ff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 0 20px rgba(102, 0, 255, 0.5);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px); /* Add blur effect */
+        }
+
+        .category:hover {
+            box-shadow: 0 0 30px rgba(255, 0, 64, 0.7);
+            border-color: #ff0040;
+            transform: translateY(-5px);
+            background: rgba(26, 0, 26, 0.9);
+        }
+
+        .category h2 {
+            font-family: 'Creepster', cursive;
+            font-size: 2rem;
+            color: #ff0040;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .category h2::before {
+            content: "⛧";
+            color: #6600ff;
+            font-size: 2.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .subcategory {
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .subcategory.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .subcategory h3 {
+            color: #00ffcc;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            text-shadow: 0 0 10px #00ffcc;
+        }
+
+        .link-list {
+            list-style: none;
+            margin-left: 1rem;
+        }
+
+        .link-list li {
+            margin: 0.5rem 0;
+            padding-left: 1rem;
+            border-left: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .link-list li:hover {
+            border-left-color: #ff0040;
+            transform: translateX(5px);
+        }
+
+        .link-list a {
+            color: #ff0040;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 0.3rem;
+        }
+
+        .link-list a:hover {
+            color: #fff;
+            background: rgba(255, 0, 64, 0.2);
+            text-shadow: 0 0 10px #ff0040;
+        }
+
+        /* Pentagram Easter Egg */
+        .pentagram-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 150px;
+            height: 150px;
+            z-index: 1000;
+            cursor: pointer;
+        }
+
+        .pentagram {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 10px #6600ff);
+        }
+
+        .pentagram-point {
+            fill: #ff0040;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .pentagram-point:hover {
+            opacity: 1;
+            filter: drop-shadow(0 0 10px #ff0040);
+        }
+
+        /* Hidden Dark Web Section */
+        .dark-web-secret {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .dark-web-secret.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .close-secret {
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
+            font-size: 2rem;
+            color: #ff0040;
+            cursor: pointer;
+            text-shadow: 0 0 10px #ff0040;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a001a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #6600ff;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff0040;
+        }
+
+        /* Secret notification */
+        .notification {
+            position: fixed;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ff0040;
+            color: #000;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            font-weight: bold;
+            display: none;
+            z-index: 1500;
+            box-shadow: 0 0 20px #ff0040;
+        }
+
+        .notification.show {
+            display: block;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateX(-50%) translateY(-100px); }
+            to { transform: translateX(-50%) translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="matrix-canvas"></canvas>
+    
+    <div class="header">
+        <h1 class="glitch">THE ARCHIVE</h1>
+        <p>⟁ COMPIL3D BY: JOHN R3DPATH & D0NGLE ⟁</p>
+        <p>⟁ SP3CIAL THANKS T0 ALL THE CR3AT0RS ⟁</p>
+    </div>
+
+    <div class="container" id="main-container">
+        <!-- Categories will be injected here -->
+    </div>
+
+    <!-- Pentagram Easter Egg -->
+    <div class="pentagram-container" id="pentagram-trigger">
+        <svg class="pentagram" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <filter id="glow">
+                    <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                    <feMerge>
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+            </defs>
+            <polygon points="100,20 180,80 150,170 50,170 20,80" 
+                     fill="none" stroke="#6600ff" stroke-width="3" filter="url(#glow)"/>
+            <polygon points="100,20 150,170 20,80 180,80 50,170" 
+                     fill="none" stroke="#6600ff" stroke-width="3" filter="url(#glow)"/>
+            <!-- Pentagram points -->
+            <circle class="pentagram-point" data-point="0" cx="100" cy="20" r="8"/>
+            <circle class="pentagram-point" data-point="1" cx="180" cy="80" r="8"/>
+            <circle class="pentagram-point" data-point="2" cx="150" cy="170" r="8"/>
+            <circle class="pentagram-point" data-point="3" cx="50" cy="170" r="8"/>
+            <circle class="pentagram-point" data-point="4" cx="20" cy="80" r="8"/>
+        </svg>
+    </div>
+
+    <!-- Secret Dark Web Section -->
+    <div class="dark-web-secret" id="dark-web-secret">
+        <span class="close-secret" onclick="closeSecret()">⛧</span>
+        <div class="header">
+            <h1 class="glitch">DARK WEB</h1>
+            <p>⟁ THE HIDDEN PATH REVEALED ⟁</p>
+        </div>
+        <div class="container" id="dark-web-container">
+            <!-- Dark web links will be injected here -->
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
+    <script>
+        // Matrix rain effect
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+        const fontSize = 12;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#0f0';
+            ctx.font = fontSize + 'px monospace';
+            
+            drops.forEach((y, index) => {
+                const char = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillText(char, index * fontSize, y * fontSize);
+                
+                if (y * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[index] = 0;
+                }
+                drops[index]++;
+            });
+        }
+
+        setInterval(drawMatrix, 50);
+
+        // Data structure
+        const categories = [
+            {
+                name: "AI MODELS",
+                subcategories: [
+                    {
+                        name: "Language Types",
+                        links: [
+                            { title: "YesChat", url: "https://www.yeschat.ai/gpts-9t563agKwXG-HackerGPT" },
+                            { title: "PenTest GPT", url: "https://pentestgpt.ai/fd296154-21a8-4b35-a4f5-1cc4a5beab80/chat" },
+                            { title: "HackerGPT", url: "https://www.hackergpt.co" },
+                            { title: "Roop", url: "https://github.com/s0md3v/roop" }
+                        ]
+                    },
+                    {
+                        name: "Photo Generating",
+                        links: [
+                            { title: "Roop (Face Swapping)", url: "https://github.com/s0md3v/roop" }
+                        ]
+                    },
+                    {
+                        name: "Malware Detection",
+                        links: [
+                            { title: "Malware Detection ML", url: "https://github.com/Kiinitix/Malware-Detection-using-Machine-learning" },
+                            { title: "Phishing Detection NLP", url: "https://github.com/Justmephoenix/PHISHING-DETECTION-WITH-NLP" }
+                        ]
+                    },
+                    {
+                        name: "Web Scaping",
+                        links: [
+                            { title: "ScrapeGraphAI", url: "https://github.com/ScrapeGraphAI/Scrapegraph-ai" }
+                        ]
+                    },
+                    {
+                        name: "From Scratch",
+                        links: [
+                            { title: "Lit GPT", url: "https://github.com/Lightning-AI/litgpt" },
+                            { title: "Generative AI For Beginners", url: "https://github.com/microsoft/generative-ai-for-beginners" }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: "OSINT",
+                subcategories: [
+                    {
+                        name: "Product Identifying",
+                        links: [
+                            { title: "MAC Address Search", url: "https://mac.lc/" },
+                            { title: "MAC Search", url: "https://www.ipchecktool.com/tool/macfinder" }
+                        ]
+                    },
+                    {
+                        name: "Site Tracking",
+                        links: [
+                            { title: "Visual Ping", url: "https://visualping.io/" },
+                            { title: "Delta Feed", url: "https://bitreading.com/deltafeed/" },
+                            { title: "Feedly", url: "http://www.feedly.com" },
+                            { title: "Follow That Page!", url: "http://www.followthatpage.com" },
+                            { title: "Google Alerts", url: "http://www.google.com/alerts" },
+                            { title: "SecurityTrails", url: "https://securitytrails.com/" },
+                            { title: "WebScout", url: "https://webscout.io/" }
+                        ]
+                    },
+                    {
+                        name: "OSINT Sites",
+                        links: [
+                            { title: "OSINT Framework", url: "https://osintframework.com/" },
+                            { title: "HaveIBeenPwned", url: "https://haveibeenpwned.com/" },
+                            { title: "Breach.vip", url: "https://breach.vip/" },
+                            { title: "PeopleLookup", url: "https://lookups.io/" },
+                            { title: "De Digger", url: "https://www.dedigger.com/" },
+                            { title: "Netlas.io", url: "https://app.netlas.io/asd/" },
+                            { title: "Intelligence X", url: "https://intelx.io/" }
+                        ]
+                    },
+                    {
+                        name: "Social Media",
+                        links: [
+                            { title: "Blackbird", url: "https://github.com/p1ngul1n0/blackbird" },
+                            { title: "Holehe", url: "https://github.com/megadose/holehe" },
+                            { title: "Toutatis", url: "https://github.com/megadose/toutatis" },
+                            { title: "Social Analyzer", url: "https://github.com/qeeqbox/social-analyzer" },
+                            { title: "Cross Linked", url: "https://github.com/m8sec/CrossLinked" },
+                            { title: "Terra", url: "https://github.com/xadhrit/terra" }
+                        ]
+                    },
+                    {
+                        name: "Phones",
+                        links: [
+                            { title: "Moriarty Project", url: "https://github.com/AzizKpln/Moriarty-Project" },
+                            { title: "PhoneSploit-Pro", url: "https://github.com/AzeemIdrisi/PhoneSploit-Pro" }
+                        ]
+                    },
+                    {
+                        name: "Frameworks",
+                        links: [
+                            { title: "Spiderfoot", url: "https://github.com/smicallef/spiderfoot" },
+                            { title: "Karma v2", url: "https://github.com/Dheerajmadhukar/karma_v2" },
+                            { title: "GHunt", url: "https://github.com/mxrch/GHunt" },
+                            { title: "MetaOSINT", url: "https://metaosint.github.io/" }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: "SCRIPTS / PROGRAMS",
+                subcategories: [
+                    {
+                        name: "Script Assistance",
+                        links: [
+                            { title: "PyLingual", url: "https://pylingual.io/" },
+                            { title: "Decompiler Explorer", url: "https://dogbolt.org/" },
+                            { title: "Java Decompiler", url: "https://jdec.app/" },
+                            { title: "DCode", url: "https://www.dcode.fr/en" }
+                        ]
+                    },
+                    {
+                        name: "Word Lists",
+                        links: [
+                            { title: "SecLists", url: "https://github.com/danielmiessler/SecLists" },
+                            { title: "0day Xfinity Wordlist", url: "https://github.com/0dayCTF/0day-Xfinity-Wordlist-Generator" }
+                        ]
+                    },
+                    {
+                        name: "Crackers / Bruteforce",
+                        links: [
+                            { title: "Kraken", url: "https://github.com/jasonxtn/Kraken" },
+                            { title: "Stegseek", url: "https://github.com/RickdeJager/stegseek" },
+                            { title: "Hash Cracker", url: "https://github.com/Malwareman007/Hash-Cracker" }
+                        ]
+                    },
+                    {
+                        name: "Malware Analysis",
+                        links: [
+                            { title: "Any Run", url: "https://any.run/" },
+                            { title: "Triage", url: "https://tria.ge/" },
+                            { title: "Mobile Security Framework", url: "https://github.com/MobSF/Mobile-Security-Framework-MobSF" },
+                            { title: "YaraHunter", url: "https://github.com/deepfence/YaraHunter" }
+                        ]
+                    },
+                    {
+                        name: "Digital Forensics",
+                        links: [
+                            { title: "IPED", url: "https://github.com/sepinf-inc/IPED" },
+                            { title: "Turbinia", url: "https://github.com/google/turbinia" },
+                            { title: "Live Forensicator", url: "https://github.com/Johnng007/Live-Forensicator" },
+                            { title: "Avilla Forensics", url: "https://github.com/AvillaDaniel/AvillaForensics" }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: "HACKING",
+                subcategories: [
+                    {
+                        name: "Bug Bounty",
+                        links: [
+                            { title: "HackerOne", url: "https://hackerone.com" },
+                            { title: "OWASP", url: "https://owasp.org" }
+                        ]
+                    },
+                    {
+                        name: "Payloads",
+                        links: [
+                            { title: "Payloads All The Things", url: "https://github.com/0dayCTF/PayloadsAllTheThings" },
+                            { title: "PixLoad", url: "https://github.com/blackhatethicalhacking/pixload" }
+                        ]
+                    },
+                    {
+                        name: "Malware",
+                        links: [
+                            { title: "THE ZOO", url: "https://github.com/ytisf/theZoo" },
+                            { title: "Malware Database", url: "https://github.com/Endermanch/MalwareDatabase" },
+                            { title: "Malware Source Code", url: "https://github.com/vxunderground/MalwareSourceCode" }
+                        ]
+                    },
+                    {
+                        name: "Phishing",
+                        links: [
+                            { title: "zPhisher", url: "https://github.com/htr-tech/zphisher" },
+                            { title: "CamPhish", url: "https://github.com/techchipnet/CamPhish" },
+                            { title: "PWA Phishing", url: "https://github.com/mrd0x/PWA-Phishing" }
+                        ]
+                    },
+                    {
+                        name: "WiFi",
+                        links: [
+                            { title: "Wifite2", url: "https://github.com/derv82/wifite2" },
+                            { title: "WEF", url: "https://github.com/D3Ext/WEF" }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: "LEARN / TEACH",
+                subcategories: [
+                    {
+                        name: "Practice Labs",
+                        links: [
+                            { title: "HackTheBox", url: "https://www.hackthebox.com/" },
+                            { title: "TryHackMe", url: "https://tryhackme.com/" },
+                            { title: "CrackMyApp", url: "https://crackmy.app/" }
+                        ]
+                    },
+                    {
+                        name: "Courses",
+                        links: [
+                            { title: "Cyber Security Course (Tor)", url: "http://dreadytofatroptsdj6io7l3xptbet6onoyno2yv7jicoxknyazubrad.onion/post/6eeee124f6eb4464eaad" }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: "ORGANIZATION",
+                subcategories: [
+                    {
+                        name: "Investigative Frameworks",
+                        links: [
+                            { title: "Maltego", url: "https://github.com/megadose/quidam-maltego" },
+                            { title: "OTE", url: "https://github.com/3nock/OTE" },
+                            { title: "Ghost Recon", url: "https://github.com/DR34M-M4K3R/GhostRecon" },
+                            { title: "TrackPanel", url: "https://trackpanel.net" }
+                        ]
+                    },
+                    {
+                        name: "Note-Taking",
+                        links: [
+                            { title: "CherryTree", url: "http://www.giuspen.com/cherrytree" },
+                            { title: "Paperwork", url: "https://github.com/twostairs/paperwork" },
+                            { title: "OneNote", url: "https://www.onenote.com" },
+                            { title: "Zoho Notebook", url: "https://www.zoho.com/notebook" }
+                        ]
+                    },
+                    {
+                        name: "RSS Bridges",
+                        links: [
+                            { title: "RSS Bridge", url: "https://bridge.suumitsu.eu/" },
+                            { title: "NewsBlur", url: "http://newsblur.com" },
+                            { title: "Selfoss", url: "https://selfoss.aditu.de/" },
+                            { title: "The Old Reader", url: "http://theoldreader.com" }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: "LINUX SHORTCUTS",
+                subcategories: [
+                    {
+                        name: "Terminal Chat",
+                        links: [
+                            { title: "Wormhole-William", url: "#terminal-wormhole" },
+                            { title: "Netcat File Sharing", url: "#terminal-netcat" }
+                        ]
+                    },
+                    {
+                        name: "File Sharing GUI",
+                        links: [
+                            { title: "OnionShare", url: "https://onionshare.org/" }
+                        ]
+                    }
+                ]
+            },
+            {
+                name: "CLEAR NET",
+                subcategories: [
+                    {
+                        name: "Breach / Leaks",
+                        links: [
+                            { title: "Breach Forums", url: "https://breachforums.st" },
+                            { title: "Leakbase", url: "https://leakbase.io/" },
+                            { title: "NoHide", url: "https://nohide.space" },
+                            { title: "Squad Leaks & Learn", url: "https://www.fssquad.com/" }
+                        ]
+                    },
+                    {
+                        name: "Hacker Forums",
+                        links: [
+                            { title: "Hack Forums", url: "https://hackforums.net/" },
+                            { title: "Sinister", url: "https://sinister.ly/Forum-Hacking" },
+                            { title: "0x00sec", url: "https://0x00sec.org/" },
+                            { title: "Nulled", url: "https://www.nulled.to/" },
+                            { title: "Exploit.in", url: "https://exploit.in" },
+                            { title: "XSS.is", url: "https://xss.is" }
+                        ]
+                    },
+                    {
+                        name: "Ransomware Monitoring",
+                        links: [
+                            { title: "Ransomware Live", url: "https://www.ransomware.live/" },
+                            { title: "Ransomwatch", url: "https://ransomwatch.telemetry.ltd/#/" },
+                            { title: "Ransomposts", url: "https://privtools.github.io/ransomposts/" }
+                        ]
+                    },
+                    {
+                        name: "Privacy Resources",
+                        links: [
+                            { title: "Privacy Tools", url: "https://www.privacytools.io/" },
+                            { title: "Prism Break", url: "https://prism-break.org/en/all/" },
+                            { title: "CTemplar", url: "https://ctemplar.com/features/" },
+                            { title: "IP Leak", url: "https://ipleak.net/" }
+                        ]
+                    },
+                    {
+                        name: "File Sharing",
+                        links: [
+                            { title: "file.io", url: "https://www.file.io/" },
+                            { title: "Pixeldrain", url: "https://pixeldrain.com" },
+                            { title: "Mega", url: "https://mega.nz" },
+                            { title: "GoFile", url: "https://gofile.io" }
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        const darkWebLinks = [
+            {
+                name: "DARK WEB LINKS",
+                links: [
+                    { title: "Darknet", url: "http://darkzzx4avcsuofgfez5zq75cqc4mprjvfqywo45dfcaxrwqg6qrlfid.onion/" },
+                    { title: "Dread", url: "http://dreadytofatroptsdj6io7l3xptbet6onoyno2yv7jicoxknyazubrad.onion/" },
+                    { title: "Recon", url: "http://recon222tttn4ob7ujdhbn3s4gjre7netvzybuvbq2drpxvcplhd4z7bxucdid.onion/" },
+                    { title: "Kilos", url: "http://mlyusr6htlxsyc7t2f4z53wdxh3win7q3qpxcrbam6jf3dmua7tnzuyd.onion/" },
+                    { title: "Versus Project", url: "http://pqqmr3p3tppwqvvapi6fa7jowrehgd36ct6lzr26qqormaqvh6gt4jyd.onion/" },
+                    { title: "ASAP Market", url: "http://asap2u4pvplnkzl7ecle45wajojnftja45wvovl3jrvhangeyq67ziid.onion/" },
+                    { title: "Exploit.in Forums", url: "http://exploitivzcm5dawzhe6c32bbylyggbjvh5dyvsvb5lkuz5ptmunkmqd.onion/" },
+                    { title: "Superbay", url: "http://suprbaydvdcaynfo4dgdzgxb4zuso7rftlil5yg5kqjefnw4wq4ulcad.onion/index.php" },
+                    { title: "HeLL Forum", url: "http://hell2ker5i3xsy6szrl2pulaqo3jhcz6pt7ffdxtuqjqiycvmlkcddqd.onion/" }
+                ]
+            },
+            {
+                name: "DARK WEB SEARCH ENGINES",
+                links: [
+                    { title: "Torch", url: "http://xmh57jrknzkhv6y3ls3ubitzfqnkrwxhopf5aygthi7d6rplyvk3noyd.onion/cgi-bin/omega/omega" },
+                    { title: "Haystack", url: "http://haystak5njsmn2hqkewecpaxetahtwhsbsa64jom2k22z5afxhnpxfid.onion/" },
+                    { title: "Ahmia", url: "http://juhanurmihxlp77nkq76byazcldy2hlmovfu2epvl5ankdibsot4csyd.onion/" },
+                    { title: "OnionLand", url: "http://3bbad7fauom4d6sgppalyqddsqbf5u5p56b5k5uk2zxsy3d6ey2jobad.onion/" },
+                    { title: "TorDex", url: "http://tordexkue7sggxtul2uqwewqiulmgra4ucnmvdfhhfhuzat4l3cofzyd.onion/" }
+                ]
+            },
+            {
+                name: "DARK WEB DIRECTORIES",
+                links: [
+                    { title: "Stronghold Paste", url: "http://strongerw2ise74v3duebgsvug4mehyhlpa7f6kfwnas7zofs3kov7yd.onion/" },
+                    { title: "Dig Deeper", url: "http://us63bgjkxwpyrpvsqom6kw3jcy2yujbplkhtzt64yykt42ne2ms7p4yd.onion/" },
+                    { title: "dark.fail", url: "http://darkfailenbsdla5mal2mxn2uz66od5vtzd5qozslagrfzachha3f3id.onion/" },
+                    { title: "The Ultimate Hidden Wiki", url: "http://uhwikizexyvfhbvpkdb3cu3vzikml4dnmas4ravwgua3zu3ouzfkclid.onion/index.php?title=Main_Page" }
+                ]
+            },
+            {
+                name: "DARK WEB MESSAGING / CHAT",
+                links: [
+                    { title: "Squirrell Mail", url: "http://6n5nbusxgyw46juqo3nt5v4zuivdbc7mzm74wlhg7arggetaui4yp4id.onion/src/login.php" },
+                    { title: "Black Hat Chat", url: "http://blkhatjxlrvc5aevqzz5t6kxldayog6jlx5h7glnu44euzongl4fh5ad.onion/" },
+                    { title: "TeleGru", url: "http://telegru2vmpccvm34n7dplk23534rhsdhw3twjemrxfavp7v42vcaxqd.onion/" },
+                    { title: "The Digital Den", url: "http://ddenupaqxuvvilo4yetjv3qbq7p45vqbrr7vd2fmorjglh5bk7uh73id.onion/" }
+                ]
+            }
+        ];
+
+        // Render categories
+        function renderCategories() {
+            const container = document.getElementById('main-container');
+            container.innerHTML = '';
+            
+            categories.forEach((category, index) => {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'category';
+                categoryDiv.innerHTML = `
+                    <h2 onclick="toggleSubcategories(${index})">${category.name}</h2>
+                    <div class="subcategory" id="sub-${index}">
+                        ${category.subcategories.map(sub => `
+                            <div class="subcategory-section">
+                                <h3>${sub.name}</h3>
+                                <ul class="link-list">
+                                    ${sub.links.map(link => `
+                                        <li><a href="${link.url}" target="_blank" rel="noopener noreferrer">${link.title}</a></li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(categoryDiv);
+            });
+        }
+
+        // Toggle subcategories
+        function toggleSubcategories(index) {
+            const sub = document.getElementById(`sub-${index}`);
+            sub.classList.toggle('active');
+        }
+
+        // Pentagram easter egg
+        const clickSequence = [];
+        const correctSequence = [0, 3, 2, 4, 1]; // Top, bottom-left, bottom-right, top-right, top-left
+        let currentStep = 0;
+
+        document.querySelectorAll('.pentagram-point').forEach(point => {
+            point.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const pointIndex = parseInt(point.dataset.point);
+                
+                if (pointIndex === correctSequence[currentStep]) {
+                    currentStep++;
+                    point.style.fill = '#00ffcc';
+                    
+                    if (currentStep === correctSequence.length) {
+                        showNotification('⛧ DARK WEB SECRETS UNLOCKED ⛧');
+                        setTimeout(() => {
+                            document.getElementById('dark-web-secret').classList.add('active');
+                            renderDarkWebLinks();
+                        }, 1500);
+                    }
+                } else {
+                    // Reset on wrong sequence
+                    currentStep = 0;
+                    showNotification('⛧ RITUAL FAILED - TRY AGAIN ⛧');
+                    document.querySelectorAll('.pentagram-point').forEach(p => {
+                        p.style.fill = '#ff0040';
+                    });
+                }
+            });
+        });
+
+        function renderDarkWebLinks() {
+            const container = document.getElementById('dark-web-container');
+            container.innerHTML = '';
+            
+            darkWebLinks.forEach(section => {
+                const sectionDiv = document.createElement('div');
+                sectionDiv.className = 'category';
+                sectionDiv.innerHTML = `
+                    <h2>${section.name}</h2>
+                    <ul class="link-list">
+                        ${section.links.map(link => `
+                            <li><a href="${link.url}" target="_blank" rel="noopener noreferrer">${link.title}</a></li>
+                        `).join('')}
+                    </ul>
+                `;
+                container.appendChild(sectionDiv);
+            });
+        }
+
+        function closeSecret() {
+            document.getElementById('dark-web-secret').classList.remove('active');
+            currentStep = 0;
+            document.querySelectorAll('.pentagram-point').forEach(p => {
+                p.style.fill = '#ff0040';
+            });
+        }
+
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Initialize
+        renderCategories();
+
+        // Resize canvas on window resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Removed the mousemove gradient effect to preserve background image
+    </script>
+</body>
+</html>
