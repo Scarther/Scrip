@@ -1,41 +1,262 @@
-================================== Bug Bounty Hunting ========================================
+================================== Bug Bounty Platforms =====================================
 
-OWasp
-owasp.org
-
-HackerOne (Bug bounty for money)
+HackerOne (Largest volume. Most competitive. Good training via Hacker101.)
 hackerone.com
 
+Bugcrowd (Beginner-friendly. CrowdMatch AI matches you to programs by skill.)
 bugcrowd.com
 
-synack.com/red-team
-
-cs.detectify.com
-
-cobalt.io
-
-opnwbugbounty.org
-
-zerocopter.com
-
-yeswehack.com
-
-hackenproof.com
-
-vulnerability-lab.com
-
-firebounty.com
-
-bugbounty.jp
-
-anithack.me
-
+Intigriti (Strong EU focus. Fast triage. Less duplicate-heavy than HackerOne.)
 intigriti.com
 
-safehats.com
+YesWeHack (Largest EU-founded platform. French/German/Swiss companies. Less crowded.)
+yeswehack.com
 
-redstorm.io
+Synack (Invite-only. Pass a skills test + background check. Avg $2k-$10k payouts.)
+synack.com/red-team
 
-cyberarmy.id
+Yogosha (European. Combines pentesting + bug bounty. Programs live in days.)
+yogosha.com
 
-yogasha.com
+Hackrate (Smaller. Cost-effective custom programs with advanced monitoring.)
+hackrate.com
+
+Open Bug Bounty (Completely free and open. No login required to submit. Good for beginners.)
+openbugbounty.org
+
+Immunefi (Dominates Web3/DeFi. Six and seven figure bounties for smart contract bugs.)
+immunefi.com
+
+HackenProof (Strong blockchain/crypto focus. Alongside Immunefi for Web3 targets.)
+hackenproof.com
+
+
+================================== Aggregators & Directories =================================
+
+Chaos by ProjectDiscovery (Dataset of in-scope domains from ALL public programs. Not a platform - raw recon data.)
+chaos.projectdiscovery.io
+
+Bug Bounties Directory (3000+ active programs and VDPs. Community maintained. Has an API.)
+bug-bounties.as93.net
+
+FireBounty (Aggregates VDP and bounty policies from across the internet.)
+firebounty.com
+
+Disclose.io (Vendor-agnostic community directory. Includes contact, safe harbor, reward status.)
+disclose.io
+
+Crawler.ninja Security.txt Dump (Raw crawled security.txt values with frequency counts. Gold mine for unknown programs.)
+crawler.ninja/files/security-txt-values.txt
+
+
+================================== Google Dorks: Find Bug Bounty Programs ====================
+
+Find self-hosted programs with bounty language
+inurl:"/.well-known/security.txt" "bounty"
+
+Catches programs using reward instead of bounty
+inurl:"/.well-known/security.txt" "reward"
+
+Self-hosted programs with direct email contact
+inurl:"/security.txt" "bug bounty" "mailto"
+
+Responsible disclosure pages that pay
+inurl:"/responsible-disclosure" "rewards"
+
+VDP pages with bounty programs
+inurl:"vulnerability-disclosure-policy" "bounty"
+
+Find programs that acknowledge researchers
+inurl:"hall-of-fame" "security" "vulnerability"
+
+Full programs with defined scope
+inurl:"bug-bounty" "responsible disclosure" "scope"
+
+Properly formatted security.txt with bounties
+"security.txt" "Contact:" "Expires:" "bounty"
+
+Government VDP programs - very broad scope
+site:*.gov inurl:"vulnerability-disclosure"
+
+Programs with explicit safe harbor language
+inurl:"security-policy" "we will not take legal action"
+
+
+================================== Google Dorks: Subdomain & Asset Discovery =================
+
+All indexed subdomains except www
+site:target.com -www
+
+Wildcard subdomain enumeration
+site:*.target.com
+
+Find API endpoints indexed by Google
+site:target.com inurl:api
+
+API versioned endpoints
+site:target.com inurl:v1 OR inurl:v2 OR inurl:v3
+
+Exposed API documentation
+site:target.com inurl:swagger OR inurl:api-docs OR inurl:openapi
+
+GraphQL endpoints
+site:target.com inurl:graphql OR inurl:graphiql
+
+Admin interfaces
+site:target.com inurl:admin OR inurl:dashboard OR inurl:panel
+
+Authentication entry points
+site:target.com inurl:login OR inurl:signin OR inurl:auth
+
+Internal portals accidentally indexed
+site:target.com inurl:portal OR inurl:internal
+
+
+================================== Google Dorks: Sensitive File Exposure =====================
+
+.env files - credentials, API keys, DB passwords
+site:target.com ext:env
+
+Exposed database files
+site:target.com ext:sql OR ext:db
+
+Log files - can contain PII or session tokens
+site:target.com ext:log
+
+Backup files - often contain source code
+site:target.com ext:bak OR ext:backup OR ext:old
+
+Exposed version control directories
+site:target.com inurl:".git" OR inurl:".svn"
+
+Config JSON files
+site:target.com ext:json inurl:config
+
+Open directory listings on upload folders
+site:target.com "index of /" inurl:uploads
+
+Sitemaps revealing hidden URL structure
+site:target.com ext:xml inurl:sitemap
+
+Accidentally indexed confidential documents
+site:target.com filetype:pdf "confidential" OR "internal"
+
+Hardcoded credentials in indexed pages
+site:target.com "DB_PASSWORD" OR "AWS_SECRET" OR "api_key"
+
+
+================================== Google Dorks: Vulnerability-Specific =====================
+
+Open redirect candidates
+site:target.com inurl:"redirect=" OR inurl:"url=" OR inurl:"next=" OR inurl:"return="
+
+Potential IDOR / SQLi parameters
+site:target.com inurl:"?id=" OR inurl:"?user=" OR inurl:"?account="
+
+File upload endpoints
+site:target.com inurl:upload OR inurl:file OR inurl:attachment
+
+Exposed PHP info pages
+site:target.com "phpinfo()" OR "PHP Version"
+
+SQL error messages - potential injection
+site:target.com intext:"sql syntax" OR intext:"mysql_fetch" OR intext:"ORA-"
+
+Error pages leaking stack traces
+site:target.com intext:"stack trace" OR intext:"exception" OR intext:"traceback"
+
+Password reset flows - logic bugs
+site:target.com inurl:reset OR inurl:forgot OR inurl:recover
+
+Callback / webhook endpoints
+site:target.com inurl:callback OR inurl:webhook OR inurl:notify
+
+Tokens in URLs - potentially exposed sessions
+site:target.com inurl:token= OR inurl:access_token= OR inurl:api_key=
+
+Dev / staging / debug environments
+site:target.com inurl:debug OR inurl:test OR inurl:dev OR inurl:staging
+
+
+================================== Google Dorks: Third-Party Leaks ==========================
+
+Leaked credentials on Pastebin
+site:pastebin.com "target.com" "password"
+
+Leaked API keys on Pastebin
+site:pastebin.com "target.com" "api_key" OR "secret"
+
+Secrets in public GitHub repos
+site:github.com "target.com" "password" OR "secret" OR "token"
+
+Config files committed to GitHub
+site:github.com "target.com" ext:env OR ext:config
+
+Trello boards with company info - often left public
+site:trello.com "target.com"
+
+Exposed project management tools
+site:jira.target.com OR site:confluence.target.com
+
+Find engineers to understand the tech stack
+"@target.com" site:linkedin.com "engineer" OR "developer"
+
+
+================================== Self-Hosted Programs Found via security.txt Crawl =========
+
+EssilorLuxottica (Ray-Ban, Oakley, LensCrafters - $20B company, own VDP portal, very low competition)
+essilorluxottica.vulnerability-disclosure.com
+csirt@essilorluxottica.com
+
+FlixBus / Flix (Transport/travel. Direct email. PGP key. Booking + payment surface.)
+global.flixbus.com/responsible-disclosure
+responsible-disclosure@flixbus.com
+
+Kindred Group / FDJ United (Unibet, 32Red - Online gambling. Actual bounty on YesWeHack.)
+yeswehack.com/programs/fdj-united-online-betting-gaming-bug-bounty-program
+csirt@kindredgroup.com
+
+BlaBlaCar (Ride sharing. Active YesWeHack bounty program. ~100M users.)
+yeswehack.com/programs/bug-bounty-program-blablacar
+
+Atruvia (IT backbone for ~800 German cooperative banks. Direct email. Almost no hunters know this exists.)
+security-contact@atruvia.de
+
+Cimpress / Vistaprint (Global print e-commerce. Named bugbounty@ email = real program.)
+bugbounty@cimpress.com
+
+Pluxee / ex-Sodexo Benefits (HR/employee benefits fintech. Own VDP portal.)
+vdp.pluxee.app
+
+Procter & Gamble (Fortune 50. Own VDP portal. Expires 2035 - actively maintained.)
+vdp.pg.com
+
+Beiersdorf (Nivea, Eucerin - PGP signed. Dedicated SOC. Not on any major platform.)
+soc.beiersdorf.com
+security@beiersdorf.com
+
+InnoGames (Forge of Empires, Tribal Wars - Gaming. PGP key. 300M+ registered players.)
+security@innogames.com
+
+BookingExperts (B2B hotel SaaS. Direct email. Expires 2035. Almost completely unknown as a target.)
+bookingexperts.com/trust-center
+security@bookingexperts.com
+
+Wikimedia Foundation (Wikipedia, Wikidata - Hall of fame recognition. Open source codebase.)
+mediawiki.org/wiki/Reporting_security_bugs
+security@wikimedia.org
+
+Fintual (Chilean investment app. Self-hosted. Bounties up to $10k+. Scope: fintual.cl .mx .com .in fintu.al fnt.al)
+fintual.com/.well-known/security.txt
+security@fintual.com
+
+
+================================== Notes ====================================================
+
+Replace target.com with the actual in-scope domain before running any dork
+Always read the full policy before testing - scope varies wildly per program
+Programs with direct email contact = lowest competition
+Own portal (not on HackerOne/Bugcrowd) = very few hunters see it
+security.txt expires field - always check the date before investing time
+No safe harbor language in a policy = document everything and proceed carefully
+Verify any program found via crawl is still active before starting recon
